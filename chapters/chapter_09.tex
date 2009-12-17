@@ -6,7 +6,7 @@ Jede Teilmenge von $T$ mit mindestens $k$ Teilnehmer sollen Geheimnis rekonstrui
 1979 Shamir (How to share a secret)
 
 \subsection{Konstruktion}
-Vereinbarung von gro\ss er Primzahl $p$, mindestens $p >= n + 1$ %FORMATTING!!
+Vereinbarung von gro\ss er Primzahl $p$, mindestens $p \geq n + 1$
 \\
 \\
 $g \in \Z_p = \{0, \ldots , p-1\}$
@@ -31,6 +31,6 @@ f(0) = g\\
 g = \sum_{j=1}^k g_{i_j} \prod_{l=j} \frac{x_{i_l}}{(x_{i_l}-x_{i_j})}$ \\
 Bei mehr als $k$ Teilnehmer selbe Ergebnis.\\
 Weniger als $k$ Teilnehmer $(k')$: Anderes Polynom wegen weniger Punkte, also warscheinlich anderer $g$.\\
-Erzeugen Polynom vom Grad $<= k' - 1$ \\ % FORMATTING
-F\"ur alle $k \in \Z_p$ existiert gleich viele Polynome vom Grad $<= k'-1$ %FORMATTING
+Erzeugen Polynom vom Grad $\leq k' - 1$ \\
+F\"ur alle $k \in \Z_p$ existiert gleich viele Polynome vom Grad $\leq k'-1$
 durch die vorgegebene $k'$ Punkte, die bei $h$ durch $y$-Achse gehen.
