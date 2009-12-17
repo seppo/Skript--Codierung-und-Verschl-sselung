@@ -1,0 +1,19 @@
+\chapter{Symmetrische Blockchiffre}
+\section{Blockchiffre}
+Zerlege Klartext in Blöcke (Strings) der Länge $n$.  Jeder Block wird einzeln verschlüsselt (in der Regel wieder in einem Block der Länge $n$). Gleiche Blöcke werden gleich verschlüsselt.\\
+Wieviele Blockchiffren der Länge $n$ gibt es?\\
+Alphabet $\Z_2=\{0,1\}$\\
+$|\{\underbrace{(0,\ldots,0)}_{Block},(0,\ldots,1),\ldots,(1,\ldots,1)\}| = 2^n$\\
+Blockchiffre = Permuation der $2^n$ Blöcke.\\
+$(2^n)!$ Blockchiffre\\
+Wenn alle verwendet werden:\\
+Schlüssel = Permuation der $2^n$ Blöcke\\
+$(x_{1,1},\ldots,x_{1,n},x_{2,1},\ldots,x_{2,n},\ldots)$ \ \ \fbox{$n\cdot 2^n$ Bit}\\
+Zur Speicherung eines Schlüssels werden $n \cdot 2^n$ Bit benötigt.\\
+Zum Beispiel:\\
+$n=64, \ 64 \cdot 2^{64}=2^{70}\approx$ 1 ZetaByte $\approx$ 1 Milliarde Festplatten à 1 TB\\
+\textbf{Illusional!}\\
+Konsequenz:\ Verwende Verfahren, wo nur ein kleiner Teil der Permutation als Schlüssel verwendet wird und so sich die Schlüssel dann in kürzerer Fom darstellt.
+%
+% Ende zweiter Vorlesung
+%

@@ -1,0 +1,36 @@
+\chapter{Secret Sharing}
+Geheimnis wird auf mehrere Teilnehmer verteilt (Teilgeheimnisse), so dass gewisse Teilmengen der Teilnehmer das Geheimnis mit ihren Teilgeheimnissen rekonstruieren können, die anderen nicht. \\ \\
+$T$ = \{ $t_1, \ldots , t_n$\}, $k < n$ \ \ (T Menge der Teilnehmer) \\ \\
+Jede Teilmenge von $T$ mit mindestens $k$ Teilnehmer sollen Geheimnis rekonstruieren können, Teilmengen von $T$ mit weniger als $k$ Teilnehmer nicht.\\
+\section{($k, n$) - Schwellenwertsysteme}
+1979 Shamir (How to share a secret)
+
+\subsection{Konstruktion}
+Vereinbarung von gro\ss er Primzahl $p$, mindestens $p >= n + 1$ %FORMATTING!!
+\\
+\\
+$g \in \Z_p = \{0, \ldots , p-1\}$
+
+\subsection{Verteilung der Teilgeheimnisse}
+Dealer w\"ahlt zuf\"allig $a_1, \ldots, a_{k-1} \in \Z_p, a_{k-1} \neq 0, k =$ Schwelle \\
+$f(x) = g + a_1x + \ldots + a_{k-1}x^{k-1} \in \Z_p[x] $ \\
+$(a_1, \ldots , a_{k-1}$ h\"alt er geheim, nat\"urlich auch g)\\
+\\
+Dealer w\"ahlt zuf\"allig $x_1, \ldots, x_n \in \Z_p$ (paarweise verschieden). \\
+Teilnehmer $t_i$ erh\"alt als Teilgeheimnis $(x_i, f(x_i))$ (Punkt auf Polynom)\\
+Bei $x=0$ hast du $g$.
+
+\subsection{Rekonstruktion(sversuch) des Geheimnisses}
+$k$ Teilnehmer $(x_{i_1}, f(x_{i_1})), \ldots, (x_{i_k}, f(x_{i_k}))$ \\
+Durch diese Punkte ist $f$ eindeutig bestimmt, z.B. durch Lagrange-Interpol.: \\
+$f(x_{i_j}) = g_{i_j} \\
+\\
+f(x) = \sum_{j=1}^k g_{i_j} \cdot \frac{(x-x_{i_1}), \ldots, (x-x_{i_{j-1}})(x-x_{i_{j+1}}), \ldots, (x-x_{i_k})}
+                      {(x_{i_j}-x_{i_1}), \ldots, (x_{i_j}-x_{i_{j-1}})(x_{i_j}-x_{i_{j+1}}), \ldots, ((x_{i_j}-x_{i_k})}\\
+f(0) = g\\
+g = \sum_{j=1}^k g_{i_j} \prod_{l=j} \frac{x_{i_l}}{(x_{i_l}-x_{i_j})}$ \\
+Bei mehr als $k$ Teilnehmer selbe Ergebnis.\\
+Weniger als $k$ Teilnehmer $(k')$: Anderes Polynom wegen weniger Punkte, also warscheinlich anderer $g$.\\
+Erzeugen Polynom vom Grad $<= k' - 1$ \\ % FORMATTING
+F\"ur alle $k \in \Z_p$ existiert gleich viele Polynome vom Grad $<= k'-1$ %FORMATTING
+durch die vorgegebene $k'$ Punkte, die bei $h$ durch $y$-Achse gehen.

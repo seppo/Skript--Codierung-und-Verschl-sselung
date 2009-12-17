@@ -1,0 +1,84 @@
+\chapter{Affin-lineare Chiffre}
+\section{Vorbemerkung}
+\subsection{$n\times m$-Matrix}
+
+$\begin{pmatrix}
+	a_{11} & \ldots & a_{1m} \\
+	\vdots &  & \vdots \\
+	a_{n1} & \ldots & a_{nm}
+\end{pmatrix}$
+
+$1 \times n$ = Zeilenvektor = $(a_1,\ldots,a_m)$\\
+$n \times 1$ = Spaltenvektor = $\begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}$\\
+z.B. $a_{ij} \in \R,\ a_{ij} \in \Z \ oder\ a_{ij} \in R,\ R Ring$\\
+$n \times m$-Matrix A,B\\
+
+$\begin{pmatrix}
+	a_{11} & \ldots & a_{1m} \\
+	\vdots &  & \vdots \\
+	a_{n1} & \ldots & a_{nm}
+\end{pmatrix}
++
+\begin{pmatrix}
+	b_{11} & \ldots & b_{1m} \\
+	\vdots &  & \vdots \\
+	b_{n1} & \ldots & b_{nm}
+\end{pmatrix}
+:=
+\begin{pmatrix}
+	a_{11}+b_{11} & \ldots & a_{1m}+b_{1m} \\
+	\vdots &  & \vdots \\
+	a_{n1}+b_{n1} & \ldots & a_{nm}+b_{nm}
+\end{pmatrix}$\\
+
+$A=n\times m,\ B = m \times k,$\ \ \
+$A \cdot B
+\begin{pmatrix}
+	c_{1l} & \ldots & c_{1k} \\
+	\vdots &  & \vdots \\
+	c_{m1} & \ldots & c_{mk}
+\end{pmatrix}
+=
+n\times k$\\
+
+$c_{1l}=(a_{i1} \cdot b_{ij})+(a_{i2} \cdot b_{2j}) + \ldots + (a_{im} \cdot b_{mj})$\\
+$(A+B)\cdot C = A\cdot B + B\cot C$\\
+
+Im Allgemeinem: $A\cdot B \neq B\cdot A$\\
+
+\subsection{Quadritsche Matrix ($n\times n$)}
+
+$E_n=\begin{pmatrix}
+	1 & \ldots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \ldots & 1
+\end{pmatrix}$\\
+$A=n\times n,\ A \cdot E_n=E_n \cdot A = A$\\
+$A n\times n$-Matrix über kommutativen Ring R mit Eins.\\
+Wann existiert Matrix $A^{-1}$(Inverse Matrix) mit $A^{-1} \cdot A = A \cdot A^{-1} = E_n$?\\
+$det(A) \in R$\ Determinante von A\\
+$2\times 2$-Matrix $det\begin{pmatrix}
+	a_{11} & a_{12} \\ a_{21} & a_{21}
+\end{pmatrix}
+= a_{11} \cdot a_{22} - a_{12} \cdot a_{21}$\\
+A besitzt inverse Matrix $\Leftrightarrow det(A)$ in R ein inverses besitzt\\
+(z.B. R Körper, $\Z ,\Q ,\Z_p,\ det(A)\neq 0$\\
+$A^{-1}=
+\begin{pmatrix}
+	\frac{1}{det(A)}\cdot b_{11} & \ldots & \frac{1}{det(A)}\cdot b_{1m} \\
+	\vdots & & \vdots \\
+	\frac{1}{det(A)}\cdot b_{n1} & \ldots & \frac{1}{det(A)}\cdot b_{nm}
+\end{pmatrix}$\\
+$b_{ij}=(-1)^{i+j}$\ $det(A_{ji})$\\
+$A_{ji}=(n-1)\times (n-1)$-Matrix, die aus $A$ durchstreichen der $j$-ten Zeile und $i$-ten Spalte entsteht.\\
+$A=
+\begin{pmatrix}
+	a_{11} & a_{12} \\ a_{21} & a_{22}
+\end{pmatrix}\ \
+A^{-1}=
+\begin{pmatrix}
+	a_{22} & -a_{12} \\ -a_{21} & a_{11}
+\end{pmatrix}$\\ \\
+$R=\Z_k \ \{0,1,\ldots,k\}$\\
+Addition und Multiplikation in $\Z_k (\oplus,\odot)$\\
+normale Add. und Mult. mit $mod\, k$\\
