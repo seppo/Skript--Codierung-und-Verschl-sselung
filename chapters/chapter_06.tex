@@ -1,0 +1,144 @@
+\chapter{Der Advanced Encryption Standard (AES)}
+\section{Mathematische Methoden gebraucht fuer AES} % NEED BETTER TITLE HERE
+Seit 70er Jahren gab es DES (Blockl\"ange 64 Bit, Schl\"ussell\"ange 56 Bit) \\
+\\
+Nachfolger des DES: Daemen, Rijmen (Belgier)\\
+Rijndael-Verfahren $\rightarrow$ AES (2002 FIPS 197)\\
+\\
+Iterierte Blockchiffre\\
+Version mit 128 Bit Block und Schl\"ussel\"ange. \\
+\\
+$<$BILD VON EINER RUNDE VON AES KOMMT HIER HIN$>$\\
+\\
+Vorbemerkung: 128-Bit Bl\"ocke werden dargestellt als:\\
+$\begin{pmatrix}
+	a_{01} & a_{02} & \ldots & a_{03} \\
+	a_{10} & a_{11} & \ldots & a_{13}\\
+	\vdots & \vdots  & \vdots & \vdots \\
+	a_{30} & \ldots  & \ldots & a_{33}
+\end{pmatrix}$\\
+\\
+Jedes $a_{ij}$ = Byte\\
+128er Block $\entspricht a_{00}a_{10}a_{20}\ldots a_{01}a_{11}\ldots a_{33}$ (spaltenweise gelesen)\\
+\\
+endlicher K\"orper: einfachste M\"oglichkeit $\Z_p$ ($p$ Primzahl)\\
+$\F_{2^8}$ K\"orper mit $2^8 = 256$ Elementen\\
+\\
+Menge: Polynome vom Grad $< 8$ \"uber $\Z_2$\\
+$b_7x^7 + \ldots + b_1x + b_0, b_i \in \Z_2 \\
+(b_7, b_6, \ldots, b_0)$ Byte\\
+\\
+Addition = normale Addition von Polynomen\\
+Multiplikation = normale Multiplikation von Polynomen + Reduktion modulo \\
+irreduzibler Polynom vom Grad 8. ($x^8 + x^4 + x^3 + x + 1$)\\
+\\
+Bsp.\\
+$(x^7 + x + 1) \odot (x^3 + x) = x^{10} + x^8 + x^4 + x^3 + x^2 + x\\
+\\x^{10} + x^8 + x^4 + x^3 + x^2 + x$ mod $x^8 + x^4 + x^3 + x + 1\\
+\\
+x^{10} + x^8 + x^4 + x^3 + x^2 + x \div x^8 + x^4 + x^3 + x + 1 = x^2 + 1\\
+\underline{x^{10} + x^6 + x^5 + x^3 + x^2}\\
+\hspace*{8.85mm} x^8 + x^6 + x^5 + x^4 + x\\
+\hspace*{8.85mm}\underline{ x^8 + x^4 + x^3 + x + 1} \\
+\hspace*{16mm} x^6 + x^5 + x^3 + 1 \leftarrow \\
+\\
+(x^7 + x + 1) \odot (x^3 + x) = x^6 + x^5 + x^3 + 1$\\
+\\
+In $\F_{2^8}$ hat jedes Element $\neq$ 0 ein Inverses bzgl. $\odot$:\\
+\indent $g \neq 0. Ex. g^{-1} \in \F_{2^8} : g \odot g^{-1} = 1$\\
+\\
+Erweiterte Euklid. Algo. f\"ur Polynome: \\
+$g \neq 0$ (Grad $\leq 7$) \ \ $h = x^8 + x^4 + x^3 + x + 1$ irred. \ \ ggT($g, h$) = 1 \\
+\\
+EEA: $u,v \in \Z_2[x] : u \cdot g + v \cdot h = 1 \\
+u$ mod $h =: g^{-1} \\
+g^{-1} \odot g = ((u$ mod $h) \cdot g)$ mod $h = u \cdot g$ mod $h = (1 - vh)$ mod $h = 1$ mod $h = 1$\\
+\section{SubBytes-Transfer}
+$S_{i-1} =
+\begin{pmatrix}
+	a_{01} & a_{02} & \ldots & a_{03} \\
+	a_{10} & a_{11} & \ldots & a_{13}\\
+	\vdots & \vdots  & \vdots & \vdots \\
+	a_{30} & \ldots  & \ldots & a_{33}
+\end{pmatrix} , a_{ij}$ Bytes\\
+Sei $g$ eines dieser Bytes, $g = (b_7b_6\ldots b_0), b_i \in \Z_2$\\
+\\
+1. Schritt: \ \
+Fasse $g$ als Element in $\F_{2^8}$ auf.\\
+\indent Ist $g = (0, \ldots, 0)$, so lasse g unver\"andert.\\
+\indent Ist $g \neq (0, \ldots, 0)$, so ersetzte $g$ durch $g^{-1}$.\\
+\\
+2. Schritt: \ \ Ergebnis nach Schritt 1: $\tilde{g}$ wird folgenderm. Transformiert\\
+\indent $\tilde{g} \cdot A + b = \tilde{\tilde{g}}$ \ \ (affin-lin. Transformation)
+($\tilde{g}$: g-schlange, $\tilde{\tilde{g}}$:g-doppel-schlange)\\
+\\
+$A = 
+\begin{pmatrix}
+	1 & 1 & 1 & 1 & 1& 0 & 0 & 0\\
+	0 & 1 & 1 & 1 & 1& 1 & 0 & 0\\
+	\\
+	\\
+\end{pmatrix} \rightarrow$ zykl. Shift der vorherigen Zeile um 1 Stelle nach rechts.\\
+\\
+$b = \begin{pmatrix}
+	1 & 1 & 0 & 0 & 0 & 1 & 1 & 0
+\end{pmatrix}$\\
+\\
+Shritt 1 und 2 werden kombiniert, nicht jedes mal berechnet. Alle m\"oglichen Shifts ($2^8$ viele) sind in einer 16x16 Matrix und wird per Table-Lookup nachgeschlagen.\\
+$g = (b_7b_6b_5b_4b_3b_2b_1b_0) \ \  b_7b_6b_5b_4$ = 0 bis 15 (Zeile) \ $b_3b_2b_1b_0$ (Spalte)
+
+\section{Shift Rows Transformation}
+4x4-Matrix von Bytes: 
+$\begin{pmatrix}
+	Erste\ Zeile\ unveraendert\\
+	1\ stelle\ nach\ links\ zykl.\\
+	2\ stellen\ nach\ links\ zykl.\\
+	3\ stellen\ nach\ links\ zykl.\\
+\end{pmatrix}$
+
+\section{Mix Columns Transformation}
+4x4-Matrix, Eintr\"age als Elemente in $\F_{2^8}$ auffassen.\\
+Multiplikation von links mit Matrix
+(Mult. der Eintr. in $\F_{2^8}):
+\begin{pmatrix}
+	x & x+1 & 1 & 1\\
+	1 & x & x+1 & 1\\
+	1 & 1 & x & x+1\\
+	x+1 & 1 & 1 & x\\
+\end{pmatrix}\\
+x \entspricht
+\begin{pmatrix}
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+\end{pmatrix}$
+
+\section{Schl\"usselerzeugung}
+Ausgangsschl\"ussel hat 128 Bit. (16er String in Hexcode)\\
+\\
+Schreibe als 4x4-Matrix von Bytes. 4 Spalten $w(0), w(1), w(2), w(4)$. Definiere weitere 40 Spalten \`a 4 Bytes.\\
+\\
+$w(i-1)$ sei schon definiert.
+
+$ 4 \nmid i : w(i) := w(i-4) \oplus w(i-1)$ (byteweise XOR)\\
+$ 4 \mid i : w(i) := w(i-4) \oplus T(w(i-1))$ (T Transformation)\\
+T?\\ $w(i-1) =
+\begin{pmatrix}
+	a\\
+	b\\
+	c\\
+	d\\
+\end{pmatrix} , \ a,\ldots,d Bytes$\\
+Wende auf $b, c, d, a$ SubBytes-Transformation an $\rightarrow e, f, g, h$ $(b \rightarrow e)$\\ 
+$r(i) =
+\begin{pmatrix}
+	0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+\end{pmatrix}^{\frac{(i-4)}{4}}$ Potenz. in $\F_{2^8}$\\
+$T(w(i-1)) = 
+\begin{pmatrix}
+	e \oplus r(i)\\
+	f\\
+	g\\
+	h\\
+\end{pmatrix}$\\
+Rundenschl\"ussel $K_i$: 4x4-Matrix mit Spalten $w(4i), w(4i+1), w(4i+2), w(4i+3)$\\
+\\
+(Nebenbemerkung: Linear heisst $f(x+y) = f(x) + f(y)$)
