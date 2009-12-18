@@ -1,0 +1,127 @@
+\chapter{Signaturen, Hashfunktionen, Authentifizierung}
+\section{Anforderung an digitale Signaturen}
+\paragraph{Identitätseigenschaft:}
+
+ID des Unterzeichners des Dokuments wird sichergestellt
+\paragraph{Echtheitseigenschaft:}
+
+des signiertem Dokument
+
+\paragraph{Verifikationseigenschaft:}
+
+Jeder Empfänger muss digitale Signatur verifizieren können.
+
+\section{RSA-Signatur (vereinfachte Version)}
+
+$A$ will Dokument $m$ signieren. \\
+$A$ bestitzt öffentlichen RSA-Schlüssel $(n,e)$, geheimen Schlüssel $d$.
+
+Signatur: $m^d\ mod\ n$ sendet $(m,\ m^d\ mod\ n)$ an $B$.\\
+$(m^d\ mod\ n)^e = m^{e \cdot d}\ mod\ n = m\ (mod\ n)$\\
+$m < n$\\
+Wenn $m^{e \cdot d}\ mod\ n = m$, dann akzeptiert $B$ die Signatur.\\
+$m > n\ \ m^d\ mod\ n$ $B\ mod\ n$. Ist $m^{'}\ mod\ n = m\ mod\ n$, dann $(m^{'},m^d\ mod\ n)$ gültige Signatur.
+
+\subsection{Wie lassen sich lange RSA-Signaturen vermeiden?}
+\paragraph{Def:}
+
+Sei $R$ ein endliches Alphabet.\\
+\textbf{Hashfunktion} $H: \R^{*} \rightarrow R^k (k \in \N$ fest $)$ soll effizient berechenbar sein.
+
+\section{RSA-Signatur mit HASH-Funktion}
+
+$H$ öffentlich bekannte Hashfunktion.\\
+$A$ will Nachricht $m$ signieren.\\
+Bildet $H(m)$ und signiert $H(m) : H(m)^d\ mod\ n$ sendet $(m, H(m)^d\ mod\ n)$\\
+Verifikation durch $B$: $m \rightarrow H(m)$\\
+$(H(m)^d\ mod\ n)^e\ mod\ n = H(m)$
+
+\subsection{Angriffsmöglichkeiten}
+\begin{description}
+	\item[-] Angreifer kann $H(m)$ bestimmen wenn es ihm gelingt, $m' \neq m$ zu finden, so $(m', H(m)^d\ mod\ n)$ gültige Signatur von $m$ durch $A$.
+	\item[-] Angreife wählt zufällig $y$ und berechnet $y^e\mod\ n = z$\\
+	Gelingt es ihm, $m$ zu finden mit $H(m)=z$, dann ist $(m,y)$ gütlige Signatur von $m$ durch $A$\\
+	$H(m)\ \  y^e=H(m)$ 
+\end{description}
+
+\paragraph{Def:}
+
+Eine \textbf{kryptographische Hashfunktion} ist eine Hashfunktion, die folgende Bedinungen erfüllt.
+\begin{enumerate}
+	\item $H$ ist Einwegfunktion (um Angriffe des zweiten Typs zu vermeiden)
+	\item $H$ ist \textbf{schwach kollisionsresistent}, d.h. zu gegebenem $m \in R^{*}$, soll es effizient nicht möglich sein ein $m' \neq m$, mit $H(m)=H(m')$, zu finden. (um Angriffe des ersten Typs zu vermeiden)
+\end{enumerate}
+Verschärfung von 2.
+\begin{enumerate}
+	\item[$2'$] $H$ ist \textbf{stark kollisions resistent}, wenn es effizient nicht möglich ist $m \neq m'$ zu finden, mit  $H(m) = H (m')$.
+\end{enumerate}
+
+Da $R^{*}$ unendlich und $\left| R^k \right|=\left|R\right|^k$ endlisch ist, existiert unendlich viele Paare $(m,m'),\ m\neq m'$ mit $H(m)=H(m')$.\\
+(Bilde $\left|R\right|^k+1$ viele Hashwerte: Kollision)\\
+Kollisionen lassen sich nicht vermeiden, sie sollten aber nicht schnell herstellbar sein.
+
+\subsection{Satz: Geburtstagsparadoxon}
+
+Ein Merkmal komme in $m$ verschiedenen Ausprägungen vor. Jede Person besitze genau eine dieser Merkmalsausprägungen. Ist $c \geq \frac{1+\sqrt{1+8\cdot m \cdot \ln{2}}}{2} \approx 1.18 \sqrt{m}$, so ist die Wahrscheinlichkeit, dass unter $l$ Personen zwei die gleiche Merkmalsausprägung haben, mindestens $\frac{1}{2}$ (Geburtstage: $m=366, l=23$).
+
+\paragraph{Beweis}
+
+$l$ Personen\\
+Alle Möglichkeiten $(g_1,g_2,\ldots,g_l), g_i \in \{1,\ldots,m\}$ $m^l$ Möglichkeiten.\\
+Alle Merkmalausprägungen verschieden: $m \cdot (m-1) \cdot (m-2) \cdot \ldots \cdot (m-(l-1))$\\
+Wahrscheinlichkeit, dass $l$ Personen lauter verschiedene Geburtstage haben.\\
+$q = \frac{m \cdot (m-1) \cdot (m-2) \cdot \ldots \cdot (m-(l-1)}{m^l}=\prod^{l-1}_0{1 - \frac{i}{m}}$\\
+Wann ist $q \leq \frac{1}{2}$?\\
+$e^x \geq 1+x$\\
+\[
+\prod^{l-1}_0{1 - \frac{i}{m}}
+\leq \prod^{l-1}_0{e^{-\frac{i}{m}}}
+=e^{\prod^{l-1}_0{-\frac{i}{m}}}
+=e^{- \frac{1}{m}\sum^{l-1}_0{i}}
+=e^{- \frac{1}{m} \cdot \frac{l \cdot (l-1)}{2}}
+\]
+\[
+\ln{a}\leq - \frac{1}{m} \cdot \frac{l \cdot (l-1)}{2} = - \frac{l^2-l}{2 \cdot m}
+\]
+
+\subsection{Hashfunktion}
+
+$H(m) = H(m'), m \neq m'$\\
+$H: \Z_2^* \rightarrow \Z_2^n$ ($2^n$ Hashwerte)\\
+Bei Erzeugung von $~2^\frac{n}{2}$ Hashwerten ist Wahrscheinlichkeit, dass zwei gleich sind $~\frac{1}{2}$\\
+$n=64 : 2^{32}$ Hashwerte $(~4 \ cdot 10^9)$ unsicher.\\
+Weit verbreitet waren und sind:
+\begin{itemize}
+	\item[] MD5 (message digerst / Ron Rivest, 1991, 128 Bit)
+	\item[] SHA-1 (Secure Hash Algorithm, NSA, 1992/1993, 160 Bit)
+\end{itemize}
+
+\section{Authentifizierung}
+
+Nachweise bzw. Überprüfung, dass jemand derjenige ist für den er sich ausgbit.\\
+Möglichkeiten der Authentifizierung durch:
+\begin{itemize}
+	\item[] \textbf{Wissen}
+	\item[] Besitz
+	\item[] biometische Merkmale
+\end{itemize}
+
+gängiste Methode: Passwort \\
+Im Allgemeinem: Passwort $w$ abgespeichert als $f(w)$ $f$ Einwegfunktion.\\
+$w$ $f^n(w)=w_0 \stackrel{sicher}{\rightarrow}$ Id. überprüfer $f$ Einweg.
+\begin{enumerate}
+	\item Auth. $w_1=f^{n-1}(w) \rightarrow f(f^{n-1}(w))=w_0$ ersetzt $w_0$ durch $w_1$
+	\item Auth. $w_2=f^{n-2}(w) \rightarrow \ldots$
+\end{enumerate}
+
+\fbox{Passwortsicherheit: http://www.schneier.com/crypto-gram-0701.html}
+
+\section{Challenge-Response-Authentifizierung}
+RSA-Verfahren
+$A \stackrel{auth.}{\longrightarrow} B$\\
+Öffentlicher Schlüssel: $(n,e)$\\
+geheimer Schlüssel: $d$\\
+$A \stackrel{Zufallszahl r}{\longleftarrow} B,\ r<n$ \texttt{Challenge}\\
+$A \stackrel{r^d\ mod\ n}{\longrightarrow} B$ überprüft, ob $r^{d^e}\ mod\ n = r$ \texttt{Response}\\
+
+Damit $B$ sich sicher seien kann, dass es wirklich $A$ ist, kann $B$ so oft wie es für nötig hält neue $r$ schicken und dadurch die Chance verringern, dass $A$ nicht $A$ ist.
