@@ -1,0 +1,218 @@
+\chapter{Public-Key-Systeme}
+\section{Grundidee}
+Diffie, Hellman, 1976
+Jeder Teilenehmer hat ein Paar von Schlüsseln:
+\begin{itemize}
+	\item[-] Öffentlichen Schlüssel $P_A$
+	\item[-] geheimen Schlüssel $G_A$
+\end{itemize}
+Zu $P_A$ gehört öffentlich bekannte Verschlüsselungsfunktion $E_{P_A}$ (=$E(\cdot, P_A$)\\
+$B\stackrel{m}{\rightarrow}A: E_{P_A}(m)=c$
+\begin{enumerate}
+	\item $m$ darf mit "realistischen Aufwand" nicht aus $E_{P_A}(m)$ berechenbar sein. $E_{P_A}$ ist \textbf{Einwegfunktion}\\
+	($E_{P_A}$ muss effizient berechenbar sein, aber $E_{P_A}^{-1}$ nicht!)
+	\item $A$ muss mit Hilfe einer Zusatzinformation (=$G_A$) in der Lage sein, $E_{P_A}^{-1}$ effizient zu berechnen.
+	\[
+	D_{G_A}(c)=m=E_{P_A}^{-1}(c)
+	\]
+	Injektive Einwegfunktionen, die mit Zusatzinformation effizient invertierbar sind: \textbf{Geheimtürfunktion} (trapdoor function)
+\end{enumerate}
+
+Aus 1) und 2) folgt:
+\begin{enumerate}
+	\item[3] $G_A$  darf aus $P_A$ nicht schnell berechenbar sein!
+\end{enumerate}
+Es ist unbekannt ob Einwegfunktion existieren! Notwendig für die Existenz von Einwegfunktionen:
+\[
+P\neq NP
+\]
+Es gibt Kandidaten für Einwegfunktionen.
+\section{RSA-Verfahren} (Rivest, Shamir, Adleman, 1977)
+Beruht auf Schwierigkeit große Zahlen zu  faktorisieren!
+\subsection{Schlüsseslerzeugung}
+Wähle zwei große Primzahlen $p,q (p\neq q)$ (mindestens 500 Bit Länge)\\
+Bilde $n=p\cdot q$\\
+\[ \varphi(n)=\| \{a \in \N : 1 \leq a < n, ggt(a,n)=1\}\| \]
+\[ n=p\cdot q : \varphi(n)=(p-1)\cdot (q-1) \]
+[nicht teilerfremd zu $n$:$1\cdot p, 2 \cdot p,\ldots,(q-1)\cdot p = n = 1\cdot q, 2\cdot q,\ldots,(p-1)\cdot q$\\
+$(p-1)+(q-1)+1$\\
+$\varphi(n)=n-(p-1)-(q-1)-1=n-p-q+1=p\cdot q - p-q + 1 = (p-1)\cdot (q-1)$]\\
+Wähle $e$, $1 < e < \varphi(n)$ mit $ggT(e,\varphi(n))=1$\\
+Zufallswahl, bestimme $ggT(e,\varphi(n))$ mit Euklidischer Algorithmus, so lange, bis $e$ mit $ggT(e,\varphi(n))=1$ gefunden ist.)
+\subsubsection{öffentlicher Schlüssel}
+$(n,e)=P_A$\\
+Wähle $d < \varphi(n)$ mit $e\cdot d \equiv 1 (mod\ n)$ (d.h. $\varphi(n) \mid e \cdot d -1, e\cdot d=1+k\cdot \varphi(n)$ für $k \in \N$)\\
+(Wende erweiterten Euklidischen Algorithmus auf $e,\ \varphi(n)$ an:\\
+Liefert $u,v \in \Z$ mit $u\cdot e + v\cdot \varphi(n)=ggT(e,\varphi(n))=1$\\
+$d=u\ mod\ \varphi(n)$\\
+$u\cdot e + v \cdot \varphi(n)\ mod\ \varphi(n)=1$\\
+$( \underbrace{u\ mod\ \varphi(n)}_{d} \cdot e)  mod\ \varphi(n)=1$)
+\subsubsection{Geheimerschlüssel}
+$G_A=d$
+\subsection{Verschlüsselung}
+$B$ Nachrichtan $A$. Codiere Nachricht als Zahl. Zerlege in Blöcke deren Zahlwert $< n$. Sei $m$ so ein Block. $(m<n)$\\
+$m^e\ mod n = c$
+\subsection{Entschlüsselung}
+$c^d mod n = m$\\
+Gültigkeit basiert auf kleinem Satz von Fermat:\\
+$r$ Primzahl, $ggT(a,r)=1$ (d.h. $r \nmid a$)\\
+$a^{r-1} \equiv 1 (mod\ r)$\\
+Sei $m<n=p\cdot q$
+\[
+c=m^e\ mod\ n, c^d\ mod\ n=m^{e\cdot d}\ mod\ n
+\]
+\[
+e \cdot d = 1 + k \cdot \varphi (n) = 1 + k \cdot (p-1) \cdot (q-1)
+\]
+Ist $p \nmid m$, so 
+\[
+m^{e\cdot d}=m^{1+k\cdot (p-1)\cdot (q-1)}=m\cdot =(m^{p-1})^{k\cdot (q-1)}\stackrel{mod\ p}{\Rightarrow} m\cdot 1^{k\cdot (q-1)} (mod\ p) = m (mod\ p)
+\]
+Ist $p \mid m$:
+\[
+m \equiv 0 \equiv m^{e\cdot d} (mod\ p)
+\]
+In jedem Fall:
+\[
+m^{e\cdot d} \equiv m (mod\ p)
+\]
+Genauso:
+\[
+m^{e\cdot d} \equiv m (mod\ q)
+\]
+\[
+p \mid m^{e\cdot d} - m,\ q  \mid m^{e\cdot d} -m , p\neq q \Rightarrow n=p\cdot q \mid m^{e\cdot d}-m
+\]
+\[
+m^{e\cdot d} \equiv m (mod\ n),\ m^{e\cdot d} mod\ n = m
+\]
+\subsubsection{Schnelle Berechnung von modularen Produkten}
+\[
+m^e\ mod\ n
+\]
+\[
+e=\sum^k_{i=0} e_i \cdot z^k,\ e_i \in \{0,1\},e_k=1
+\]
+\[
+m^e=m^{2\cdot k + e_{k-1}\cdot 2^{k-1}+\ldots+e_1\cdot 2+e_0}
+\]
+\[
+( ( \ldots ( (m^2 \cdot m^{e_{k-1}} )^2 \cdot m^{e_{k-2} } )^2 \ldots )^2 \cdot m^{e_1} )^2\cdot m^{e_0}
+\]
+gelöst im worst case mit $2\cdot k$ Multiplikationen
+\[
+k=\left\lfloor log_2(e)\right\rfloor
+\]
+\fbox{Nach jedem Rechenschritt $mod\ n$ reduzieren!}
+
+\section{Sicherheit vom RSA-Verfahren}
+Falls $p,\ q$ bekannt $\Rightarrow \varphi(n),\ d$ bekannt.\\
+$\varphi(n)$ bekannt $\Rightarrow\ p,\ q$ bekannt.\\
+$\varphi(n)=n-q-p+1$ bekannt $\Rightarrow\ p+q=s$ bekannt, $p\cdot q=n$ bekannt.\\
+$p\cdot (s-p)=n$ $p^2-s\cdot p + n = 0$ quadratische Gleichung für $p$
+\paragraph{Es gilt auch:} Bestimmung von $d$ ist "`genauso schwierig"' wie die Faktorisierung von $n$.\\
+Komplexität der besten Faktorisierungsalgorithmen:
+\[
+	O(e^{c\cdot (\log n)^{\frac{1}{3}}
+	\cdot ((\log \log n)^{\frac{2}{3}})})
+\]
+Um eine 640 Bit Zahl zu faktorisieren braucht man 30-CPU-Jahre auf einer 2.2 GHz CPU.\\ \\
+Häufig wird $e=3$ gewählt.\\
+\fbox{HIER KOMMT NOCH EINE GRAFIK HIN} %img
+\\
+$ggT(n_i,n_j)=1$
+\begin{eqnarray*}
+	c_1=m^3\ mod\ n_1\\	
+	c_2=m^3\ mod\ n_2\\	
+	c_3=m^3\ mod\ n_3
+\end{eqnarray*}
+Eve fängt $c_1,\ c_2,\ c_3$ ab: Chinesisches Restsatz:
+
+\begin{eqnarray*}
+	&0 \leq x \leq n_1,\ n_2,\ n_3\ \ \mbox{mit}\ x=c_i\ mod\ n_i&\\
+	&i=1,2,3&\\
+	&x\ \mbox{ist eindeutig bestimmbar}&\\
+	&m^3 \equiv c_i\ mod\ n_i,\ m^3 < n_1,n_2,n_3&\\
+	&\Rightarrow x=m^3 \Rightarrow m=\sqrt[3]{x}&
+\end{eqnarray*}
+Wenn $e=5$, dann braucht man 5 Nachrichten.
+
+\subsection{Wie bestimmt man große Primzahlen?}
+\begin{eqnarray*}
+	&p	\mbox{Primzahl},\ a\in \Z,\ ggT(a,p)=1&\\
+	&a^{p-1} \equiv 1 (mod\ p)\ \mbox{[kl. Satz von Fermat]}&
+\end{eqnarray*}
+\textbf{gegeben:} $n,\ ggT(a,n)=1$ $a^{n-1} \equiv 1\ (mod\ n)$?\\
+\subsection{Fermat-Test} Wenn nicht, so ist $n$ keine Primzahl. Wenn ja, so keine Aussage möglich. Wähle neues a!\\
+Es gibt zusammengesetze Zahlen $n$ (Carmichael-Zahlen) mit:
+\begin{eqnarray*}
+	&a^{n-1} \equiv 1\ (mod\ n)\ \forall\ a\ \mbox{mit}\ ggT(a,n)=1&
+\end{eqnarray*}
+
+\subsection{Miller-Rabin-Test}
+\begin{eqnarray*}
+	&ggT(a,p)=1&\\
+	&p\ \mbox{Primzahl}\	p-1=2^s \cdot t,\ 2 \nmid t&\\
+	&a^{2^s\cdot t} \equiv 1\ (mod\ p)&\\
+	&(a^{2^{s-1} \cdot t})^2=b&\\
+	&a^{2^{s-1} \cdot t} =\left \{
+		\begin{matrix}
+			1\ mod\ p \\ -1\ mod\ p
+			
+		\end{matrix}
+	\right.&\\
+	&b^2\equiv 1\ (mod\ p)&\\
+	&(b\ mod\ p)^2=1 \in \Z_p&\\
+	&x^2-1 \in \Z_p [x]&
+\end{eqnarray*}	
+\fbox{Entweder $a^t\equiv1\ (mod\ p)$ oder $a^{s^i\cdot t}\equiv -1\ (mod\ p)$ für ein $0 \leq i \leq s$}
+Teste dies mit $n$ statt $p$.\\
+Wenn $n$ keine Primzahl ist, dann gibt es mindestens $\frac{3}{4} \varphi(n)$ viele $a$, so dass der Test fehlschlägt.\\
+$\rightarrow$ probabilistischer Primzahltest\\
+$p$ Primzahl $\Z_p^{*}=\Z_p \setminus \{0\}$ Gruppe bezüglich Multiplikation (zyklisch)\\
+\begin{eqnarray*}
+	&\exists g \in \Z_p^{*} : \{g^0,g^1,g^2,\ldots,g^{p-2}\}=\Z_p&\\
+	&g^{p-1}\equiv 1\ (mod\ p)&
+\end{eqnarray*}	
+Primitivwurzel $mod\ p$\\
+$0 \leq a \leq p-2:a\mapsto g^a\ mod\ p$ Kandidat für Einwegfunktion.\\
+$g^a\ mod\ p \rightarrow a$ (diskreter Logarithmus) ist nach heutigem Stand schwer!\\
+\subsection{Diffie-Hellman-Verfahren zur Schlüsselvereinbarung}
+$A,\ B$ wollen gemeinsamen Schlüssel $K$ für ein symm. Verfahren vereinbaren; es steht nur unsichere Kommuniaktionskanal zur Verfügung.
+\paragraph{Lösung:} $p, g$ (Bitlänge von $p>$ Bitlänge von $K$) (können öffentlich bekannt sein).\\
+\begin{enumerate}
+	\item $A$ wählt zufällig $a\in \{2,\ldots,p-2\}$\\
+	$A$ berechnet $x=g^a\ mod\ p$\\
+	($a$ geheim halten)
+	\item $B$ wählt zufällig $b\in \{2,\ldots,p-2\}$\\
+	$B$ berechnet $y=g^b\ mod\ p$\\
+	($b$ geheim halten)
+	\item $A \stackrel{x=g^a}{\rightarrow} B$\\
+	$B \stackrel{y=g^b}{\rightarrow} A$\\
+	$A: y^a\ mod\ p = g^{b\cdot a}\ mod\ p = K$\\
+	$B: x^b\ mod\ p = g^{a\cdot b}\ mod\ p = K$
+\end{enumerate}
+\subsection{Sicherheit}
+Angreifer: $p,g,\ g^a\ mod\ p,\ g^b\ mod\ p$\\
+gesucht: $g^{a\cdot b}\ mod\ p$\\
+Einzig bekannte Möglichkeit ist das Berechnen $a$ aus $g^a:(g^b)^a\ mod\ p=K$ müsste diskretes Logarithmus-Problem lösen.
+\subsection{Man-in-the-Middle}
+$M$ fängt $g^a$ und $g^b$ ab und wählt $c \in \{2,\ldots,p\}$ und schickt $g^c\ mod\ p$ an $A$ und $B$.\\
+$A:\ g^{c\cdot a}\ mod\ p,\ B:\ g^{c\cdot b}\ mod\ p$. Beide Schlüssel kennt auch $M$
+\section{ElGamal-Public Key Verfahren (1984)}
+\subsection{Schlüsselerzeugung}
+$A$ wählt $p,g$ wie bei Diffie-Hellmann. Wählt $a \in \{2,\ldots,p-2\},\ x=g^a\ mod\ p$.\\
+Öffentlicher Schlüssel: $(p,g,x)$\\
+Geheimer Schlüssel: $a$
+\subsection{Verschlüsselung}
+Klartext $m:\ 1 \leq m \leq p-1$\\
+$B \stackrel{m}{\rightarrow} A$ \\
+$B$ wählt zufällig $b \in \{2,\ldots,p-2\}$\\
+$y=g^b\ mod\ p$\\
+Er berechnet $x^b\ mod p$ und $f=m\cdot x^b\ mod\ p$, sendet $(y,f)$ an $A$,
+\subsection{Entschlüsselung}
+$y^a\ mod\ p\ (= x^b\ mod\ p)$\\
+Berechnet $(y^a)^{-1}\ mod\ p$ $[(y^a)^{-1}=(y^{\overbrace{p-1-a}^{\geq 0}})]$\\
+$f\cdot (y^a)^{-1}\ mod\ p=m$
+\subsubsection{Nachteil zu RSA}
+Doppelte Länge wird gebraucht, da Nachricht (Chiffre) und Teilschlüssel versendet werden.

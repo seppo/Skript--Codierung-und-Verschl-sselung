@@ -9,27 +9,36 @@
 \end{figure}
 
 \subsection{Verschlüsselung erfordert}
+
 \begin{itemize}
 	\item[-] Verschlüsselungsverfahren, Algorithmus (Funktion)
 	\item[-] Schlüssel $k_{e}$ (encryption key)
 \end{itemize}
-$E(m,k_e)=c$\\
-$E$=Verschl.Fkt., $m$=Klartext, $c$=Chiffretext\\
-$E(m_1,k_e)\neq E(m,k_e)$ für $m_1\neq m_2$\\
-$D(c,k_d)=m$\\
-($k_d$ zu $k_e$ gehöriger Dechiffrierschlüssel!)\\
 
+\[
+	E(m,k_e)=c
+\]	
+$E$=Verschlüsselungs Funktion, $m$=Klartext, $c$=Chiffretext
+\[
+	E(m_1,k_e) \neq E(m,k_e)\ fuer \ m_1 \neq m_2
+\]
+\[
+	D(c,k_d)=m
+\]	
+($k_d$ zu $k_e$ gehöriger Dechiffrierschlüssel!)\\
 $k_d=k_e$ (oder $k_d$ leicht aus $k_e$ zu berechnen):\\
-\underline{symmetrisches Verschl.verf.}, ansonsten \underline{asymm. Verschl.verf.}. Ist $k_d$ nur sehr schwer (oder garnicht) zu $k_e$ berechenbar, so kann $k_e$ veröffentl. werden:\\
-\underline{Public-Key-Verfahren}.
+\textbf{symmetrisches Verschl.verf.}, ansonsten \textbf{asymm. Verschl.verf.}. Ist $k_d$ nur sehr schwer (oder garnicht) zu $k_e$ berechenbar, so kann $k_e$ veröffentl. werden:\\
+\textbf{Public-Key-Verfahren}.
+
 \subsection{Beispiel für (nicht sicheres) symm. Verfahren}
+
 \begin{itemize}
 	\item[a)] $R=S=\left\{0,1,\ldots,25\right\}$\\
 	Verfahren: Verschiebechiffre\\
 	Schlüssel: $i \in \left\{0,1,\ldots,25\right\}$\\
 	Verfahren $ x \in \R \longrightarrow x+i\, mod\, 26=y$\\
 	$y\longmapsto y-i\, mod\, 26 = y$\\
-	$m=x_1 ... x_2 \longrightarrow  c = (x_1 + i\, mod\, 26) \ldots (x_n +i\, mod\, 26)$, $E(m,i)$\\
+	$m=x_1 ... x_2 \longrightarrow  c = (x_1 + i\, mod\, 26) \textbf{}\ldots (x_n +i\, mod\, 26)$, $E(m,i)$\\
 	Unsicher, weil Schlüsselmenge klein ist (Brute Force Angriff).
 	\item[b)] R,S, Schlüsselmenge=Menge aller Permutationen von $\left\{1,\ldots,25\right\}=S_{26}$\\
 	Verschl.: Wähle Permuation $\pi$\\
@@ -62,7 +71,7 @@ Angriffserfolge:
 	\item[-] Eine zu der Dechiffrierfunktion $D(\cdot,k_d)$ äquivalente Funktion finden ohne Kenntnis von $k_d$
 	\item[-] gewisste Chiffretexte werden entschlüsselt
 \end{itemize}
-Arten von Angriffen
+\subsection{Arten von Angriffen}
 \begin{itemize}
 	\item[-] Ciphertext-Only Angriff
 	\item[-] Known-Plaintext Angriff
