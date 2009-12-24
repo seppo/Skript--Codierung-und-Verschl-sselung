@@ -1,17 +1,21 @@
 \chapter{One-Time-Pad und perfekte Sicherheit}
 
-Lauftextverschlüsselung
+Lauftextverschlüsselung\\
 \\
 Alphabet $\Z_k=\{0,1,\ldots,k-1\}$\\
 In $\Z_k$ kann man addieren und multiplizieren mit $mod\,k$.\\
+\\
 Klartext $x_1,x_2,\ldots,x_n$\\
 Schlüsselwort $k_1,k_2,\ldots,k_n$\\
 $x_1 + k_1\, mod\, k$, $x_n + k_n\, mod\, k \leftarrow$ Chiffretext\\
+\\
 Mit natürlichsprachlichen Texten ist das Verfahren unsicher.\\
 $\Z_2=\{0,1\}$, $1 \oplus 1 = 0 = 0 \oplus 0$, $0 \oplus 1 = 1 = 1 \oplus 0 \Rightarrow XOR$\\
 Klartext in $\Z_2^n=\{(x_1,\ldots,x_n):x_i \in \Z_2\}$
-Schlüssel: Zufallsfolge über $\Z_2$ der Länge $n$. $m$ Klartext, $k$ Zufallsfolge (beide Länge $n$)\\
-$c=m\oplus k$, $(x_1,\ldots,x_n)\oplus(k_1,\ldots,k_n):=(x_1\oplus k_1,\ldots,x_n\oplus k_n)$\\
+Schlüssel: Zufallsfolge über $\Z_2$ der Länge $n$. $m$ Klartext, $k$ Zufallsfolge (beide Länge $n$)
+\[
+	c=m\oplus k, (x_1,\ldots,x_n)\oplus(k_1,\ldots,k_n):=(x_1\oplus k_1,\ldots,x_n\oplus k_n)
+\]
 \section{One-Time-Pad}
 Schlüssel $k$ darf nur einmal verwendet werden!\\
 \[
@@ -23,14 +27,18 @@ Zufallsfolge der Länge $n$: eigentlich unsinniger Begriff. Da jedes Bit unabhäng
 Jede Folge der Länge $n$ ist gleich wahrscheinlich (Wahrscheinlichkeit $\frac{1}{2} n$\\
 One-Time-Pad ist perfekt sicher.
 \section{Perfekte Sicherheit}
-Ein Verschlüsselungsverfahren ist perfekt sicher, falls gilt: Für jeden Klartext $m$ und jedem Chiffretext $c$ (der festen Länge $n$)\\
-$pr(m|c)=pr(m)$\\
+Ein Verschlüsselungsverfahren ist perfekt sicher, falls gilt: Für jeden Klartext $m$ und jedem Chiffretext $c$ (der festen Länge $n$)
+\[
+	pr(m|c)=pr(m)
+\]
 $pr(m|c)\rightarrow$ A-posteriori-Wahrscheinlichkeit (Wahrscheinlichkeit, dass $m$ Klartext, wenn $c$ empfangen wurde)\\
 $pr(m)\rightarrow$ A-priori-Wahrscheinlichkeit\\
+\\
 \textbf{Beispiel:} Substitutionschiffre aus Kapitel 2.\\
 $n=5, m=HALLO, pr(m)>0$\\
 Ang:$c=QITUA$ wird empfangen, $LL\neq TU \rightarrow pr(m|c)=0$\\
 nicht perfekt sicher.\\
+\\
 One-Time-Pad ist perfekt sicher. \\
 (Bayes'sche Formel) $m\oplus k$\\
 Jede Folge $c$ lässt sich mit geeignetem $k$ in der Form $c=m\oplus k$ erhalten.\\

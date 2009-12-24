@@ -7,13 +7,15 @@ Jede Teilmenge von $T$ mit mindestens $k$ Teilnehmer sollen Geheimnis rekonstrui
 
 \subsection{Konstruktion}
 Vereinbarung von gro\ss er Primzahl $p$, mindestens $p \geq n + 1$
-\\
-\\
-$g \in \Z_p = \{0, \ldots , p-1\}$
+\begin{equation*}
+g \in \Z_p = \{0, \ldots , p-1\}
+\end{equation*}
 
 \subsection{Verteilung der Teilgeheimnisse}
-Dealer w\"ahlt zuf\"allig $a_1, \ldots, a_{k-1} \in \Z_p, a_{k-1} \neq 0, k =$ Schwelle \\
-$f(x) = g + a_1x + \ldots + a_{k-1}x^{k-1} \in \Z_p[x] $ \\
+Dealer w\"ahlt zuf\"allig $a_1, \ldots, a_{k-1} \in \Z_p, a_{k-1} \neq 0, k =$ Schwelle
+\begin{equation*}
+f(x) = g + a_1x + \ldots + a_{k-1}x^{k-1} \in \Z_p[x]
+\end{equation*}
 $(a_1, \ldots , a_{k-1}$ h\"alt er geheim, nat\"urlich auch g)\\
 \\
 Dealer w\"ahlt zuf\"allig $x_1, \ldots, x_n \in \Z_p$ (paarweise verschieden). \\
@@ -22,14 +24,23 @@ Bei $x=0$ hast du $g$.
 
 \subsection{Rekonstruktion(sversuch) des Geheimnisses}
 $k$ Teilnehmer $(x_{i_1}, f(x_{i_1})), \ldots, (x_{i_k}, f(x_{i_k}))$ \\
-Durch diese Punkte ist $f$ eindeutig bestimmt, z.B. durch Lagrange-Interpol.: \\
-$f(x_{i_j}) = g_{i_j} \\
-\\
-f(x) = \sum_{j=1}^k g_{i_j} \cdot \frac{(x-x_{i_1}), \ldots, (x-x_{i_{j-1}})(x-x_{i_{j+1}}), \ldots, (x-x_{i_k})}
-                      {(x_{i_j}-x_{i_1}), \ldots, (x_{i_j}-x_{i_{j-1}})(x_{i_j}-x_{i_{j+1}}), \ldots, ((x_{i_j}-x_{i_k})}\\
-f(0) = g\\
-g = \sum_{j=1}^k g_{i_j} \prod_{l=j} \frac{x_{i_l}}{(x_{i_l}-x_{i_j})}$ \\
-Bei mehr als $k$ Teilnehmer selbe Ergebnis.\\
+Durch diese Punkte ist $f$ eindeutig bestimmt, z.B. durch Lagrange-Interpol.:
+\begin{equation*}
+	f(x_{i_j}) = g_{i_j}
+\end{equation*}
+
+\begin{equation*}
+	f(x) = \sum_{j=1}^k g_{i_j} \cdot \frac{(x-x_{i_1}), \ldots, (x-x_{i_{j-1}})(x-x_{i_{j+1}}), \ldots, (x-x_{i_k})}
+                      {(x_{i_j}-x_{i_1}), \ldots, (x_{i_j}-x_{i_{j-1}})(x_{i_j}-x_{i_{j+1}}), \ldots, ((x_{i_j}-x_{i_k})}
+\end{equation*}
+
+\begin{equation*}
+	f(0) = g
+\end{equation*}
+
+\begin{equation*}
+	g = \sum_{j=1}^k g_{i_j} \prod_{l=j} \frac{x_{i_l}}{(x_{i_l}-x_{i_j})}
+\end{equation*}Bei mehr als $k$ Teilnehmer selbe Ergebnis.\\
 Weniger als $k$ Teilnehmer $(k')$: Anderes Polynom wegen weniger Punkte, also warscheinlich anderer $g$.\\
 Erzeugen Polynom vom Grad $\leq k' - 1$ \\
 F\"ur alle $k \in \Z_p$ existiert gleich viele Polynome vom Grad $\leq k'-1$

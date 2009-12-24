@@ -75,28 +75,36 @@ A=n\times n,\ A \cdot E_n=E_n \cdot A = A
 $A\ n\times n$-Matrix über kommutativen Ring R mit Eins.\\
 Wann existiert Matrix $A^{-1}$(Inverse Matrix) mit $A^{-1} \cdot A = A \cdot A^{-1} = E_n$?\\
 $det(A) \in R$\ Determinante von A\\
-$2\times 2$-Matrix $det\begin{pmatrix}
+\\
+$2\times 2$-Matrix: $det\begin{pmatrix}
 	a_{11} & a_{12} \\ a_{21} & a_{21}
 \end{pmatrix}
 = a_{11} \cdot a_{22} - a_{12} \cdot a_{21}$\\
+\\
+\\
 A besitzt inverse Matrix $\Leftrightarrow det(A)$ in R ein inverses besitzt\\
 (z.B. R Körper, $\Z ,\Q ,\Z_p,\ det(A)\neq 0$\\
-$A^{-1}=
+\[
+A^{-1}=
 \begin{pmatrix}
 	\frac{1}{det(A)}\cdot b_{11} & \ldots & \frac{1}{det(A)}\cdot b_{1m} \\
 	\vdots & & \vdots \\
 	\frac{1}{det(A)}\cdot b_{n1} & \ldots & \frac{1}{det(A)}\cdot b_{nm}
-\end{pmatrix}$\\
+\end{pmatrix}
+\]
 $b_{ij}=(-1)^{i+j}$\ $det(A_{ji})$\\
-$A_{ji}=(n-1)\times (n-1)$-Matrix, die aus $A$ durchstreichen der $j$-ten Zeile und $i$-ten Spalte entsteht.\\
-$A=
+\\
+$A_{ji}=(n-1)\times (n-1)$-Matrix, die aus $A$ durchstreichen der $j$-ten Zeile und $i$-ten Spalte entsteht.
+\[
+A=
 \begin{pmatrix}
 	a_{11} & a_{12} \\ a_{21} & a_{22}
 \end{pmatrix}\ \
 A^{-1}=
 \begin{pmatrix}
 	a_{22} & -a_{12} \\ -a_{21} & a_{11}
-\end{pmatrix}$\\ \\
+\end{pmatrix}
+\]
 $R=\Z_k \ \{0,1,\ldots,k\}$\\
 Addition und Multiplikation in $\Z_k (\oplus,\odot)$\\
 normale Add. und Mult. mit $mod\, k$\\
