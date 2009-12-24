@@ -90,8 +90,9 @@ $e^x \geq 1+x$\\
 
 $H(m) = H(m'), m \neq m'$\\
 $H: \Z_2^* \rightarrow \Z_2^n$ ($2^n$ Hashwerte)\\
-Bei Erzeugung von $~2^\frac{n}{2}$ Hashwerten ist Wahrscheinlichkeit, dass zwei gleich sind $~\frac{1}{2}$\\
-$n=64 : 2^{32}$ Hashwerte $(~4 \ cdot 10^9)$ unsicher.\\
+Bei Erzeugung von circa $2^\frac{n}{2}$ Hashwerten ist die Wahrscheinlichkeit,
+dass zwei gleich sind ungefähr $\frac{1}{2}$.\\ 
+$n=64 : 2^{32}$ Hashwerte $(~4 \cdot 10^9)$ unsicher.\\
 Weit verbreitet waren und sind:
 \begin{itemize}
 	\item[] MD5 (message digerst / Ron Rivest, 1991, 128 Bit)
@@ -107,7 +108,6 @@ Möglichkeiten der Authentifizierung durch:
 	\item[] Besitz
 	\item[] biometische Merkmale
 \end{itemize}
-
 gängiste Methode: Passwort \\
 Im Allgemeinem: Passwort $w$ abgespeichert als $f(w)$ $f$ Einwegfunktion.\\
 $w$ $f^n(w)=w_0 \stackrel{sicher}{\rightarrow}$ Id. überprüfer $f$ Einweg.
@@ -123,7 +123,6 @@ RSA-Verfahren
 $A \stackrel{auth.}{\longrightarrow} B$\\
 Öffentlicher Schlüssel: $(n,e)$\\
 geheimer Schlüssel: $d$\\
-$A \stackrel{Zufallszahl r}{\longleftarrow} B,\ r<n$ \texttt{Challenge}\\
-$A \stackrel{r^d\ mod\ n}{\longrightarrow} B$ überprüft, ob $r^{d^e}\ mod\ n = r$ \texttt{Response}\\
-
+$A \stackrel{Zufallszahl\ r}{\longleftarrow} B,\ r<n\ \leftarrow$ \textbf{Challenge}\\
+$A \stackrel{r^d\ mod\ n}{\longrightarrow} B$ überprüft, ob $r^{d^e}\ mod\ n = r\ \leftarrow$ \textbf{Response}\\
 Damit $B$ sich sicher seien kann, dass es wirklich $A$ ist, kann $B$ so oft wie es für nötig hält neue $r$ schicken und dadurch die Chance verringern, dass $A$ nicht $A$ ist.
