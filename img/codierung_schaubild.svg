@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.46+devel 22040"
+   sodipodi:docname="Neues Dokument 1">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutL"
+       style="overflow:visible">
+      <path
+         id="path5495"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutM"
+       style="overflow:visible">
+      <path
+         id="path5498"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path5355"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5159">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5161" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop5163" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective5048"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5078"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5100"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5100-7"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective5100-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5159"
+       id="linearGradient5165"
+       x1="115.61196"
+       y1="82.211678"
+       x2="200.70502"
+       y2="81.858124"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-36,0)" />
+    <inkscape:perspective
+       id="perspective7519"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="216.114"
+     inkscape:cy="849.64616"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:object-paths="false"
+     inkscape:snap-nodes="true"
+     inkscape:snap-page="true"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-midpoints="false"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-intersection-paths="false"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-object-midpoints="false"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:window-width="1858"
+     inkscape:window-height="1178"
+     inkscape:window-x="1016"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="78.367188"
+       y="88.026245"
+       id="text5036"><tspan
+         sodipodi:role="line"
+         id="tspan5038"
+         x="78.367188"
+         y="88.026245"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold">Quelle</tspan></text>
+    <rect
+       style="fill:url(#linearGradient5165);fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2816-5"
+       width="108.58995"
+       height="58.589958"
+       x="164.70502"
+       y="53.067204" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="218.41406"
+       y="72.182495"
+       id="text5036-2"><tspan
+         sodipodi:role="line"
+         id="tspan5038-3"
+         x="218.41406"
+         y="72.182495"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold">Kanal-</tspan><tspan
+         sodipodi:role="line"
+         x="218.41406"
+         y="102.1825"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold"
+         id="tspan5068">codierung</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2816-5-1"
+       width="73.834869"
+       height="58.834873"
+       x="42.582565"
+       y="52.944744" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2816-5-6"
+       width="68.874313"
+       height="58.874313"
+       x="320.56284"
+       y="52.925026" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="352.79688"
+       y="90.209839"
+       id="text5036-2-8"><tspan
+         sodipodi:role="line"
+         x="352.79688"
+         y="90.209839"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold"
+         id="tspan5068-2">Kanal</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2816-5-7"
+       width="91.70298"
+       height="58.70298"
+       x="436.5"
+       y="53.159203" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="483.31641"
+       y="90.034058"
+       id="text5036-2-1"><tspan
+         sodipodi:role="line"
+         x="483.31641"
+         y="90.034058"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold"
+         id="tspan5068-6">Decoder</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2816-5-4"
+       width="121.50946"
+       height="58.50946"
+       x="575.7453"
+       y="52.982452" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="636.55078"
+       y="87.182495"
+       id="text5036-2-9"><tspan
+         sodipodi:role="line"
+         x="636.55078"
+         y="87.182495"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Times New Roman;-inkscape-font-specification:Times New Roman Bold"
+         id="tspan5068-60">Empfänger</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 116.41743,82.362181 48.28759,10e-7"
+       id="path5803"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#rect2816-5-1"
+       inkscape:connection-end="#rect2816-5" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 273.29497,82.362183 47.26787,0"
+       id="path5989"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#rect2816-5"
+       inkscape:connection-end="#rect2816-5-6" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 389.43715,82.402341 436.5,82.457223"
+       id="path6175"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#rect2816-5-6"
+       inkscape:connection-end="#rect2816-5-7" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 528.20298,82.429337 47.54232,-0.08436"
+       id="path6361"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#rect2816-5-7"
+       inkscape:connection-end="#rect2816-5-4" />
+    <text
+       xml:space="preserve"
+       style="font-size:39.52977753px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="80.094391"
+       y="130.52728"
+       id="text7493"
+       transform="scale(0.98824444,1.0118954)"><tspan
+         sodipodi:role="line"
+         id="tspan7495"
+         x="80.094391"
+         y="130.52728"
+         style="font-size:13.83542252px;text-align:center;text-anchor:middle">Nachricht</tspan><tspan
+         sodipodi:role="line"
+         x="80.094391"
+         y="147.82156"
+         style="font-size:13.83542252px;text-align:center;text-anchor:middle"
+         id="tspan7497">über Alph. R</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="218.2793"
+       y="131.57996"
+       id="text7499"><tspan
+         sodipodi:role="line"
+         id="tspan7501"
+         x="218.2793"
+         y="131.57996"
+         style="font-size:14px;text-align:center;text-anchor:middle">Codewort</tspan><tspan
+         sodipodi:role="line"
+         x="218.2793"
+         y="149.07996"
+         id="tspan7503"
+         style="font-size:14px;text-align:center;text-anchor:middle">(Folge von Codew.)</tspan><tspan
+         sodipodi:role="line"
+         x="218.2793"
+         y="166.57996"
+         id="tspan7505"
+         style="font-size:14px;text-align:center;text-anchor:middle">über Alph. S</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="353.91736"
+       y="165.75078"
+       id="text7507"><tspan
+         sodipodi:role="line"
+         id="tspan7509"
+         x="353.91736"
+         y="165.75078"
+         style="font-size:20px;text-align:center;text-anchor:middle">Störung</tspan></text>
+    <rect
+       style="opacity:0;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2816-5-6-3"
+       width="69.205261"
+       height="29.205259"
+       x="320.39737"
+       y="146.75955" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 353,146.75955 0,-34.96021"
+       id="path7533"
+       inkscape:connector-type="polyline" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="484.26465"
+       y="132.19812"
+       id="text7723"><tspan
+         sodipodi:role="line"
+         x="484.26465"
+         y="132.19812"
+         id="tspan7731"
+         style="font-size:14px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">Rekunstruktion</tspan><tspan
+         sodipodi:role="line"
+         x="484.26465"
+         y="149.69812"
+         id="tspan7735"
+         style="font-size:14px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">1. Codewort finden</tspan><tspan
+         sodipodi:role="line"
+         x="484.26465"
+         y="167.19812"
+         id="tspan7737"
+         style="font-size:14px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">2. Nachricht</tspan></text>
+  </g>
+</svg>
