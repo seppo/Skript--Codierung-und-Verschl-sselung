@@ -1,0 +1,91 @@
+\chapter{Blockcodes}
+\[
+\begin{matrix}
+	00 & \rightarrow & 00000\\
+	01 & \rightarrow & 01101\\
+	10 & \rightarrow & 10110\\
+	11 & \rightarrow & 11011
+\end{matrix}
+\]
+
+\subsection{Definition}
+
+$S$ endl. Menge (=Alphabet), $n \in \N$. \\
+Ein Blockcode $\mathcal{C}$
+der (Block-)L\"ange $n$ \"uber $S$ ist Teilmenge von $S^n=\underset{\longleftarrow \ \  n\ \  \longrightarrow}{S \times \ldots \times S}$ \\ % Pfeilspa§ <- n -> \times
+\\
+Elemente von $\mathcal{C}$ hei§en \textbf{Codew\"orter}. \\
+Ist $\left| S \right| = 2$ (i.d.R. $S=\lbrace 0,1 \rbrace$, so \textbf{bin\"ar} Code.\\
+$\left| \mathcal{C} \right| = m$, so ist $m \leq \left| S \right| ^ n$. \\
+\\
+Dann lassen sich $n$ Informationssymbole (oder Strings von Informationssymbolen) codieren (Codierungsfunktion). Folge von Informationssymbolen (oder Strings) werden dann in Folge von Codew\"ortern codiert.
+
+\subsection{Definition: Hamming-Abstand}
+$S$ endl. Alphabet, $n \in \N$. \\
+$a,b \in S^n$ $a=(a_1, \ldots, a_n)$, $b=(b_1, \ldots, b_n)$ \\
+$d(a, b)= \sharp \lbrace i : a_i \neq b_i \rbrace$ \\
+\textbf{Hamming-Abstand} von $a$ und $b$. \\
+(Richard W. Hamming, 1915-1998, Begr\"under der Codierungstheorie)\\
+\subsubsection{Eigenschaften}
+\begin{description}
+	\item[a)] $d(a,b)=0 \Leftrightarrow a=b$
+	\item[b)] $d(a,b)=d(b,a)$
+	\item[c)] $d(a,b) \leq d(a,c) + d(c,b)$ (Dreiecksungleichung) \\
+					($a_i \neq b_i \Rightarrow a_i \neq c_i$ oder $b_i \neq c_i$) 
+	\item[d)] Wenn $(S,+)$ komm. Gruppe, dann auch $S^n$\\
+					$[ (a_1,\ldots a_n) + (b_1, \ldots b_n) = (a_1+b_1,\ldots, a_n+b_n)]$\\
+					$d(a,b)=d(a+c,b+c)$ (Translationsinvarianz)				
+\end{description}
+
+Also: Wird $x \in \mathcal{C}$ gesendet und $y \in S^n$ wird empfangen und $d(x,y)=k$, so sind $k$ Fehler aufgetreten.
+\subsection{Definition}
+\subsubsection{a) Hamming-Decodierung}
+f\"ur Blockcode $\mathcal{C} \subseteq$ $S^n$ \\
+Wird $y \in S^n$ empfangen, so wird $y$ zu einem Codewort $x' \in \mathcal{C}$ decodiert, das unter allen Codew\"ortern minimalen Hamming-Abstand zu $y$ hat.\\
+\[
+	d(x',y)=min\  d(x,y), x \in \mathcal{C}
+\]
+($x'$ muss nicht eindeutig bestimmt sein)	\\
+z.B. $\mathcal{C}$ $ = \{ (0000), (1111) \}$\\
+Empfangen: $0011$ $x'$ nicht eindeutig in diesem Fall.\\
+\\
+($\left| S \right | = 2$: Hamming-Decodierung ist bestm\"oglich, falls jedes Symbol in einem Codewort mit der gleichen Wahrscheinlichkeit $p < \frac{1}{2}$ ver\"andert wird und wenn jedes Codewort gleich wahrscheinlich ist.)\\
+
+\subsubsection{b) Minimalabstand}
+$\mathcal{C}$ Blockcode in $S^n$, Minimalabstand von $\mathcal{C}$: \\
+\[
+	d(\mathcal{C}) = min \  d(x,x')\mathbf{,}\ \  x,x' \in \mathcal{C}, x \neq x'
+\]
+
+(Ist $\left| \mathcal{C} \right| = 1$, so $d(\mathcal{C})=n$)\\
+$[Bsp: \mathcal{C} = \lbrace (00000),(01101),(10110),(11011) \rbrace , d(\mathcal{C})=3]$\\
+
+\subsubsection{c)} 
+Ein Blockcode $\mathcal{C}$ ist \textbf{t-Felder-korrigierend}, falls $d(\mathcal{C}) \geq 2t+1$, und er hei§t \textbf{t-Fehler-erkennend}, falls $d(\mathcal{C}) \geq t+1$. \\
+\\
+Begr\"undung f\"ur die Bezeichnung in c) \\
+"`Kugel"' vom Radius $t$ um $x \in \mathcal{C}: K_t(x) = \{y \in S^n: d(x,y) \leq t\}$\\
+\\
+Ist $d(\mathcal{C}) \geq 2t+1$, so sind Kugelm vom Radius $t$ um Codew\"orter disjunkt. \\
+\\
+Angenommen es existiert $y \in S^n$ mit $y \in K_t(x)\cap K_t(x')$, $x,x' \in \mathcal{C}, x \neq x'$. Dann $d(x,x') \leq d(x,y)+d(y,x') \leq t+t = 2t$. Widerspruch\\ %LIGHTNING ARROW \lightning
+$x \in \mathcal{C}$ gesendet, $y$ wird empfangen, und angenommen maximal $t$-Fehler sind aufgetreten, dann $y \in K_t(x)$ und Abstand zu jedem anderem Codewort ist $> t$\\
+$\Rightarrow$ Hamming-Decodierung ist korrekt.\\
+$d(\mathcal{C}) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so ist $y$ kein Codewort.\\
+\\
+\textbf{Bsp}: 
+\begin{description}
+	\item[a)] $n$-fach Wiederholungscode \\
+	$
+	\begin{matrix} 
+		S_n & \rightarrow & \underset{\longleftarrow \ \ n \ \ \longrightarrow}{S_1 S_1 \ldots S_1} \\ 
+		\vdots \\
+		S_k & \rightarrow & \underset{\longleftarrow \ \ n \ \ \longrightarrow}{S_k S_k \ldots S_k}
+	\end{matrix}$\\
+	\\
+	$\mathcal{C}=\lbrace (s,s,\ldots,s): s \in S \rbrace \subseteq S^n$ \\
+	$d(\mathcal{C})=n$ \\
+	\\
+	$\left\lfloor \frac{n-1}{2} \right\rfloor$-Fehler-korr.
+	\item[b)] ISBN, EAN-Codes, $d(\mathcal{C})=2$, 1-Fehler-erkennend.	
+\end{description}

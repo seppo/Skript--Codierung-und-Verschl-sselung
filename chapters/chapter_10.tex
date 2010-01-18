@@ -148,5 +148,62 @@ $C_{13}$ so gew\"ahlt, dass\\
 	C_1 + 3\cdot C_2 + C_3 + 3\cdot C_4 + \ldots + 3\cdot C_{12} + C_{13} \equiv 0 (\md 10)
 \]
 $x \rightarrow 3x$ Permutation auf $\Z_{10} (\md 10)$, da ggT(3,10)=1\\ %FORMATTING vom ggT?
-1 Fehler wird erkannt. Vertauschung in der Regel nicht erkannt.
+1 Fehler wird erkannt. Vertauschung in der Regel nicht erkannt. \\
+\\
+\"Ubersetzung in Barcode: \\
+$C_1 C_2 \ldots C_7 C_8 \ldots C_{13}$\\
+\\
+Jede der Ziffern $C_2, \ldots, C_{13}$ wird durch einen 0-1-String der L\"ange 7 bin\"ar codiert. \\
+$0 \entspricht$ wei§er Balken, $1 \entspricht$ schwarzer Balken. \\
+Codierung sorgt daf\"ur, dass nie mehr als 4 wei§e oder schwarze Balken nebeneinander stehen. \\
+
+\newpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[totalheight=0.1\textheight]{./img/ean13.png}
+	\caption{EAN-13 Barcode}
+	\label{img:EAN-13 Barcode}
+\end{figure}
+
+Schmalen Balken in Mitte und am Rand, sind nur Abtrennzeichen, die nichts mit EAN zu tun haben und nur beim einscannen helfen.\\
+5 zu $0110001_2$ \\
+\\
+$C_2,\ldots, C_7$ werden nach Code A oder Code B codiert. $C_1$ bestimmt welcher dieser beiden Codes verwendet wird. \\
+$C_8,\ldots, C_{13}$ werden nach Code C codiert.\\
+$C_1$ ergibt sich aus der Art der Codierung von $C_2,\ldots,C_7$
+
+%Table shit here
+\begin{center}
+	\begin{tabular}{| c | c | c | c | p{2cm} |}
+	\hline
+	 &\multicolumn{2}{|c|}{\textbf{Ziffern $\mathbf{C_2 - C_7}$}} & \textbf{Ziffern $\mathbf{C_8 - C_{13}}$} & \textbf{bestimmt durch} $\mathbf{C_1}$ \\
+	\hline
+	\textbf{Zeichen} & \textbf{Code A} & \textbf{Code B} & \textbf{Code C} & \textbf{Code D}\\
+	\hline
+	\textbf{0} &	0001101 &	0100111 &	1110010 &	AAAAAA\\
+	\textbf{1} &	0011001 &	0110011 &	1100110 &	AABABB\\
+	\textbf{2} &	0010011 &	0011011 &	1101100 &	AABBAB\\
+	\textbf{3} &	0111101 &	0100001 &	1000010 &	AABBBA\\
+	\textbf{4} &	0100011 &	0011101 &	1011100 &	ABAABB\\
+	\textbf{5} &	0110001 &	0111001 &	1001110 &	ABBAAB\\
+	\textbf{6} &	0101111 &	0000101 &	1010000 &	ABBBAA\\
+	\textbf{7} &	0111011 &	0010001 &	1000100 & 	ABABAB\\
+	\textbf{8} &	0110111 &	0001001 &	1001000 &	ABABBA\\
+	\textbf{9} &	0001011 &	0010111 &	1110100 &	ABBABA\\
+	\hline
+	\end{tabular}
+\end{center}
+
+
+
+
+
+
+
+Codew\"orter von Code A,B oder C kommen nur einmal vor. Daher treten nie mehr als 4 gleiche Balken nebeneinander auf. \\
 \end{enumerate}
+
+
+
+
