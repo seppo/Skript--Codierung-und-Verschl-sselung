@@ -11,104 +11,111 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
-   id="svg2"
+   id="svg2926"
    version="1.1"
    inkscape:version="0.46+devel 22040"
-   sodipodi:docname="krypto_schaubild.pdf">
+   sodipodi:docname="krypto_schaubild.svg">
   <defs
-     id="defs4">
-    <marker
-       inkscape:stockid="TriangleOutL"
-       orient="auto"
-       refY="0.0"
-       refX="0.0"
-       id="TriangleOutL"
-       style="overflow:visible">
-      <path
-         id="path3930"
-         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
-         transform="scale(0.8)" />
-    </marker>
-    <marker
-       inkscape:stockid="Arrow1Lend"
-       orient="auto"
-       refY="0.0"
-       refX="0.0"
-       id="Arrow1Lend"
-       style="overflow:visible;">
-      <path
-         id="path3790"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
-    </marker>
+     id="defs2928">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
        inkscape:vp_x="0 : 526.18109 : 1"
        inkscape:vp_y="0 : 1000 : 0"
        inkscape:vp_z="744.09448 : 526.18109 : 1"
        inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
-       id="perspective10" />
-    <inkscape:perspective
-       id="perspective5194"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
-       sodipodi:type="inkscape:persp3d" />
+       id="perspective2934" />
     <marker
-       inkscape:stockid="TriangleOutL"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="TriangleOutL-1"
-       style="overflow:visible">
-      <path
-         id="path3930-7"
-         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
-         transform="scale(0.8,0.8)" />
-    </marker>
-    <inkscape:perspective
-       id="perspective5247"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
-       sodipodi:type="inkscape:persp3d" />
-    <marker
-       inkscape:stockid="TriangleOutL"
-       orient="auto"
-       refY="0"
-       refX="0"
-       id="TriangleOutL-5"
-       style="overflow:visible">
-      <path
-         id="path3930-5"
-         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
-         transform="scale(0.8,0.8)" />
-    </marker>
-    <inkscape:perspective
-       id="perspective5296"
-       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
-       inkscape:vp_z="1 : 0.5 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_x="0 : 0.5 : 1"
-       sodipodi:type="inkscape:persp3d" />
-    <marker
-       inkscape:stockid="TriangleOutL"
-       orient="auto"
-       refY="0"
-       refX="0"
+       style="overflow:visible"
        id="TriangleOutL-14"
-       style="overflow:visible">
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL">
       <path
-         id="path3930-2"
-         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         transform="scale(0.8,0.8)"
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
-         transform="scale(0.8,0.8)" />
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         id="path3930-2" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective5296" />
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL">
+      <path
+         transform="scale(0.8,0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         id="path3930-5" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective5247" />
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL">
+      <path
+         transform="scale(0.8,0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         id="path3930-7" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective5194" />
+    <inkscape:perspective
+       id="perspective10"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path3790" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutL"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path3930" />
     </marker>
   </defs>
   <sodipodi:namedview
@@ -118,29 +125,26 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="309.50552"
-     inkscape:cy="931.46376"
+     inkscape:zoom="1.4"
+     inkscape:cx="415.24759"
+     inkscape:cy="806.23009"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer1-4"
      showgrid="false"
-     inkscape:snap-global="true"
-     inkscape:snap-grids="true"
-     inkscape:snap-to-guides="true"
      inkscape:window-width="1858"
      inkscape:window-height="1178"
      inkscape:window-x="1016"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
-     id="metadata7">
+     id="metadata2931">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -148,188 +152,196 @@
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#ffffff;fill-opacity:0.94117647;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect2816"
-       width="60"
-       height="40"
-       x="125.5"
-       y="126.86218" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="155.88837"
-       y="145.01062"
-       id="text3592"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan3596"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="155.88837"
-         y="145.01062">Sender</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3598"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="155.88837"
-         y="157.01062">(Alice)</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1.21370625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutL)"
-       d="m 89.793039,211.07846 324.604411,0"
-       id="path3600" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1.11094928;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutL)"
-       d="m 154.99927,167.91766 0,33.55145"
-       id="path4232" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="89.145966"
-       y="215.19826"
-       id="text5164"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan5166"
-         x="89.145966"
-         y="215.19826"
-         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial">Klartext</tspan><tspan
-         sodipodi:role="line"
-         x="91.642059"
-         y="225.52443"
-         style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
-         id="tspan5174">(Zeichenfolge </tspan><tspan
-         sodipodi:role="line"
-         x="89.145966"
-         y="234.52443"
-         style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
-         id="tspan5176">über Alph. R,</tspan><tspan
-         sodipodi:role="line"
-         x="89.145966"
-         y="243.52443"
-         style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
-         id="tspan5182">Plaintext)</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="207.08127"
-       y="182.62083"
-       id="text5168"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan5170"
-         x="207.08127"
-         y="182.62083"
-         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial">Verschlüsselung</tspan><tspan
-         sodipodi:role="line"
-         x="207.08127"
-         y="194.28392"
-         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         id="tspan5172">(encryption)</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
-       x="270.75"
-       y="227.86218"
-       id="text5178"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan5180"
-         x="270.75"
-         y="227.86218"
-         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial">Chiffretext</tspan><tspan
-         sodipodi:role="line"
-         x="270.75"
-         y="239.52527"
-         id="tspan5184"
-         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial">(Geheimtext, engl. Ciphertext)</tspan></text>
-    <rect
-       style="fill:#ffffff;fill-opacity:0.94117647;fill-rule:evenodd;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect2816-4"
-       width="60"
-       height="40"
-       x="393.5"
-       y="126.86218" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="423.15417"
-       y="146.25597"
-       id="text3592-0"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan3598-4"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="423.15417"
-         y="146.25597">Empfänger</tspan><tspan
-         sodipodi:role="line"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="423.15417"
-         y="158.25597"
-         id="tspan5237">(Bob)</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1.11098242;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutL)"
-       d="m 422.9995,168.12699 0,33.55141"
-       id="path4232-8" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="472.93286"
-       y="177.80032"
-       id="text5168-8"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan5170-2"
-         x="472.93286"
-         y="177.80032"
-         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial">Entschlüsselung</tspan><tspan
-         sodipodi:role="line"
-         x="472.93286"
-         y="189.46341"
-         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         id="tspan5172-4">(decryption)</tspan></text>
-    <rect
-       style="fill:#ffffff;fill-opacity:0.94117647;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect2816-3"
-       width="60"
-       height="40"
-       x="264.5"
-       y="127.07162" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="294.88837"
-       y="139.22005"
-       id="text3592-2"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         id="tspan3596-2"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="294.88837"
-         y="139.22005">Angreifer</tspan><tspan
-         sodipodi:role="line"
-         id="tspan3598-1"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="294.88837"
-         y="150.55159">(Mallory,</tspan><tspan
-         sodipodi:role="line"
-         style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         x="294.88837"
-         y="162.22005"
-         id="tspan5339">Eve)</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="346.0813"
-       y="182.83025"
-       id="text5168-85"
-       sodipodi:linespacing="100%"><tspan
-         sodipodi:role="line"
-         x="346.0813"
+    <g
+       id="layer1-4"
+       inkscape:label="Ebene 1"
+       transform="translate(82.733047,226.47186)"
+       inkscape:export-filename="E:\git\Krypto\img\krypto_schaubild.png"
+       inkscape:export-xdpi="100"
+       inkscape:export-ydpi="100">
+      <rect
+         y="-188.13782"
+         x="127.64286"
+         height="40"
+         width="60"
+         id="rect2816"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text3592"
+         y="-169.98938"
+         x="158.03122"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="-169.98938"
+           x="158.03122"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan3596"
+           sodipodi:role="line">Sender</tspan><tspan
+           y="-157.98938"
+           x="158.03122"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan3598"
+           sodipodi:role="line">(Alice)</tspan></text>
+      <path
+         id="path3600"
+         d="m 91.935896,-103.92154 324.604414,0"
+         style="fill:none;stroke:#000000;stroke-width:1.21370625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutL)" />
+      <path
+         id="path4232"
+         d="m 157.14213,-147.08234 0,33.55145"
+         style="fill:none;stroke:#000000;stroke-width:1.11094928;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutL)" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text5164"
+         y="-99.801743"
+         x="91.288826"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-99.801743"
+           x="91.288826"
+           id="tspan5166"
+           sodipodi:role="line">Klartext</tspan><tspan
+           id="tspan5174"
+           style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-89.475571"
+           x="93.78492"
+           sodipodi:role="line">(Zeichenfolge </tspan><tspan
+           id="tspan5176"
+           style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-80.475571"
+           x="91.288826"
+           sodipodi:role="line">über Alph. R,</tspan><tspan
+           id="tspan5182"
+           style="font-size:9px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:100%;writing-mode:lr-tb;text-anchor:end;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-71.475571"
+           x="91.288826"
+           sodipodi:role="line">Plaintext)</tspan></text>
+      <text
+         sodipodi:linespacing="100%"
+         id="text5168"
+         y="-132.37917"
+         x="209.22412"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-132.37917"
+           x="209.22412"
+           id="tspan5170"
+           sodipodi:role="line">Verschlüsselung</tspan><tspan
+           id="tspan5172"
+           style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-120.71608"
+           x="209.22412"
+           sodipodi:role="line">(encryption)</tspan></text>
+      <text
+         sodipodi:linespacing="100%"
+         id="text5178"
+         y="-87.137817"
+         x="272.89285"
+         style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+         xml:space="preserve"><tspan
+           style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-87.137817"
+           x="272.89285"
+           id="tspan5180"
+           sodipodi:role="line">Chiffretext</tspan><tspan
+           style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan5184"
+           y="-75.474731"
+           x="272.89285"
+           sodipodi:role="line">(Geheimtext, engl. Ciphertext)</tspan></text>
+      <rect
+         y="-188.13782"
+         x="395.64285"
+         height="40"
+         width="60"
+         id="rect2816-4"
+         style="fill:none;stroke:#000000;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text3592-0"
+         y="-168.74403"
+         x="425.29703"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="-168.74403"
+           x="425.29703"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan3598-4"
+           sodipodi:role="line">Empfänger</tspan><tspan
+           id="tspan5237"
+           y="-156.74403"
+           x="425.29703"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           sodipodi:role="line">(Bob)</tspan></text>
+      <path
+         id="path4232-8"
+         d="m 425.14236,-146.87301 0,33.55141"
+         style="fill:none;stroke:#000000;stroke-width:1.11098242;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#TriangleOutL)" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text5168-8"
+         y="-137.19968"
+         x="475.07571"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           style="font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-137.19968"
+           x="475.07571"
+           id="tspan5170-2"
+           sodipodi:role="line">Entschlüsselung</tspan><tspan
+           id="tspan5172-4"
+           style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           y="-125.53659"
+           x="475.07571"
+           sodipodi:role="line">(decryption)</tspan></text>
+      <rect
+         y="-187.92839"
+         x="266.64285"
+         height="40"
+         width="60"
+         id="rect2816-3"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text3592-2"
+         y="-175.77995"
+         x="297.03122"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="-175.77995"
+           x="297.03122"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan3596-2"
+           sodipodi:role="line">Angreifer</tspan><tspan
+           y="-163.77995"
+           x="297.03122"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           id="tspan3598-1"
+           sodipodi:role="line">(Mallory,</tspan><tspan
+           id="tspan5339"
+           y="-151.77995"
+           x="297.03122"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           sodipodi:role="line">Eve)</tspan></text>
+      <text
+         sodipodi:linespacing="100%"
+         id="text5168-85"
          y="182.83025"
-         style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-         id="tspan5172-6" /></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#TriangleOutL-14)"
-       d="m 288.5,168.86218 0,19.5 11.5,-11.5 0,27"
-       id="path5347" />
+         x="346.0813"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:100%;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           id="tspan5172-6"
+           style="font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
+           y="182.83025"
+           x="346.0813"
+           sodipodi:role="line" /></text>
+      <path
+         id="path5347"
+         d="m 290.64286,-146.13782 0,19.5 11.5,-11.5 0,27"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#TriangleOutL-14)" />
+    </g>
   </g>
 </svg>
