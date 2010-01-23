@@ -20,7 +20,7 @@
 \]	
 $E$=Verschl\"usselungs Funktion, $m$=Klartext, $c$=Chiffretext
 \[
-	E(m_1,k_e) \neq E(m,k_e)\ fuer \ m_1 \neq m_2
+	E(m_1,k_e) \neq E(m,k_e) \text{ f\"ur }m_1 \neq m_2
 \]
 \[
 	D(c,k_d)=m
@@ -36,9 +36,9 @@ $k_d=k_e$ (oder $k_d$ leicht aus $k_e$ zu berechnen):\\
 	\item[a)] $R=S=\left\{0,1,\ldots,25\right\}$\\
 	Verfahren: Verschiebechiffre\\
 	Schl\"ussel: $i \in \left\{0,1,\ldots,25\right\}$\\
-	Verfahren $ x \in \R \longrightarrow x+i\, mod\, 26=y$\\
-	$y\longmapsto y-i\, mod\, 26 = y$\\
-	$m=x_1 ... x_2 \longrightarrow  c = (x_1 + i\, mod\, 26) \textbf{}\ldots (x_n +i\, mod\, 26)$, $E(m,i)$\\
+	Verfahren $ x \in \R \longrightarrow x+i \mod{26}=y$\\
+	$y\longmapsto y-i \mod{26} = y$\\
+	$m=x_1 ... x_2 \longrightarrow  c = (x_1 + i \mod{26}) \textbf{}\ldots (x_n +i \mod{26})$, $E(m,i)$\\
 	Unsicher, weil Schl\"usselmenge klein ist (Brute Force Angriff).
 	\item[b)] R,S, Schl\"usselmenge=Menge aller Permutationen von $\left\{1,\ldots,25\right\}=S_{26}$\\
 	Verschl.: W\"ahle Permuation $\pi$\\
@@ -86,11 +86,11 @@ Angriffserfolge:
 Lauftextverschl\"usselung\\
 \\
 Alphabet $\Z_k=\{0,1,\ldots,k-1\}$\\
-In $\Z_k$ kann man addieren und multiplizieren mit $mod\,k$.\\
+In $\Z_k$ kann man addieren und multiplizieren mit $\md{k}$.\\
 \\
 Klartext $x_1,x_2,\ldots,x_n$\\
 Schl\"usselwort $k_1,k_2,\ldots,k_n$\\
-$x_1 + k_1\, mod\, k$, $x_n + k_n\, mod\, k \leftarrow$ Chiffretext\\
+$x_1 + k_1 \mod{k}$, $x_n + k_n \mod{k} \leftarrow$ Chiffretext\\
 \\
 Mit nat\"urlichsprachlichen Texten ist das Verfahren unsicher.\\
 $\Z_2=\{0,1\}$, $1 \oplus 1 = 0 = 0 \oplus 0$, $0 \oplus 1 = 1 = 1 \oplus 0 \Rightarrow XOR$\\
@@ -154,12 +154,9 @@ Konsequenz:\ Verwende Verfahren, wo nur ein kleiner Teil der Permutation als Sch
 %
 
 %p4
-
-\section{Affin-lineare Chiffre}
-
 \subsection{Vorbemerkung}
 
-\subsection{$n\times m$-Matrix}
+\subsubsection{$n\times m$-Matrix}
 
 \[
 \begin{pmatrix}
@@ -217,7 +214,7 @@ c_{1l}=(a_{i1} \cdot b_{ij})+(a_{i2} \cdot b_{2j}) + \ldots + (a_{im} \cdot b_{m
 
 Im Allgemeinem: $A\cdot B \neq B\cdot A$\\
 
-\subsection{Quadritsche Matrix ($n\times n$)}
+\subsubsection{Quadritsche Matrix ($n\times n$)}
 
 \[
 E_n=\begin{pmatrix}
@@ -264,111 +261,109 @@ A^{-1}=
 \]
 $R=\Z_k \ \{0,1,\ldots,k\}$\\
 Addition und Multiplikation in $\Z_k (\oplus,\odot)$\\
-normale Add. und Mult. mit $mod\, k$\\
+normale Add. und Mult. mit $\md{k}$\\
 
-\section{Affin-lineare Chiffren}
+\subsection{Affin-lineare Chiffren}
 Klartextalphabet = Chiffretextalphabet = $\Z_k$ ($k=2,\ k=26$)\\
 W\"ahle $n \times n$-Matrix $A$ \"uber $\Z_k$ und Zeilenvektor $b$ der L\"ange $n$ \"uber $\Z_k$. Dies wird der Schl\"ussel sein f\"ur die Chiffrierung.\\
-Blockchiffre der L\"ange $n$. Block = Zeilenvektor der L\"ange $n$ \"uber $\Z_k$.
+Blockchiffre der L\"ange $n$. \\
+Block = Zeilenvektor der L\"ange $n$ \"uber $\Z_k$. \\
 Klartextblock $v$\\
-Chiffretextblock $v \cdot A + b =: w$\\
-$v \rightarrow v \cdot A +b =:w$
-$w-b=v \cdot A$
+Chiffretextblock
+\begin{align*}
+	v \cdot A + b &=: w\\
+	v \rightarrow v \cdot A +b &=:w\\
+	w-b&=v \cdot A
+\end{align*}	
 ben\"otigen: $A^{-1}$ existiert (d.h. $ggT(det(A),k)=1$)\\
-Dechiffrierung: $(w-b)\cdot A^{-1} = v \cdot A \cdot A^{-1} = v \cdot E_n = v$\\
+Dechiffrierung:
+\[
+	(w-b)\cdot A^{-1} = v \cdot A \cdot A^{-1} = v \cdot E_n = v
+\]
 (wenn immer b=0 gew\"ahlt wird, dann lineare Chiffren, Hill-Chiffren)\\
 Beispiel:\\
 \[
-A=
-\begin{pmatrix}
-	1 & 3 \\ 3 & 2
-\end{pmatrix}
-\ \Z_6
+	A=
+	\begin{pmatrix}
+		1 & 3 \\ 3 & 2
+	\end{pmatrix},
+	\quad Z_6
 \]
 Blockchiffre der L\"ange $n$
 $det(A)=1 \cdot 2 - 3 \cdot 3 = -7 = 5$ inverse in $\Z_6$
-\[
-\frac{1}{det(A)}=det(A)^{-1}=5
-\]
-\[
-A^{-1}=5\cdot
-\begin{pmatrix}
-	2&-3\\-3&1
-\end{pmatrix}
-=
-\begin{pmatrix}
-	10&-15\\-15&5
-\end{pmatrix}
-=
-\begin{pmatrix}
-	4&3\\3&5
-\end{pmatrix}
-\]
-Test: 
-\[
-A \cdot A^{-1} = 
-\begin{pmatrix}
-	1 & 3 \\ 3 & 2
-\end{pmatrix}
-\cdot
-\begin{pmatrix}
-	4&3\\3&5
-\end{pmatrix}
-=
-\begin{pmatrix}
-	4+9&3+15\\12+6&9+10
-\end{pmatrix}
-=
-\begin{pmatrix}
-	1&0\\0&1
-\end{pmatrix}
-\]
+\begin{align*}
+	\frac{1}{det(A)}&=det(A)^{-1}=5 \\
+	A^{-1}=5\cdot
+	\begin{pmatrix}
+		2&-3\\-3&1
+	\end{pmatrix}
+	&=
+	\begin{pmatrix}
+		10&-15\\-15&5
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		4&3\\3&5
+	\end{pmatrix}
+\intertext{Test:}
+	A \cdot A^{-1} = 
+	\begin{pmatrix}
+		1 & 3 \\ 3 & 2
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		4&3\\3&5
+	\end{pmatrix}
+	&=
+	\begin{pmatrix}
+		4+9&3+15\\12+6&9+10
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1&0\\0&1
+	\end{pmatrix}
+\end{align*}
 Verschl\"usselung:
-
 Schl\"ussel:
-$A = 
-\begin{pmatrix}
-	1 & 3 \\ 3 & 2
-\end{pmatrix}
-$ $b=(3,5)$
-
-Klartextblock: $(1,2)$
-
+\[
+	A = 
+	\begin{pmatrix}
+		1 & 3 \\ 3 & 2
+	\end{pmatrix}\\
+	\quad b=(3,5)
+\]	
+Klartextblock: $(1,2)$\\
 Chiffretextblock: 
-\[w=(1,2) \cdot 
-\begin{pmatrix}
-	1 & 3 \\ 3 & 2
-\end{pmatrix}
-+
-(3,5)= (1,1)+(3,5) = (4,0)\]
-
-Entschl\"usselung:
-\[ (w-b) \cdot A^{-1} = (1,1) \cdot 
-\begin{pmatrix}
-	4 & 3 \\ 3 & 5
-\end{pmatrix}
-=(1,2)
-\]
-
-$\Z_2 : n^2 + n$ Bit zur Speicherung eines Schl\"ussels.
-
+\begin{align*}	
+	w&=(1,2) \cdot 
+	\begin{pmatrix}
+		1 & 3 \\ 3 & 2
+	\end{pmatrix}
+	+
+	(3,5)= (1,1)+(3,5) = (4,0)
+\intertext{Entschl\"usselung:}
+	(w-b) \cdot A^{-1} &= (1,1) \cdot 
+	\begin{pmatrix}
+		4 & 3 \\ 3 & 5
+	\end{pmatrix}
+	=(1,2)
+\end{align*}
+$\Z_2 : n^2 + n$ Bit zur Speicherung eines Schl\"ussels.\\
 Wieviele inverse Matrizen \"uber $\Z_2$ mit $n=64$?
-
-$(2^{64}-1) \cdot (2^{64}-2) \cdot \ldots \cdot (2^{64}-2^{63}) \approx 0.29 \cdot 2^{4096}$
-
-Verfahren ist unsicher gegen\"uber Known-Plaintext-Angriffe.
-
-$(A,b)$ Schl\"ussel, A inverse $n \times n$-Matrix \"uber $\Z_k ,b \ \in \Z_k^n$
-
-Angenommen Angreifer kennt $n+1$ Klartext/Chiffretextpaare verschl\"usselt mit $(A,b),\ v_0, v_1,\ldots,v_n \ w_0,\ldots,w_n$
-
+\[
+	(2^{64}-1) \cdot (2^{64}-2) \cdot \ldots \cdot (2^{64}-2^{63}) \approx 0.29 \cdot 2^{4096}
+\]
+Verfahren ist unsicher gegen\"uber Known-Plaintext-Angriffe.\\
+$(A,b)$ Schl\"ussel, A inverse $n \times n$-Matrix \"uber $\Z_k ,b \ \in \Z_k^n$\\
+Angenommen Angreifer kennt $n+1$ Klartext/Chiffretextpaare verschl\"usselt mit $(A,b),\ v_0, v_1,\ldots,v_n \ w_0,\ldots,w_n$\\
 Dann kann er haufig $(A,b)$ bestimmen.
-
-$V=
-\begin{pmatrix}
-	v_1-v_0\\v_2-v_0\\\vdots\\v_n-v_0
-\end{pmatrix}
-\ n \times n$-Matrix
+\[
+	V=
+	\begin{pmatrix}
+		v_1-v_0\\v_2-v_0\\\vdots\\v_n-v_0
+	\end{pmatrix}
+	\ n \times n-\text{Matrix}
+\]	
 
 Angenommen: V ist invertierbar. Setze $W=
 \begin{pmatrix}
@@ -424,79 +419,68 @@ I & 8 & \multirow{2}{*}{$w_2$} \\
 G & 6 &
 \end{tabular}
 \end{center}
-\[
-V=
-\begin{pmatrix}
-	10 & -3 \\
-	11 & 15
-\end{pmatrix}
-=
-\begin{pmatrix}
-	10 & 23\\
-	11 & 15
-\end{pmatrix}, \
-W=
-\begin{pmatrix}
-	14 & 7 \\
-	21 & 2
-\end{pmatrix}
-\]
-\[
-det(V) = 10 \cdot 15  + 33 = 183 \equiv 1 (mod\ 26)
-\]
-\[
-V^{-1}=
-\begin{pmatrix}
-	15 & 3 \\
-	-11 & 10 	
-\end{pmatrix}
-=
-\begin{pmatrix}
-	15 & 3 \\
-	15 & 10 	
-\end{pmatrix}
-\]
-\[
-A=V^{-1} \cdot W =
-\begin{pmatrix}
-	15 & 3 \\
-	15 & 10 	
-\end{pmatrix}
-\cdot
-\begin{pmatrix}
-	14 & 7 \\
-	21 & 2
-\end{pmatrix}
-=
-\begin{pmatrix}
-	210+63 & 105+6 \\
-	210+210 & 105+20
-\end{pmatrix}
-=
-\begin{pmatrix}
-	13 & 7\\
-	4 & 21
-\end{pmatrix}
-\]
-\[
-b=w_0-v_0 \cdot A = (13,4) - (7,4) \cdot 
-\begin{pmatrix}
-	13 & 7\\
-	4 & 21
-\end{pmatrix}
-=
-(10,1)
-\]
-
-Test:
-\[
-v_1 \cdot A + b= w_1, v_2 \cdot A + b= w_2
-\]
+\begin{align*}
+	V&=
+	\begin{pmatrix}
+		10 & -3 \\
+		11 & 15
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		10 & 23\\
+		11 & 15
+	\end{pmatrix}, \quad
+	W=
+	\begin{pmatrix}
+		14 & 7 \\
+		21 & 2
+	\end{pmatrix}\\
+	det(V) &= 10 \cdot 15  + 33 = 183 \equiv 1 (\md{26})\\
+	V^{-1}&=
+	\begin{pmatrix}
+		15 & 3 \\
+		-11 & 10 	
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		15 & 3 \\
+		15 & 10 	
+	\end{pmatrix}\\
+	A&=V^{-1} \cdot W =
+	\begin{pmatrix}
+		15 & 3 \\
+		15 & 10 	
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		14 & 7 \\
+		21 & 2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		210+63 & 105+6 \\
+		210+210 & 105+20
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		13 & 7\\
+		4 & 21
+	\end{pmatrix}\\
+	b&=w_0-v_0 \cdot A = (13,4) - (7,4) \cdot 
+	\begin{pmatrix}
+		13 & 7\\
+		4 & 21
+	\end{pmatrix}
+	=
+	(10,1)
+\intertext{Test:}
+	v_1 &\cdot A + b = w_1,\quad v_2 \cdot A + b= w_2
+\end{align*}
 
 %p5
 
 \section{Der Advanced Encryption Standard (AES)}
-\subsection{Mathematische Methoden gebraucht fuer AES} % NEED BETTER TITLE HERE
+\subsection{Mathematische Methoden gebraucht f\"ur AES} % NEED BETTER TITLE HERE
 Seit 70er Jahren gab es DES (Blockl\"ange 64 Bit, Schl\"ussell\"ange 56 Bit) \\
 \\
 Nachfolger des DES: Daemen, Rijmen (Belgier)\\
@@ -504,17 +488,20 @@ Rijndael-Verfahren $\rightarrow$ AES (2002 FIPS 197)\\
 \\
 Iterierte Blockchiffre\\
 Version mit 128 Bit Block und Schl\"ussel\"ange. \\
-\\
-$<$BILD VON EINER RUNDE VON AES KOMMT HIER HIN$>$\\
-\\
-Vorbemerkung: 128-Bit Bl\"ocke werden dargestellt als:\\
-$\begin{pmatrix}
-	a_{01} & a_{02} & \ldots & a_{03} \\
-	a_{10} & a_{11} & \ldots & a_{13}\\
-	\vdots & \vdots  & \vdots & \vdots \\
-	a_{30} & \ldots  & \ldots & a_{33}
-\end{pmatrix}$\\
-\\
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=8cm]{./img/AES_round.png}
+	\caption{Eine Runde vom AES}
+	\label{img:Eine Runde vom AES}
+\end{figure}Vorbemerkung: 128-Bit Bl\"ocke werden dargestellt als:\\
+\[
+	\begin{pmatrix}
+		a_{01} & a_{02} & \ldots & a_{03} \\
+		a_{10} & a_{11} & \ldots & a_{13}\\
+		\vdots & \vdots  & \vdots & \vdots \\
+		a_{30} & \ldots  & \ldots & a_{33}
+	\end{pmatrix}
+\]
 Jedes $a_{ij}$ = Byte\\
 128er Block $\entspricht a_{00}a_{10}a_{20}\ldots a_{01}a_{11}\ldots a_{33}$ (spaltenweise gelesen)\\
 \\
@@ -531,7 +518,7 @@ irreduzibler Polynom vom Grad 8. ($x^8 + x^4 + x^3 + x + 1$)\\
 \\
 Bsp.\\
 $(x^7 + x + 1) \odot (x^3 + x) = x^{10} + x^8 + x^4 + x^3 + x^2 + x\\
-\\x^{10} + x^8 + x^4 + x^3 + x^2 + x$ mod $x^8 + x^4 + x^3 + x + 1\\
+\\x^{10} + x^8 + x^4 + x^3 + x^2 + x \mod{x^8 + x^4 + x^3 + x + 1}\\
 \\
 x^{10} + x^8 + x^4 + x^3 + x^2 + x \div x^8 + x^4 + x^3 + x + 1 = x^2 + 1\\
 \underline{x^{10} + x^6 + x^5 + x^3 + x^2}\\
@@ -548,8 +535,8 @@ Erweiterte Euklid. Algo. f\"ur Polynome: \\
 $g \neq 0$ (Grad $\leq 7$) \ \ $h = x^8 + x^4 + x^3 + x + 1$ irred. \ \ ggT($g, h$) = 1 \\
 \\
 EEA: $u,v \in \Z_2[x] : u \cdot g + v \cdot h = 1 \\
-u$ mod $h =: g^{-1} \\
-g^{-1} \odot g = ((u$ mod $h) \cdot g)$ mod $h = u \cdot g$ mod $h = (1 - vh)$ mod $h = 1$ mod $h = 1$\\
+u \mod{h} =: g^{-1} \\
+g^{-1} \odot g = ((u \mod{h}) \cdot g) \mod{h} = u \cdot g \mod{h} = (1 - vh) \mod{h} = 1 \mod{h} = 1$\\
 \subsection{SubBytes-Transfer}
 $S_{i-1} =
 \begin{pmatrix}
@@ -571,91 +558,105 @@ Fasse $g$ als Element in $\F_{2^8}$ auf.\\
 \\
 A wird durch zyklischer Shift der vorherigen Zeile um 1 Stelle nach rechts erzeugt.
 \[
-A = 
-\begin{pmatrix}
-	1 & 1 & 1 & 1 & 1 & 0 & 0 & 0\\
-	0 & 1 & 1 & 1 & 1 & 1 & 0 & 0\\
-	0 & 0 & 1 & 1 & 1 & 1 & 1 & 0\\
-	0 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
-	1 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\
-	1 & 1 & 0 & 0 & 0 & 1 & 1 & 1\\
-	1 & 1 & 1 & 0 & 0 & 0 & 1 & 1\\
-	1 & 1 & 1 & 1 & 0 & 0 & 0 & 1\\
-\end{pmatrix}\ \
-b = \begin{pmatrix}
-	0 \\ 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1
-\end{pmatrix}
+	A = 
+	\begin{pmatrix}
+		1 & 1 & 1 & 1 & 1 & 0 & 0 & 0\\
+		0 & 1 & 1 & 1 & 1 & 1 & 0 & 0\\
+		0 & 0 & 1 & 1 & 1 & 1 & 1 & 0\\
+		0 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
+		1 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\
+		1 & 1 & 0 & 0 & 0 & 1 & 1 & 1\\
+		1 & 1 & 1 & 0 & 0 & 0 & 1 & 1\\
+		1 & 1 & 1 & 1 & 0 & 0 & 0 & 1\\
+	\end{pmatrix}\quad
+	b = \begin{pmatrix}
+		0 \\ 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1
+	\end{pmatrix}
 \]
 Schritt 1 und 2 werden kombiniert, nicht jedes mal berechnet. Alle m\"oglichen SubBytes ($2^8$ viele) sind in einer 16x16 Matrix und wird per Table-Lookup nachgeschlagen.\\
 $g = (b_7b_6b_5b_4b_3b_2b_1b_0) \ \  b_7b_6b_5b_4$ = 0 bis 15 (Zeile) \ $b_3b_2b_1b_0$ (Spalte)
 
 \subsection{Shift Rows Transformation}
 4x4-Matrix von Bytes: 
-$
-\begin{pmatrix}
-	& \\
-	& \\
-	& \\ 
-	& \\
-\end{pmatrix}$
-$
-\begin{matrix}
-	\leftarrow $Erste\ Zeile\ unver\"andert$\\
-	\leftarrow $1\ Stelle\ nach\ links\ zykl.$\\
-	\leftarrow $2\ Stellen\ nach\ links\ zykl.$\\
-	\leftarrow $3\ Stellen\ nach\ links\ zykl.$
-\end{matrix}$
+\begin{align*}
+	&\begin{pmatrix}
+		& \\
+		& \\
+		& \\ 
+		& \\
+	\end{pmatrix}
+	\begin{matrix}
+		\leftarrow \text{Erste Zeile unver\"andert}\\
+		\leftarrow \text{1 Stelle nach links zykl.}\\
+		\leftarrow \text{2 Stellen nach links zykl.}\\
+		\leftarrow \text{3 Stellen nach links zykl.}
+	\end{matrix}&
+\end{align*}	
 
 
 \subsection{Mix Columns Transformation}
 4x4-Matrix, Eintr\"age als Elemente in $\F_{2^8}$ auffassen.\\
 Multiplikation von links mit Matrix
-(Mult. der Eintr. in $\F_{2^8}):
-\begin{pmatrix}
-	x & x+1 & 1 & 1\\
-	1 & x & x+1 & 1\\
-	1 & 1 & x & x+1\\
-	x+1 & 1 & 1 & x\\
-\end{pmatrix}\\
-x \entspricht
-\begin{pmatrix}
-	0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
-\end{pmatrix}$
+(Mult. der Eintr. in $\F_{2^8}$):
+\[
+	\begin{pmatrix}
+		x & x+1 & 1 & 1\\
+		1 & x & x+1 & 1\\
+		1 & 1 & x & x+1\\
+		x+1 & 1 & 1 & x\\
+	\end{pmatrix}
+\]	
+\[
+	x \entspricht
+	\begin{pmatrix}
+		0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+	\end{pmatrix}
+\]
 
 \subsection{Schl\"usselerzeugung}
 Ausgangsschl\"ussel hat 128 Bit. (16er String in Hexcode)\\
 \\
 Schreibe als 4x4-Matrix von Bytes. 4 Spalten $w(0), w(1), w(2), w(4)$. Definiere weitere 40 Spalten \`a 4 Bytes.\\
 \\
-$w(i-1)$ sei schon definiert.\\
-$ 4 \nmid i : w(i) := w(i-4) \oplus w(i-1)$ (byteweise $XOR$)\\
-$ 4 \mid i : w(i) := w(i-4) \oplus T(w(i-1))$ ($T$ Transformation)\\
-T?\\ $w(i-1) =
-\begin{pmatrix}
-	a\\
-	b\\
-	c\\
-	d\\
-\end{pmatrix} , \ a,\ldots,d$ Bytes\\
+$w(i-1)$ sei schon definiert.
+\begin{align*}
+	4 \nmid i : w(i) &:= w(i-4) \oplus w(i-1)\quad \text{(byteweise $XOR$)}\\
+	4 \mid i : w(i) &:= w(i-4) \oplus T(w(i-1))\quad \text{($T$ Transformation)}
+\end{align*}
+T?\\
+\[
+	w(i-1) =
+	\begin{pmatrix}
+		a\\
+		b\\
+		c\\
+		d\\
+	\end{pmatrix} ,\quad a,\ldots,d \text{Bytes}
+\]
 Wende auf $b, c, d, a$ SubBytes-Transformation an $\rightarrow e, f, g, h$\\ 
-$r(i) =
-\begin{pmatrix}
-	0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
-\end{pmatrix}^{\frac{(i-4)}{4}}$ Potenz. in $\F_{2^8}$\\
-$T(w(i-1)) = 
-\begin{pmatrix}
-	e \oplus r(i)\\
-	f\\
-	g\\
-	h\\
-\end{pmatrix}$\\
-Rundenschl\"ussel $K_i$: 4x4-Matrix mit Spalten $w(4i), w(4i+1), w(4i+2), w(4i+3)$\\
+\[
+	r(i) =
+	\begin{pmatrix}
+		0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
+	\end{pmatrix}^{\frac{(i-4)}{4}}\quad \text{Potenz. in }\F_{2^8}
+\]	
+\[
+	T(w(i-1)) = 
+	\begin{pmatrix}
+		e \oplus r(i)\\
+		f\\
+		g\\
+		h\\
+	\end{pmatrix}
+\]	
+Rundenschl\"ussel $K_i$: 4x4-Matrix mit Spalten $w(4i),; w(4i+1),; w(4i+2),; w(4i+3)$\\
 \\
 (Nebenbemerkung: Linear heiﬂt $f(x+y) = f(x) + f(y)$)
 
 %p6
 
 \subsection{Public-Key-Systeme}
+
 \subsection{Grundidee}
 Diffie, Hellman, 1976
 Jeder Teilenehmer hat ein Paar von Schl\"usseln:
@@ -664,9 +665,9 @@ Jeder Teilenehmer hat ein Paar von Schl\"usseln:
 	\item[-] geheimen Schl\"ussel $G_A$
 \end{itemize}
 Zu $P_A$ geh\"ort \"offentlich bekannte Verschl\"usselungsfunktion $E_{P_A}$ (=$E(\cdot, P_A$)\\
-$B\stackrel{m}{\rightarrow}A: E_{P_A}(m)=c$
+$B \xrightarrow{m} A: E_{P_A}(m)=c$
 \begin{enumerate}
-	\item $m$ darf mit "realistischen Aufwand" nicht aus $E_{P_A}(m)$ berechenbar sein. $E_{P_A}$ ist \textbf{Einwegfunktion}\\
+	\item $m$ darf mit "`realistischen Aufwand"' nicht aus $E_{P_A}(m)$ berechenbar sein. $E_{P_A}$ ist \textbf{Einwegfunktion}\\
 	($E_{P_A}$ muss effizient berechenbar sein, aber $E_{P_A}^{-1}$ nicht!)
 	\item $A$ muss mit Hilfe einer Zusatzinformation (=$G_A$) in der Lage sein, $E_{P_A}^{-1}$ effizient zu berechnen.
 	\[
@@ -681,16 +682,22 @@ Aus 1) und 2) folgt:
 \end{enumerate}
 Es ist unbekannt ob Einwegfunktion existieren! Notwendig f\"ur die Existenz von Einwegfunktionen:
 \[
-P\neq NP
+	P\neq NP
 \]
 Es gibt Kandidaten f\"ur Einwegfunktionen.
+
 \section{RSA-Verfahren} (Rivest, Shamir, Adleman, 1977)
 Beruht auf Schwierigkeit groﬂe Zahlen zu  faktorisieren!
+
 \subsection{Schl\"usseslerzeugung}
 W\"ahle zwei groﬂe Primzahlen $p,q (p\neq q)$ (mindestens 500 Bit L\"ange)\\
 Bilde $n=p\cdot q$\\
-\[ \varphi(n)=\| \{a \in \N : 1 \leq a < n, ggt(a,n)=1\}\| \]
-\[ n=p\cdot q : \varphi(n)=(p-1)\cdot (q-1) \]
+\[
+	\varphi(n)=\| \{a \in \N : 1 \leq a < n, ggt(a,n)=1\}\|
+\]
+\[
+	n=p\cdot q : \varphi(n)=(p-1)\cdot (q-1)
+\]
 [nicht teilerfremd zu $n$:$1\cdot p, 2 \cdot p,\ldots,(q-1)\cdot p = n = 1\cdot q, 2\cdot q,\ldots,(p-1)\cdot q$\\
 $(p-1)+(q-1)+1$\\
 $\varphi(n)=n-(p-1)-(q-1)-1=n-p-q+1=p\cdot q - p-q + 1 = (p-1)\cdot (q-1)$]\\
@@ -698,69 +705,57 @@ W\"ahle $e$, $1 < e < \varphi(n)$ mit $ggT(e,\varphi(n))=1$\\
 Zufallswahl, bestimme $ggT(e,\varphi(n))$ mit Euklidischer Algorithmus, so lange, bis $e$ mit $ggT(e,\varphi(n))=1$ gefunden ist.)
 \subsubsection{\"offentlicher Schl\"ussel}
 $(n,e)=P_A$\\
-W\"ahle $d < \varphi(n)$ mit $e\cdot d \equiv 1 (mod\ n)$ (d.h. $\varphi(n) \mid e \cdot d -1, e\cdot d=1+k\cdot \varphi(n)$ f\"ur $k \in \N$)\\
+W\"ahle $d < \varphi(n)$ mit $e\cdot d \equiv 1 (\md{n})$ (d.h. $\varphi(n) \mid e \cdot d -1, e\cdot d=1+k\cdot \varphi(n)$ f\"ur $k \in \N$)\\
 (Wende erweiterten Euklidischen Algorithmus auf $e,\ \varphi(n)$ an:\\
 Liefert $u,v \in \Z$ mit $u\cdot e + v\cdot \varphi(n)=ggT(e,\varphi(n))=1$\\
-$d=u\ mod\ \varphi(n)$\\
-$u\cdot e + v \cdot \varphi(n)\ mod\ \varphi(n)=1$\\
-$( \underbrace{u\ mod\ \varphi(n)}_{d} \cdot e)  mod\ \varphi(n)=1$)
+$d=u \mod{\varphi(n)}$\\
+$u\cdot e + v \cdot \varphi(n) \mod{\varphi(n)}=1$\\
+$( \underbrace{u \mod{\varphi(n)}}_{d} \cdot e)  \mod{\varphi(n)}=1$)
 \subsubsection{Geheimerschl\"ussel}
 $G_A=d$
 \subsection{Verschl\"usselung}
 $B$ Nachrichtan $A$. Codiere Nachricht als Zahl. Zerlege in Bl\"ocke deren Zahlwert $< n$. Sei $m$ so ein Block. $(m<n)$\\
-$m^e\ mod n = c$
+$m^e \mod{n} = c$
 \subsection{Entschl\"usselung}
-$c^d mod n = m$\\
+$c^d \mod{n} = m$\\
 G\"ultigkeit basiert auf kleinem Satz von Fermat:\\
 $r$ Primzahl, $ggT(a,r)=1$ (d.h. $r \nmid a$)\\
-$a^{r-1} \equiv 1 (mod\ r)$\\
-Sei $m<n=p\cdot q$
+$a^{r-1} \equiv 1 (\md{r})$
+\begin{align*}
+\intertext{Sei $m<n=p\cdot q$}
+	c&=m^e \mod{n},\ c^d \mod{n}=m^{e\cdot d} \mod{n}\\	
+	e \cdot d &= 1 + k \cdot \varphi (n)\\
+						&= 1 + k \cdot (p-1) \cdot (q-1)\\						
+\intertext{Ist $p \nmid m$, so} 
+	m^{e\cdot d} 	&= m^{1+k \cdot (p-1) \cdot (q-1)}\\
+					&= m \cdot {\underbrace{(m^{p-1})}_{\equiv 1 \mod{p}}}^{k \cdot (q-1)} \\
+					&\overset{\md{p}}{\Rightarrow} m \cdot 1^{k\cdot (q-1)} (\md{p})\\ 
+					&\equiv m (\md{p})\\
+\intertext{Ist $p \mid m$:}
+	m \equiv 0 &\equiv m^{e\cdot d} (\md{p})\\
+\intertext{In jedem Fall:}
+	m^{e\cdot d} &\equiv m (\md{p})\\
+\intertext{Genauso:}
+	m^{e\cdot d} &\equiv m (\md{q})\\
+	p \mid m^{e\cdot d} - m,\ q  \mid m^{e\cdot d} -m , p&\neq q \Rightarrow n=p\cdot q \mid m^{e\cdot d}-m\\
+	m^{e\cdot d} &\equiv m (\md{n}),\ m^{e\cdot d}\mod{n} = m
+\end{align*}
+
+\subsubsection{Schnelle Berechnung von modularen Potenzen ($m^e \mod{n}$)}
+\begin{align*}
+	e&=\sum^k_{i=0} e_i \cdot 2^k,\quad e_i \in \{0,1\},\quad e_k=1 \\
+	m^e&=m^{2 \cdot k + e_{k-1}\cdot 2^{k-1}+ \ldots +e_1 \cdot 2+e_0}
+\end{align*}
 \[
-c=m^e\ mod\ n, c^d\ mod\ n=m^{e\cdot d}\ mod\ n
+	((\ldots ((m^2 \cdot m^{e_{k-1}})^2 \cdot m^{e_{k-2}})^2 \ldots)^2 \cdot m^{e_1})^2\cdot m^{e_0}
 \]
+gel\"ost im worst case mit $2 \cdot k$ Multiplikationen.
 \[
-e \cdot d = 1 + k \cdot \varphi (n) = 1 + k \cdot (p-1) \cdot (q-1)
+	k=\left\lfloor log_2(e)\right\rfloor
 \]
-Ist $p \nmid m$, so 
-\[
-m^{e\cdot d}=m^{1+k\cdot (p-1)\cdot (q-1)}=m\cdot =(m^{p-1})^{k\cdot (q-1)}\stackrel{mod\ p}{\Rightarrow} m\cdot 1^{k\cdot (q-1)} (mod\ p) = m (mod\ p)
-\]
-Ist $p \mid m$:
-\[
-m \equiv 0 \equiv m^{e\cdot d} (mod\ p)
-\]
-In jedem Fall:
-\[
-m^{e\cdot d} \equiv m (mod\ p)
-\]
-Genauso:
-\[
-m^{e\cdot d} \equiv m (mod\ q)
-\]
-\[
-p \mid m^{e\cdot d} - m,\ q  \mid m^{e\cdot d} -m , p\neq q \Rightarrow n=p\cdot q \mid m^{e\cdot d}-m
-\]
-\[
-m^{e\cdot d} \equiv m (mod\ n),\ m^{e\cdot d} mod\ n = m
-\]
-\subsubsection{Schnelle Berechnung von modularen Produkten}
-\[
-m^e\ mod\ n
-\]
-\[
-e=\sum^k_{i=0} e_i \cdot z^k,\ e_i \in \{0,1\},e_k=1
-\]
-\[
-m^e=m^{2\cdot k + e_{k-1}\cdot 2^{k-1}+\ldots+e_1\cdot 2+e_0}
-\]
-\[
-( ( \ldots ( (m^2 \cdot m^{e_{k-1}} )^2 \cdot m^{e_{k-2} } )^2 \ldots )^2 \cdot m^{e_1} )^2\cdot m^{e_0}
-\]
-gel\"ost im worst case mit $2\cdot k$ Multiplikationen
-\[
-k=\left\lfloor log_2(e)\right\rfloor
-\]
-\fbox{Nach jedem Rechenschritt $mod\ n$ reduzieren!}
+\begin{center}
+	\fbox{Nach jedem Rechenschritt $\md{n}$ reduzieren!}	
+\end{center}
 
 \subsection{Sicherheit vom RSA-Verfahren}
 Falls $p,\ q$ bekannt $\Rightarrow \varphi(n),\ d$ bekannt.\\
@@ -775,109 +770,119 @@ Komplexit\"at der besten Faktorisierungsalgorithmen:
 \]
 Um eine 640 Bit Zahl zu faktorisieren braucht man 30-CPU-Jahre auf einer 2.2 GHz CPU.\\ \\
 H\"aufig wird $e=3$ gew\"ahlt.\\
-\fbox{HIER KOMMT NOCH EINE GRAFIK HIN} %img
-\\
+\begin{align*}
+	A &\xrightarrow{\ m \ }(n_1,3)\ B_1 \\
+	A &\xrightarrow{\ m \ } (n_2,3)\ B_2 \\
+	A &\xrightarrow{\ m \ } (n_3,3)\ B_2
+\end{align*}
 $ggT(n_i,n_j)=1$
-\begin{eqnarray*}
-	c_1=m^3\ mod\ n_1\\	
-	c_2=m^3\ mod\ n_2\\	
-	c_3=m^3\ mod\ n_3
-\end{eqnarray*}
+\begin{align*}
+	c_1&=m^3\mod{n_1}\\	
+	c_2&=m^3\mod{n_2}\\	
+	c_3&=m^3\mod{n_3}
+\end{align*}
 Eve f\"angt $c_1,\ c_2,\ c_3$ ab: Chinesisches Restsatz:
-
-\begin{eqnarray*}
-	&0 \leq x \leq n_1,\ n_2,\ n_3\ \ \mbox{mit}\ x=c_i\ mod\ n_i&\\
-	&i=1,2,3&\\
-	&x\ \mbox{ist eindeutig bestimmbar}&\\
-	&m^3 \equiv c_i\ mod\ n_i,\ m^3 < n_1,n_2,n_3&\\
-	&\Rightarrow x=m^3 \Rightarrow m=\sqrt[3]{x}&
-\end{eqnarray*}
+\begin{gather*}
+		0 \leq x \leq n_1 \cdot n_2 \cdot n_3\\ 
+		\text{mit } x=c_i\mod{n_i},\quad i=1,2,3\\
+		x \text{ ist eindeutig bestimmbar}\\
+		m^3 \equiv c_i\mod{n_i},\ m^3 < n_1 \cdot n_2 \cdot n_3\\
+		\Rightarrow x = m^3 \Rightarrow m=\sqrt[3]{x}
+\end{gather*}
 Wenn $e=5$, dann braucht man 5 Nachrichten.
 
 \subsection{Wie bestimmt man groﬂe Primzahlen?}
-\begin{eqnarray*}
-	&p	\mbox{Primzahl},\ a\in \Z,\ ggT(a,p)=1&\\
-	&a^{p-1} \equiv 1 (mod\ p)\ \mbox{[kl. Satz von Fermat]}&
-\end{eqnarray*}
-\textbf{gegeben:} $n,\ ggT(a,n)=1$ $a^{n-1} \equiv 1\ (mod\ n)$?\\
+
+\begin{gather*}
+	p	\text{ Primzahl},\quad a \in \Z,\quad ggT(a,p)=1\\
+	a^{p-1} \equiv 1 (\md{p}) \text{ [kl. Satz von Fermat]}
+\end{gather*}
+\textbf{gegeben:} $n,\quad ggT(a,n)=1$\quad $a^{n-1} \equiv 1\ (\md{n})$?\\
 \subsection{Fermat-Test} Wenn nicht, so ist $n$ keine Primzahl. Wenn ja, so keine Aussage m\"oglich. W\"ahle neues a!\\
 Es gibt zusammengesetze Zahlen $n$ (Carmichael-Zahlen) mit:
-\begin{eqnarray*}
-	&a^{n-1} \equiv 1\ (mod\ n)\ \forall\ a\ \mbox{mit}\ ggT(a,n)=1&
-\end{eqnarray*}
+\[
+	a^{n-1} \equiv 1\ (\md{n})\quad \forall\ a \text{ mit } ggT(a,n)=1
+\]
 
 \subsection{Miller-Rabin-Test}
-\begin{eqnarray*}
-	&ggT(a,p)=1&\\
-	&p\ \mbox{Primzahl}\	p-1=2^s \cdot t,\ 2 \nmid t&\\
-	&a^{2^s\cdot t} \equiv 1\ (mod\ p)&\\
-	&(a^{2^{s-1} \cdot t})^2=b&\\
-	&a^{2^{s-1} \cdot t} =\left \{
+\begin{gather*}
+	ggT(a,p)=1\\
+	p\ \mbox{Primzahl}\	p-1=2^s \cdot t,\ 2 \nmid t\\
+	a^{2^s\cdot t} \equiv 1\ (\md{p})\\
+	(a^{2^{s-1} \cdot t})^2=b\\
+	a^{2^{s-1} \cdot t} =\left \{
 		\begin{matrix}
-			1\ mod\ p \\ -1\ mod\ p
-			
+			1 \mod{p} \\ -1\mod{p}			
 		\end{matrix}
-	\right.&\\
-	&b^2\equiv 1\ (mod\ p)&\\
-	&(b\ mod\ p)^2=1 \in \Z_p&\\
-	&x^2-1 \in \Z_p [x]&
-\end{eqnarray*}	
-\fbox{Entweder $a^t\equiv1\ (mod\ p)$ oder $a^{s^i\cdot t}\equiv -1\ (mod\ p)$ f\"ur ein $0 \leq i \leq s$}
+	\right.\\
+	b^2\equiv 1\ (\md{p})\\
+	(b\mod{p})^2=1 \in \Z_p\\
+	x^2-1 \in \Z_p [x]
+\end{gather*}	
+\fbox{Entweder $a^t\equiv1\ (\md{p})$ oder $a^{s^i\cdot t}\equiv -1\ (\md{p})$ f\"ur ein $0 \leq i \leq s$}
 Teste dies mit $n$ statt $p$.\\
 Wenn $n$ keine Primzahl ist, dann gibt es mindestens $\frac{3}{4} \varphi(n)$ viele $a$, so dass der Test fehlschl\"agt.\\
 $\rightarrow$ probabilistischer Primzahltest\\
 $p$ Primzahl $\Z_p^{*}=\Z_p \setminus \{0\}$ Gruppe bez\"uglich Multiplikation (zyklisch)\\
-\begin{eqnarray*}
-	&\exists g \in \Z_p^{*} : \{g^0,g^1,g^2,\ldots,g^{p-2}\}=\Z_p&\\
-	&g^{p-1}\equiv 1\ (mod\ p)&
-\end{eqnarray*}	
-Primitivwurzel $mod\ p$\\
-$0 \leq a \leq p-2:a\mapsto g^a\ mod\ p$ Kandidat f\"ur Einwegfunktion.\\
-$g^a\ mod\ p \rightarrow a$ (diskreter Logarithmus) ist nach heutigem Stand schwer!\\
+\begin{gather*}
+	\exists g \in \Z_p^{*} : \{g^0,g^1,g^2,\ldots,g^{p-2}\}=\Z_p\\
+	g^{p-1}\equiv 1 (\md{p})
+\end{gather*}	
+Primitivwurzel$\mod{p}$\\
+$0 \leq a \leq p-2:a\mapsto g^a \mod{p}$ Kandidat f\"ur Einwegfunktion.\\
+$g^a \mod{p} \rightarrow a$ (diskreter Logarithmus) ist nach heutigem Stand schwer!\\
 \subsection{Diffie-Hellman-Verfahren zur Schl\"usselvereinbarung}
 $A,\ B$ wollen gemeinsamen Schl\"ussel $K$ f\"ur ein symm. Verfahren vereinbaren; es steht nur unsichere Kommuniaktionskanal zur Verf\"ugung.
 \paragraph{L\"osung:} $p, g$ (Bitl\"ange von $p>$ Bitl\"ange von $K$) (k\"onnen \"offentlich bekannt sein).\\
 \begin{enumerate}
 	\item $A$ w\"ahlt zuf\"allig $a\in \{2,\ldots,p-2\}$\\
-	$A$ berechnet $x=g^a\ mod\ p$\\
+	$A$ berechnet $x=g^a \mod{p}$\\
 	($a$ geheim halten)
 	\item $B$ w\"ahlt zuf\"allig $b\in \{2,\ldots,p-2\}$\\
-	$B$ berechnet $y=g^b\ mod\ p$\\
+	$B$ berechnet $y=g^b \mod{p}$\\
 	($b$ geheim halten)
-	\item $A \stackrel{x=g^a}{\rightarrow} B$\\
-	$B \stackrel{y=g^b}{\rightarrow} A$\\
-	$A: y^a\ mod\ p = g^{b\cdot a}\ mod\ p = K$\\
-	$B: x^b\ mod\ p = g^{a\cdot b}\ mod\ p = K$
+	\item $A \xrightarrow{x=g^a} B$\\
+	$B \xrightarrow{y=g^b} A$\\
+	$A: y^a \mod{p} = g^{b\cdot a} \mod{p} = K$\\
+	$B: x^b \mod{p} = g^{a\cdot b} \mod{p} = K$
 \end{enumerate}
 \subsection{Sicherheit}
-Angreifer: $p,g,\ g^a\ mod\ p,\ g^b\ mod\ p$\\
-gesucht: $g^{a\cdot b}\ mod\ p$\\
-Einzig bekannte M\"oglichkeit ist das Berechnen $a$ aus $g^a:(g^b)^a\ mod\ p=K$ m\"usste diskretes Logarithmus-Problem l\"osen.
+Angreifer: $p,g,\ g^a \mod{p},\ g^b \mod{p}$\\
+gesucht: $g^{a\cdot b} \mod{p}$\\
+Einzig bekannte M\"oglichkeit ist das Berechnen $a$ aus $g^a:(g^b)^a \mod{p}=K$ m\"usste diskretes Logarithmus-Problem l\"osen.
+
 \subsection{Man-in-the-Middle}
-$M$ f\"angt $g^a$ und $g^b$ ab und w\"ahlt $c \in \{2,\ldots,p\}$ und schickt $g^c\ mod\ p$ an $A$ und $B$.\\
-$A:\ g^{c\cdot a}\ mod\ p,\ B:\ g^{c\cdot b}\ mod\ p$. Beide Schl\"ussel kennt auch $M$
+$M$ f\"angt $g^a$ und $g^b$ ab und w\"ahlt $c \in \{2,\ldots,p\}$ und schickt $g^c \mod{p}$ an $A$ und $B$.\\
+$A:\ g^{c\cdot a} \mod{p},\ B:\ g^{c\cdot b} \mod{p}$. Beide Schl\"ussel kennt auch $M$
+
 \section{ElGamal-Public Key Verfahren (1984)}
+
 \subsection{Schl\"usselerzeugung}
-$A$ w\"ahlt $p,g$ wie bei Diffie-Hellman. W\"ahlt $a \in \{2,\ldots,p-2\},\ x=g^a\ mod\ p$.\\
+$A$ w\"ahlt $p,g$ wie bei Diffie-Hellman. W\"ahlt $a \in \{2,\ldots,p-2\},\ x=g^a \mod{p}$.\\
 \"Offentlicher Schl\"ussel: $(p,g,x)$\\
 Geheimer Schl\"ussel: $a$
+
 \subsection{Verschl\"usselung}
 Klartext $m:\ 1 \leq m \leq p-1$\\
-$B \stackrel{m}{\rightarrow} A$ \\
+$B \xrightarrow{m} A$ \\
 $B$ w\"ahlt zuf\"allig $b \in \{2,\ldots,p-2\}$\\
-$y=g^b\ mod\ p$\\
-Er berechnet $x^b\ mod p$ und $f=m\cdot x^b\ mod\ p$, sendet $(y,f)$ an $A$,
+$y=g^b \mod{p}$\\
+Er berechnet $x^b \mod{p}$ und $f=m\cdot x^b \mod{p}$, sendet $(y,f)$ an $A$,
+
 \subsection{Entschl\"usselung}
-$y^a\ mod\ p\ (= x^b\ mod\ p)$\\
-Berechnet $(y^a)^{-1}\ mod\ p$ $[(y^a)^{-1}=(y^{\overbrace{p-1-a}^{\geq 0}})]$\\
-$f\cdot (y^a)^{-1}\ mod\ p=m$
+$y^a \mod{p}\ (= x^b \mod{p})$\\
+Berechnet $(y^a)^{-1} \mod{p}$ $[(y^a)^{-1}=(y^{\overbrace{p-1-a}^{\geq 0}})]$\\
+$f\cdot (y^a)^{-1} \mod{p}=m$
+
 \subsubsection{Nachteil zu RSA}
 Doppelte L\"ange wird gebraucht, da Nachricht (Chiffre) und Teilschl\"ussel versendet werden.
 
 %p7
 
 \section{Signaturen, Hashfunktionen, Authentifizierung}
+
 \subsection{Anforderung an digitale Signaturen}
+
 \paragraph{Identit\"atseigenschaft:}
 
 ID des Unterzeichners des Dokuments wird sichergestellt
@@ -894,11 +899,11 @@ Jeder Empf\"anger muss digitale Signatur verifizieren k\"onnen.
 $A$ will Dokument $m$ signieren. \\
 $A$ bestitzt \"offentlichen RSA-Schl\"ussel $(n,e)$, geheimen Schl\"ussel $d$.
 
-Signatur: $m^d\ mod\ n$ sendet $(m,\ m^d\ mod\ n)$ an $B$.\\
-$(m^d\ mod\ n)^e = m^{e \cdot d}\ mod\ n = m\ (mod\ n)$\\
+Signatur: $m^d \mod{n}$ sendet $(m,\ m^d \mod{n})$ an $B$.\\
+$(m^d \mod{n})^e = m^{e \cdot d} \mod{n} = m\ (\md{n})$\\
 $m < n$\\
-Wenn $m^{e \cdot d}\ mod\ n = m$, dann akzeptiert $B$ die Signatur.\\
-$m > n\ \ m^d\ mod\ n$ $B\ mod\ n$. Ist $m^{'}\ mod\ n = m\ mod\ n$, dann $(m^{'},m^d\ mod\ n)$ g\"ultige Signatur.
+Wenn $m^{e \cdot d} \mod{n} = m$, dann akzeptiert $B$ die Signatur.\\
+$m > n\ \ m^d \mod{n}$ $B \mod{n}$. Ist $m^{'} \mod{n} = m \mod{n}$, dann $(m^{'},m^d \mod{n})$ g\"ultige Signatur.
 
 \subsection{Wie lassen sich lange RSA-Signaturen vermeiden?}
 \paragraph{Def:}
@@ -910,14 +915,15 @@ Sei $R$ ein endliches Alphabet.\\
 
 $H$ \"offentlich bekannte Hashfunktion.\\
 $A$ will Nachricht $m$ signieren.\\
-Bildet $H(m)$ und signiert $H(m) : H(m)^d\ mod\ n$ sendet $(m, H(m)^d\ mod\ n)$\\
+Bildet $H(m)$ und signiert $H(m) : H(m)^d \mod{n}$ sendet $(m, H(m)^d \mod{n})$\\
 Verifikation durch $B$: $m \rightarrow H(m)$\\
-$(H(m)^d\ mod\ n)^e\ mod\ n = H(m)$
+$(H(m)^d \mod{n})^e \mod{n} = H(m)$
 
 \subsection{Angriffsm\"oglichkeiten}
+
 \begin{description}
-	\item[-] Angreifer kann $H(m)$ bestimmen wenn es ihm gelingt, $m' \neq m$ zu finden, so $(m', H(m)^d\ mod\ n)$ g\"ultige Signatur von $m$ durch $A$.
-	\item[-] Angreife w\"ahlt zuf\"allig $y$ und berechnet $y^e\mod\ n = z$\\
+	\item[-] Angreifer kann $H(m)$ bestimmen wenn es ihm gelingt, $m' \neq m$ zu finden, so $(m', H(m)^d \mod{n})$ g\"ultige Signatur von $m$ durch $A$.
+	\item[-] Angreife w\"ahlt zuf\"allig $y$ und berechnet $y^e \mod{n} = z$\\
 	Gelingt es ihm, $m$ zu finden mit $H(m)=z$, dann ist $(m,y)$ g\"utlige Signatur von $m$ durch $A$\\
 	$H(m)\ \  y^e=H(m)$ 
 \end{description}
@@ -953,15 +959,15 @@ q = \frac{m \cdot (m-1) \cdot (m-2) \cdot \ldots \cdot (m-(l-1)}{m^l}=\prod^{l-1
 \]
 Wann ist $q \leq \frac{1}{2}$?\\
 $e^x \geq 1+x$\\
+\begin{align*}
+	\prod^{l-1}_0{1 - \frac{i}{m}}
+	\leq \prod^{l-1}_0{e^{-\frac{i}{m}}}
+	&=e^{\prod^{l-1}_0{-\frac{i}{m}}} \\
+	&=e^{- \frac{1}{m}\sum^{l-1}_0{i}} \\
+	&=e^{- \frac{1}{m} \cdot \frac{l \cdot (l-1)}{2}}
+\end{align*}
 \[
-\prod^{l-1}_0{1 - \frac{i}{m}}
-\leq \prod^{l-1}_0{e^{-\frac{i}{m}}}
-=e^{\prod^{l-1}_0{-\frac{i}{m}}}
-=e^{- \frac{1}{m}\sum^{l-1}_0{i}}
-=e^{- \frac{1}{m} \cdot \frac{l \cdot (l-1)}{2}}
-\]
-\[
-\ln{a}\leq - \frac{1}{m} \cdot \frac{l \cdot (l-1)}{2} = - \frac{l^2-l}{2 \cdot m}
+	\ln{a}\leq - \frac{1}{m} \cdot \frac{l \cdot (l-1)}{2} = - \frac{l^2-l}{2 \cdot m}
 \]
 
 \subsection{Hashfunktion}
@@ -988,7 +994,7 @@ M\"oglichkeiten der Authentifizierung durch:
 \end{itemize}
 g\"angiste Methode: Passwort \\
 Im Allgemeinem: Passwort $w$ abgespeichert als $f(w)$ $f$ Einwegfunktion.\\
-$w$ $f^n(w)=w_0 \stackrel{sicher}{\rightarrow}$ Id. \"uberpr\"ufer $f$ Einweg.
+$w$ $f^n(w)=w_0 \xrightarrow{sicher}$Id. \"uberpr\"ufer $f$ Einweg.
 \begin{enumerate}
 	\item Auth. $w_1=f^{n-1}(w) \rightarrow f(f^{n-1}(w))=w_0$ ersetzt $w_0$ durch $w_1$
 	\item Auth. $w_2=f^{n-2}(w) \rightarrow \ldots$
@@ -998,11 +1004,11 @@ $w$ $f^n(w)=w_0 \stackrel{sicher}{\rightarrow}$ Id. \"uberpr\"ufer $f$ Einweg.
 
 \subsection{Challenge-Response-Authentifizierung}
 RSA-Verfahren
-$A \stackrel{auth.}{\longrightarrow} B$\\
+$A \xrightarrow{auth.} B$\\
 \"Offentlicher Schl\"ussel: $(n,e)$\\
 geheimer Schl\"ussel: $d$\\
-$A \stackrel{Zufallszahl\ r}{\longleftarrow} B,\ r<n\ \leftarrow$ \textbf{Challenge}\\
-$A \stackrel{r^d\ mod\ n}{\longrightarrow} B$ \"uberpr\"uft, ob $r^{d^e}\ mod\ n = r\ \leftarrow$ \textbf{Response}\\
+$A \xleftarrow{\text{Zufallszahl }r} B,\ r<n\ \leftarrow$ \textbf{Challenge}\\
+$A \xrightarrow{r^d \mod{n}} B$ \"uberpr\"uft, ob $r^{d^e} \mod{n} = r\ \leftarrow$ \textbf{Response}\\
 Damit $B$ sich sicher seien kann, dass es wirklich $A$ ist, kann $B$ so oft wie es f\"ur n\"otig h\"alt neue $r$ schicken und dadurch die Chance verringern, dass $A$ nicht $A$ ist.
 
 %p8
@@ -1016,15 +1022,15 @@ Jede Teilmenge von $T$ mit mindestens $k$ Teilnehmer sollen Geheimnis rekonstrui
 
 \subsubsection{Konstruktion}
 Vereinbarung von gro\ss er Primzahl $p$, mindestens $p \geq n + 1$
-\begin{equation*}
-g \in \Z_p = \{0, \ldots , p-1\}
-\end{equation*}
+\[
+	g \in \Z_p = \{0, \ldots , p-1\}
+\]
 
 \subsubsection{Verteilung der Teilgeheimnisse}
 Dealer w\"ahlt zuf\"allig $a_1, \ldots, a_{k-1} \in \Z_p, a_{k-1} \neq 0, k =$ Schwelle
-\begin{equation*}
-f(x) = g + a_1x + \ldots + a_{k-1}x^{k-1} \in \Z_p[x]
-\end{equation*}
+\[
+	f(x) = g + a_1x + \ldots + a_{k-1}x^{k-1} \in \Z_p[x]
+\]
 $(a_1, \ldots , a_{k-1}$ h\"alt er geheim, nat\"urlich auch g)\\
 \\
 Dealer w\"ahlt zuf\"allig $x_1, \ldots, x_n \in \Z_p$ (paarweise verschieden). \\
@@ -1034,22 +1040,14 @@ Bei $x=0$ hast du $g$.
 \subsubsection{Rekonstruktion(sversuch) des Geheimnisses}
 $k$ Teilnehmer $(x_{i_1}, f(x_{i_1})), \ldots, (x_{i_k}, f(x_{i_k}))$ \\
 Durch diese Punkte ist $f$ eindeutig bestimmt, z.B. durch Lagrange-Interpol.:
-\begin{equation*}
-	f(x_{i_j}) = g_{i_j}
-\end{equation*}
-
-\begin{equation*}
-	f(x) = \sum_{j=1}^k g_{i_j} \cdot \frac{(x-x_{i_1}), \ldots, (x-x_{i_{j-1}})(x-x_{i_{j+1}}), \ldots, (x-x_{i_k})}
-                      {(x_{i_j}-x_{i_1}), \ldots, (x_{i_j}-x_{i_{j-1}})(x_{i_j}-x_{i_{j+1}}), \ldots, ((x_{i_j}-x_{i_k})}
-\end{equation*}
-
-\[
-	\begin{split}
+\begin{align*}
+	f(x_{i_j}) &= g_{i_j}\\
+	f(x) &= \sum_{j=1}^k g_{i_j} \cdot \frac{(x-x_{i_1}), \ldots, (x-x_{i_{j-1}})(x-x_{i_{j+1}}), \ldots, (x-x_{i_k})}
+                      {(x_{i_j}-x_{i_1}), \ldots, (x_{i_j}-x_{i_{j-1}})(x_{i_j}-x_{i_{j+1}}), \ldots, ((x_{i_j}-x_{i_k})}\\
 	f(0) &= g \\
 	g &= \sum_{j=1}^k g_{i_j} \prod_{l \neq j}
 				\frac{x_{i_l}}{(x_{i_l}-x_{i_j})}
-	\end{split}
-\]			
+\end{align*}	
 Bei mehr als $k$ Teilnehmer selbe Ergebnis.\\
 Weniger als $k$ Teilnehmer $(k')$: Anderes Polynom wegen weniger Punkte, also warscheinlich anderer $g$.\\
 Erzeugen Polynom vom Grad $\leq k' - 1$ \\

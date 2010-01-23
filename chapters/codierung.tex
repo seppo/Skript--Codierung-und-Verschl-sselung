@@ -17,7 +17,8 @@ Sicherung von Daten/Nachrichten gegen zuf\"allig auftretenden Fehler bei Speiche
 	\item Aufwand f\"ur Codierung und Decodierung m\"oglichst gering.
 \end{itemize}
 
-\section{Grundprinzip} Hinzuf\"ugen von Redundanz\\
+\section{Grundprinzip}
+Hinzuf\"ugen von Redundanz
 \\
 Es gibt zwei Typen um Redundanz zu erzeugen.
 \subsection{FEC-Verfahren (Forward Error Correction)}
@@ -79,30 +80,30 @@ Codierte W\"orter sind gebildet \"uber $S=\{0, \ldots, 9, X\}$\\
 ISBN-Wort $C_{10}C_9\ldots C_2C_1$\\
 $C_{10}\ldots C_2$ inhaltliche Bedingung, $C_1$ wird so gew\"ahlt, dass
 \[
-	\sum^{10}_{k=1} k \cdot C_k \equiv 0 (\md 11)
+	\sum^{10}_{k=1} k \cdot C_k \equiv 0 (\md{11})
 \]
 
-$10\cdot C_{10}+\ldots + 2\cdot C_2 + C_1 \equiv 0(\md 11)$ falls $C_1 = 10$ so setzte $C_1 = X$\\
+$10\cdot C_{10}+\ldots + 2\cdot C_2 + C_1 \equiv 0(\md{11})$ falls $C_1 = 10$ so setzte $C_1 = X$\\
 $C_1$ vom Beispiel ausrechnen.\\
 \\
-$ 10\cdot 3+9\cdot 5+8\cdot 4+7\cdot 0+6\cdot 2+5\cdot 6+4\cdot 1+3\cdot 2+2\cdot 1+C_1 = 0 (\md 11)$\\
-$ 161 + C_1 = 0 (\md 11) \Rightarrow C_1 = 4$\\
+$ 10\cdot 3+9\cdot 5+8\cdot 4+7\cdot 0+6\cdot 2+5\cdot 6+4\cdot 1+3\cdot 2+2\cdot 1+C_1 = 0 (\md{11})$\\
+$ 161 + C_1 = 0 (\md{11}) \Rightarrow C_1 = 4$\\
 \\
 \"Andern einer Ziffer wird erkannt:\\
 $C_{10} C_9\ldots C_2 C_1 \rightarrow\ C_i$ wird $X_i \neq C_i$ ersetzt\\
 $C_{10} \ldots C_{i+1} X_i C_{i-1} \ldots C_1$
 \[
 	\sum^{10}_{k=1, k \neq i} k \cdot C_k + i \cdot x_i = 
-	\underbrace{\sum^{10}_{k=1, k \neq i} k \cdot C_k}_{\equiv 0 (\md 11)}
+	\underbrace{\sum^{10}_{k=1, k \neq i} k \cdot C_k}_{\equiv 0 (\md{11})}
 	\overbrace{
-			\underset{\underset{\nequiv 0 (\md 11)}{\uparrow}}{i} 
-			\cdot (\underbrace{x_i-c_i}_{\nequiv 0 (\md 11)}) 
-	}^{\nequiv 0 (\md 11)}
-	\nequiv 0(\md 11)	
+			\underset{\underset{\nequiv 0 (\md{11})}{\uparrow}}{i} 
+			\cdot (\underbrace{x_i-c_i}_{\nequiv 0 (\md{11})}) 
+	}^{\nequiv 0 (\md{11})}
+	\nequiv 0(\md{11})	
 \]
 Fehler wird erkannt, Korrektur nicht m\"oglich.\\
 \\
-$3-540-26121-4 \equiv 0(\md 11)$\\ \\
+$3-540-26121-4 \equiv 0(\md{11})$\\ \\
 $\left.
 \begin{matrix}
 	3-540-26121-\mathbf{6} \\
@@ -121,11 +122,11 @@ $C_{10} \ldots \underset{\stackrel{\uparrow}{i}}{C_j} \ldots \underset{\stackrel
 \]
 \[
 	= 
-	\underbrace{\sum^{10}_{k=1} k \cdot C_k}_{\equiv 0 (\md 11)}
+	\underbrace{\sum^{10}_{k=1} k \cdot C_k}_{\equiv 0 (\md{11})}
 	 + 
-	 \underbrace{(C_j-C_i)}_{\nequiv 0 (\md 11)}
-	 \underbrace{(i-j)}_{\nequiv 0 (\md 11)}
-	 \nequiv 0 (\md 11)
+	 \underbrace{(C_j-C_i)}_{\nequiv 0 (\md{11})}
+	 \underbrace{(i-j)}_{\nequiv 0 (\md{11})}
+	 \nequiv 0 (\md{11})
 \]
 Vertauschung wird durch gewichtete Quersummen erkannt.
 
@@ -144,9 +145,9 @@ $C_8 \ldots C_12$ interne Produktions Nummer\\
 \\
 $C_{13}$ so gew\"ahlt, dass\\
 \[
-	C_1 + 3\cdot C_2 + C_3 + 3\cdot C_4 + \ldots + 3\cdot C_{12} + C_{13} \equiv 0 (\md 10)
+	C_1 + 3\cdot C_2 + C_3 + 3\cdot C_4 + \ldots + 3\cdot C_{12} + C_{13} \equiv 0 (\md{10})
 \]
-$x \rightarrow 3x$ Permutation auf $\Z_{10} (\md 10)$, da ggT(3,10)=1\\ %FORMATTING vom ggT?
+$x \rightarrow 3x$ Permutation auf $\Z_{10} (\md{10})$, da ggT(3,10)=1\\ %FORMATTING vom ggT?
 1 Fehler wird erkannt. Vertauschung in der Regel nicht erkannt. \\
 \\
 \"Ubersetzung in Barcode: \\
@@ -369,9 +370,9 @@ a)
 \end{align*}
 b)
 \begin{align*}
-&\Rightarrow:d(\mathcal{C})=2 \cdot t +1 \\
-&R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
-&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup K_t(x) \Rightarrow \mathcal{C} \text{ perfekt.}
+	&\Rightarrow:d(\mathcal{C})=2 \cdot t +1 \\
+	&R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
+	&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup K_t(x) \Rightarrow \mathcal{C} \text{ perfekt.}
 \end{align*}
 
 %Teil 2 der Vorlesung
