@@ -294,123 +294,137 @@ $d(\mathcal{C}) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so i
 	\item[b)] ISBN, EAN-Codes, $d(\mathcal{C})=2$, 1-Fehler-erkennend.
 \end{description}
 
-%WIP hier muss noch mehr verbessert werden
-\section{Ab hier WIP (keine grundlegende Korrektur oder Versch\"onerung)}
+%Verbesser + Verschoenert, aber kein plan was der titel hier ist
+\section{Titel???}
 \noindent
 $d(\mathcal{C}) \geq 2 \cdot t + 1,\ \mathcal{C} \subseteq R^N$ \\
 $K_t(x) \cap K_t(x')=\emptyset$ \\
 $x, x' \in \mathcal{C},\ x \neq x'$ \\
-$y$ empfangen, \\
-- falls $y$ in $K_t(x)$ liegt f\"ur einen $x \in \mathcal{C}$, so wird $y$ nach $x$ decodiert (Korrekt, falls max. $t$ Fehler aufgetreten sind) \\
-- falls $y$ in keiner $K_t(x)$ liegt, so kann es mehrere Codew\"orter geben mit gleichem min. Abstand zu $y$. (Dann keine eindeutige  Decodierung)
+\\
+$y$ empfangen:
+\begin{itemize}
+\item falls $y$ in $K_t(x)$ liegt f\"ur einen $x \in \mathcal{C}$, so wird $y$ nach $x$ decodiert (Korrekt, falls max. $t$ Fehler aufgetreten sind)
+\item  falls $y$ in keiner $K_t(x)$ liegt, so kann es mehrere Codew\"orter geben mit gleichem min. Abstand zu $y$. (Dann keine eindeutige  Decodierung)
+\end{itemize}
 
-%Def
-\noindent
-Def: Code $\mathcal{C} \subseteq R^n$ heißt perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
+\subsection{Definition: Perfekter Code}
+Code $\mathcal{C} \subseteq R^n$ heißt perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
 \[
 	R^n = \bigcup_{x\in \mathcal{C}} K_t(x) \ \text{u. $K_t(x) \cap K_t(x') = \emptyset$ f\"ur $x,x' \in \mathcal{C}, x \neq x'$}
 \]
 Dann ist $d(\mathcal{C})=2 \cdot t + 1$, falls $\left| \mathcal{C} \right| > 1$: \\
 Ang. $d(\mathcal{C}) \leq 2\cdot t$. W\"ahle $x,x' \in \mathcal{C}, x \neq x'$, mit $d(x,x') = d(\mathcal{C}) \leq 2 \cdot t$. \\
-W\"ahle $y \in R^n$ mit $d(x,y)=t,\ d(y,x')=t$\\
-$y \in K_t(x) \cap K_t(x')$ % Widerspruchzeichen
-\\
+W\"ahle $y \in R^n$ mit $d(x,y)=t,\ d(y,x') \leq t$\\
+$y \in K_t(x) \cap K_t(x') \lightning$\\
 $d(\mathcal{C}) \leq 2 \cdot t + 1$ \\
-W\"ahle $x \in \mathcal{C}$, w\"ahle $y \in R^n$ mit $d(x,y)=t+1$. Nach Vor. existiert $x' \in \mathcal{C}$ mit $y \in K_t(x')$. 
-\[
-	\begin{split}
-		d(x,x') \leq d(x,y) + d(y,x') \leq t+1+t = 2 \cdot t + 1 \\
-		d(\mathcal{C}) \leq 2\cdot t + 1
-	\end{split}	
-\]
+\\
+W\"ahle $x \in \mathcal{C}$, w\"ahle $y \in R^n$ mit $d(x,y)=t+1$. Nach Vorraussetzung existiert $x' \in \mathcal{C}$ mit $y \in K_t(x')$. 
+
+\begin{align*}
+	&d(x,x') \leq d(x,y) + d(y,x') \leq t+1+t = 2 \cdot t + 1 \\
+	&d(\mathcal{C}) \leq 2\cdot t + 1
+\end{align*}	
 
 \subsection{Gibt es perfekte Codes?}
 Trivial Beispiele:
 \begin{itemize}
-	\item einelementige Codes (t=m)
+	\item einelementige Codes (t=n)
 	\item $\mathcal{C} = R^n$ (t=0) \\
 				(Jedes Element ist ein Codewort)
 	\item $n$-fache Wiederholungscode \"uber $Z_2$ \\
 				$n=2 \cdot t +1$ \\
-				$\mathcal{C} = \lbrace (0,\ldots,0),(1,\ldots,1)\rbrace$ % unter Pfeile <- n -> 
+				$\mathcal{C} = \lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},\underset{\longleftarrow n \longrightarrow}{(1,\ldots,1)}\rbrace$
 \end{itemize}
 
 \subsection{Lemma}
 $\left| R \right| = q,\ x \in R^n,\ t \in \N$ \\
-Dann ist $\left| K_t(x) \right| = \sum_{i=0}^t (n,i)^{transponiert} \cdot (q-1)^i$ \\
-$(n,i)^t=\frac{n\!}{i\! \cdot (n-i)\!}$ \\
+Dann ist $\left| K_t(x) \right| = \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i$ \\
+$(\binom{n}{i}=\frac{n\!}{i\! \cdot (n-i)\!})$ \\
 
 \subsubsection{Beweis}
-Abstand 0 zu $x$: 1 Word (n\"amlich $x$): $(n,0)^t \cdot (q-1)^0 =1$ \\
+Abstand 0 zu $x$: 1 Word (n\"amlich $x$): $\binom{n}{0} \cdot (q-1)^0 =1$ \\
 Abstand $i>0$ zu x: \\
-Anzahl der Auswahl von $i$ Positionen aus $n$ Positionen: $(n,i)^t$ \\
+Anzahl der Auswahl von $i$ Positionen aus $n$ Positionen: $\binom{n}{i}$ \\
 An jeder Position $q-1$ \"Anderungsm\"oglichkeiten. \\
 $\rightarrow$ insgesamt $(q-1)^i$ M\"oglichkeiten, \\
-Anzahl der W\"orter vom Abstand $i$ von $x$: $(n,i)^t \cdot (q-1)^i$ \\
+Anzahl der W\"orter vom Abstand $i$ von $x$: $\binom{n}{i} \cdot (q-1)^i$ \\
 \subsubsection{Satz}
 Sei $\mathcal{C}$ ein Code der L\"ange $n$ \"uber $R$, $\left| \mathcal{C} \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\mathcal{C}) \geq 2 \cdot t + 1,\ t=\lfloor \frac{d(\mathcal{C})-1}{2}\rfloor$.
 \begin{itemize}
 	\item[a)] (Kugelpackungsschranke) \\
-	$\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t (n,i)^{trans} \cdot (q-1)^i}$
-	\item[b)] $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleicheit, d.h. $\left|\mathcal{C}\right| = \frac{q^n}{\sum_{i=0}^t (n,i)^{trans} \cdot (q-1)^i}$
+	$ %FORMEL UNTEN IST EIN BISCHEN ZU KLEIN, mit \[ \] Sieht es aber bescheuert aus so weit in der mitte.
+	\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}\\
+	$
+	\item[b)] $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. $\left|\mathcal{C}\right| = \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
 \end{itemize}
 
-\noindent %Beweis
-a)\\
-$d(\mathcal{C}) \geq 2 \cdot t + 1$, daher $K_t(x) \cap K_t(x')=\emptyset,\ x\neq x',\ x,x' \in \mathcal{C}$  \\
-$R^n \geq \bigcup_{x \in \mathcal{C}} K_t(x)$ \\
-$q^n=\left|R^n\right|$ \\
-$\left| \bigcup_{x \in \mathcal{C}} K_t(x) \right| = \sum_{x \in \mathcal{C}} \left| K_t(x) \right|$ \\
-$=\left| \mathcal{C} \right| \cdot \sum_{i=0}^t (n,i)^{trans} \cdot (q-1)^i$\\
-\\
-b)\\
-$\Rightarrow:d(\mathcal{C})=2 \cdot t +1$ \\
-$R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \Rightarrow \text{Gleicheit in a)}$\\
-$\Leftarrow:$ Gleichheit $\Rightarrow R^n=\bigcup K_t(x) \Rightarrow \mathcal{C}$ perfekt.
+\subsubsection{Beweis}
+a)
+\begin{align*}
+	&d(\mathcal{C}) \geq 2 \cdot t + 1,\text{ daher }K_t(x) \cap K_t(x')=\emptyset,\ x\neq x',\ x,x' \in \mathcal{C}  \\
+	&R^n \geq \underset{x \in \mathcal{C}}{\bigcup} K_t(x) \\
+	&q^n=\left|R^n\right| \\
+	&\left| \bigcup_{x \in \mathcal{C}} K_t(x) \right| = \sum_{x \in \mathcal{C}} \left| K_t(x) \right|
+	\underset{Lemma}{=}\left| \mathcal{C} \right| \cdot \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i\\
+\end{align*}
+b)
+\begin{align*}
+&\Rightarrow:d(\mathcal{C})=2 \cdot t +1 \\
+&R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
+&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup K_t(x) \Rightarrow \mathcal{C} \text{ perfekt.}
+\end{align*}
 
 %Teil 2 der Vorlesung
+\subsection{Bsp: Bin\"arer Hamming-Code der L\"ange 7}
 
-Bsp: Bin\"arer Hamming-Code der L\"ange 7 \\
 $R=\Z_2=\lbrace 0,1 \rbrace$ $\mathcal{C}$ perfekt, $d(\mathcal{C})=3,\ \left| \mathcal{C} \right| = 16$ \\
-$\mathcal{C} = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ C_1 + C_4 + C_6 + C_7 = 0,\ C_2 + C_4 + C_5 + C_7 = 0,\ C_3 + C_5 + C_6 + C_7 = 0 \rbrace \subseteq \Z_2^7$ \\
+1-Fehler-Korrigierend
+\begin{align*}
+\mathcal{C} = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
+										&C_2 + C_4 + C_5 + C_7 = 0,\\
+										&C_3 + C_5 + C_6 + C_7 = 0\\
+										 &\rbrace \subseteq \Z_2^7
+\end{align*}
 $\mathcal{C}$ ist Unterraum von $\Z_2^7$ \\
 $(C_1,\ldots,C_7) \in \mathcal{C},\ (C_1',\ldots,C_7') \in \mathcal{C}$ \\
 $(C_1 + C_1',\ldots,C_7+C_7')\ \ (C_1+C_1') + (C_4+C_4') + (C_6+C_6') + (C_7+C_7') = 0$ \\
 $dim(\mathcal{C})=4,\ C_4,C_5,C_6,C_7$ frei w\"ahlbar $\curvearrowright C_1,C_2,C_3$ festgelegt \\
-Basis
-\[
-	\begin{split}
-		(\ldots 1000) \rightarrow (1101000) \\
-		(\ldots 0100) \rightarrow (0110100) \\
-		(\ldots 0010) \rightarrow (1010010) \\
-		(\ldots 0001) \rightarrow (1110001)
-	\end{split}
-\]
-$\left| \mathcal{C} \right| =2^4 =16$\\
-$d(\mathcal{C})=3:$\\
-Ang. $d(\mathcal{C})=d$ W\"ahle $x,x' \in \mathcal{C}$ mit $d(x,x')=d$ Translationsinvarianz der Metrik: \\
+Basis:
+\begin{align*}
+	&(\ldots 1000) \rightarrow (1101000) \\
+	&(\ldots 0100) \rightarrow (0110100) \indent \left| \mathcal{C} \right| =2^4 =16\\
+	&(\ldots 0010) \rightarrow (1010010) \\
+	&(\ldots 0001) \rightarrow (1110001)
+\end{align*}
+
+
+\noindent $d(\mathcal{C})=3:$\\
+Ang. $d(\mathcal{C})=d$. W\"ahle $x,x' \in \mathcal{C}$ mit $d(x,x')=d$\\
+Translationsinvarianz der Metrik: \\
 $d=d(x,x')=d(x+x,x+x')=d(0,x+x')$ \\
 $wt(x) = $ Anzahl der Einsen in $x$ \\
-$= d(0,x)$. \\
-$d(\mathcal{C}) = min wt(x)$. \\
-
+\indent \ \ \ $= d(0,x)$. \\
+$d(\mathcal{C}) = min\ wt(x).\ x \in \mathcal{C},\ x \neq \mathcal{V}$. \\
+\\
 Zeige: Jeder Vektor $\neq v$ in $\mathcal{C}$ enth\"alt mind. 3 Einsen.\\
-$= 3$ weist man nach durch \"uberpr\"ufen aller 15 von 15 verschiedenen Codew\"ortern oder durch Analyse der Gleichung. \\
-$(C_1,\ldots,C_7) \in \mathcal{C}$ Ang. $C_7=1$ \\
-$\Rightarrow C_1+C_4+C_6=1$. Wenn alle Eins *check* \\%hier hacken
-$C_1=1,C_4=C_6=0$\\
-$C_4=1,C_1=C_6=0$\\
-$C_6=1,C_1=C_4=0$\\
-%verweis auf Menge von oben
-Add $C_1+C_2+C_3+C_7=0$ \\
-$C_1, C_2\ oder\ C_3 = 1$ \\
-2. Fall: $C_7=1,C_4=1,C_1=0,C_2\ oder\ C_3=1$ \\
-3. Fall: analog \\
-1. Fall: $C_1=1,C_4=C_6=0$, o.B.d.A. $C_2=C_3=0 \Rightarrow C_5=1$
-
-% jetzt gehts weiter
+$= 3$ weist man nach durch \"uberpr\"ufen aller 15 von $\mathcal{V}$ verschiedenen Codew\"ortern oder durch Analyse der Gleichung. 
+\begin{align*}
+	&(C_1,\ldots,C_7) \in \mathcal{C} \text{ Ang. } C_7=1 \\
+	\Rightarrow &C_1+C_4+C_6=1. \text{Wenn alle Eins } \checked \\
+	&C_1=1,C_4=C_6=0\\
+	&C_4=1,C_1=C_6=0\\
+	&C_6=1,C_1=C_4=0\\
+	&C_1, C_2\text{ oder } C_3 = 1
+\end{align*}
+2. Fall: $C_7=1,C_4=1,C_1=0,C_2 \text{ oder } C_3=1$ \\
+3. Fall: analog zu Fall 2.\\
+1. Fall: $C_1=1,C_4=C_6=0, C_7=1$, o.B.d.A. $C_2=C_3=0 \Rightarrow C_5=1$\\
 $d(\mathcal{C}) \leq 3,\ d(\mathcal{C})=3=2 \cdot 1 + 1$\\
-Pr\"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:\\
-$\left|\mathcal{C}\right|=16$\\
-$\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t (n,i)^{trans} \cdot (q-1)^i}=\frac{2^7}{1+(7,1)^t}=\frac{2^7}{2^3}=2^4=16$\\
-$\mathcal{C}$ perfekt!
+\\
+Pr\"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:
+\begin{align*}
+	\left|\mathcal{C}\right| &=16\\
+	\left|\mathcal{C}\right| &\leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i} \indent (q=2, t=1, n=7)\\
+	&=\frac{2^7}{1+\binom{7}{1}}=\frac{2^7}{2^3}=2^4=16\\
+	&\mathcal{C}\text{ perfekt!}
+\end{align*}
