@@ -34,10 +34,13 @@ Vorteil: geringe Redundanz, aber Verz\"ogerung.\\
 \subsection{Parity-Check-Codes}
 z.B. Nachrichten: 00, 01, 10, 11\\
 \\
-Codierung: 00 $\rightarrow$ 000\\
-01 $\rightarrow$ 011\\
-10 $\rightarrow$ 101\\
-11 $\rightarrow$ 110\\
+Codierung:
+\begin{align*}
+	00 &\rightarrow 000\\
+	01 &\rightarrow 011\\
+	10 &\rightarrow 101\\
+	11 &\rightarrow 110
+\end{align*}
 (gerade Anzahl von Einsen in den Codew\"ortern)\\
 \\
 1 Fehler wird erkannt, nicht korrigiert.\\
@@ -46,25 +49,30 @@ Codierung: 00 $\rightarrow$ 000\\
 \subsection{Wiederholungscode}
 Nachrichten wie in 1.\\
 \\
-Codierung: 00 $\rightarrow$ 000000
-01 $\rightarrow$ 010101\\
-10 $\rightarrow$ 101010\\
-11 $\rightarrow$ 111111\\
+Codierung:
+\begin{align*}
+	00 &\rightarrow 000000\\
+	01 &\rightarrow 010101\\
+	10 &\rightarrow 101010\\
+	11 &\rightarrow 111111
+\end{align*}	
 (3-Fache Wiederholung)\\
 \\
 1 Fehler wird erkannt und korrigiert.\\
 \underline{01}01\underline{01} $\rightarrow$ 010101 $\rightarrow$ 01 \\
-
 Nachrichten wie in 1.
-Codierung: 00 $\rightarrow$ 00000\\
-01 $\rightarrow$ 01101\\
-10 $\rightarrow$ 10110\\
-11 $\rightarrow$ 11011\\
-\\
+Codierung:
+\begin{align*}
+	00 &\rightarrow 00000\\
+	01 &\rightarrow 01101\\
+	10 &\rightarrow 10110\\
+	11 &\rightarrow 11011
+\end{align*}
 Je zwei Codew\"orter unterscheiden sich an mindestens 3 Positionen.\\
-Angenommen 1 Fehler tritt bei \"Ubertragung auf. Dann gibt es genau ein Codewort, dass sich vom empfangenen Wort an genau einer Stelle unterscheidet; in das wird decodiert.\\
-\\
+Angenommen 1 Fehler tritt bei \"Ubertragung auf. Dann gibt es genau ein Codewort, dass sich vom empfangenen Wort an genau einer Stelle unterscheidet; in das wird decodiert.
+
 Muss immer Ungerade unterschiede in Codew\"ortern sein. Bei 5 diffs sind 2 Fehler korrigierbar.
+
 \subsection{(ehmaliger) ISBN-Code}
 International Standard Book Number\\
 \\
@@ -79,16 +87,16 @@ Codierte W\"orter sind gebildet \"uber $S=\{0, \ldots, 9, X\}$\\
 \\
 ISBN-Wort $C_{10}C_9\ldots C_2C_1$\\
 $C_{10}\ldots C_2$ inhaltliche Bedingung, $C_1$ wird so gew\"ahlt, dass
-\[
-	\sum^{10}_{k=1} k \cdot C_k \equiv 0 (\md{11})
-\]
-
-$10\cdot C_{10}+\ldots + 2\cdot C_2 + C_1 \equiv 0(\md{11})$ falls $C_1 = 10$ so setzte $C_1 = X$\\
-$C_1$ vom Beispiel ausrechnen.\\
-\\
-$ 10\cdot 3+9\cdot 5+8\cdot 4+7\cdot 0+6\cdot 2+5\cdot 6+4\cdot 1+3\cdot 2+2\cdot 1+C_1 = 0 (\md{11})$\\
-$ 161 + C_1 = 0 (\md{11}) \Rightarrow C_1 = 4$\\
-\\
+\begin{align*}
+	\sum^{10}_{k=1} k \cdot C_k &\equiv 0 (\md{11})\\
+	10\cdot C_{10}+\ldots + 2\cdot C_2 + C_1 &\equiv 0(\md{11})
+\end{align*}
+falls $C_1 = 10$ so setzte $C_1 = X$\\
+$C_1$ vom Beispiel ausrechnen.
+\begin{align*}
+	10\cdot 3+9\cdot 5+8\cdot 4+7\cdot 0+6\cdot 2+5\cdot 6+4\cdot 1+3\cdot 2+2\cdot 1+C_1 &\equiv 0 (\md{11})\\
+	161 + C_1 &\equiv 0 (\md{11}) \Rightarrow C_1 = 4
+\end{align*}
 \"Andern einer Ziffer wird erkannt:\\
 $C_{10} C_9\ldots C_2 C_1 \rightarrow\ C_i$ wird $X_i \neq C_i$ ersetzt\\
 $C_{10} \ldots C_{i+1} X_i C_{i-1} \ldots C_1$
@@ -111,23 +119,20 @@ $\left.
 \end{matrix}
 \right\} \text{Pr\"ufsumme 2.}
 $\\
-
 Vertauschung von Zwei Ziffern wird erkannt.\\
 $C_i$ und $C_j$ vertauscht.\\
 O.B.d.A $C_i \neq C_j$\\
 $C_{10} \ldots \underset{\stackrel{\uparrow}{i}}{C_j} \ldots \underset{\stackrel{\uparrow}{j}}{C_i} \ldots C_1$\\
-\[
+\begin{align*}
 	\sum^{10}_{k=1, k\neq i,j} k \cdot C_k + i \cdot 	C_j + j \cdot C_i
-	= \sum^{10}_{k=1} k \cdot C_k + i(C_j-C_i)+j(C_i-C_j)
-\]
-\[
-	= 
+	&= \sum^{10}_{k=1} k \cdot C_k + i(C_j-C_i)+j(C_i-C_j)\\
+	&= 
 	\underbrace{\sum^{10}_{k=1} k \cdot C_k}_{\equiv 0 (\md{11})}
 	 + 
 	 \underbrace{(C_j-C_i)}_{\nequiv 0 (\md{11})}
 	 \underbrace{(i-j)}_{\nequiv 0 (\md{11})}
 	 \nequiv 0 (\md{11})
-\]
+\end{align*}
 Vertauschung wird durch gewichtete Quersummen erkannt.
 
 
@@ -136,44 +141,42 @@ European Article Number\\
 13-Stelliger Code, erste 12 Ziffer sind inhaltlich festgelegt.\\
 13. Ziffer ist Pr\"ufziffer.\\
 $R=S=\{ 0, \ldots, 9\}$ \\
-$C_1 \ldots C_{12}C_{13}$\\
+$C_1 \ldots C_{12} C_{13}$\\
 \\
 $C_1 \ldots C_{12}$ inhaltliche Angabe (in der Regel):\\
-$C_1C_2$ Herstellerland (40-43 Deutschland)\\
+$C_1 C_2$ Herstellerland (40-43 Deutschland)\\
 $C_6 \ldots C_7$ Hersteller
-$C_8 \ldots C_12$ interne Produktions Nummer\\
+$C_8 \ldots C_{12}$ interne Produktions Nummer\\
 \\
-$C_{13}$ so gew\"ahlt, dass\\
+$C_{13}$ so gew\"ahlt, dass
 \[
 	C_1 + 3\cdot C_2 + C_3 + 3\cdot C_4 + \ldots + 3\cdot C_{12} + C_{13} \equiv 0 (\md{10})
 \]
-$x \rightarrow 3x$ Permutation auf $\Z_{10} (\md{10})$, da ggT(3,10)=1\\ %FORMATTING vom ggT?
+$x \rightarrow 3x$ Permutation auf $\Z_{10} (\md{10})$, da $ggT(3,10)=1$, %FORMATTING vom ggT?
 1 Fehler wird erkannt. Vertauschung in der Regel nicht erkannt. \\
 \\
-\"Ubersetzung in Barcode: \\
-$C_1 C_2 \ldots C_7 C_8 \ldots C_{13}$\\
-\\
+\"Ubersetzung in Barcode:
+\[	
+	C_1 C_2 \ldots C_7 C_8 \ldots C_{13}
+\]
 Jede der Ziffern $C_2, \ldots, C_{13}$ wird durch einen 0-1-String der L\"ange 7 bin\"ar codiert. \\
-$0 \entspricht$ wei§er Balken, $1 \entspricht$ schwarzer Balken. \\
-Codierung sorgt daf\"ur, dass nie mehr als 4 wei§e oder schwarze Balken nebeneinander stehen. \\
-
-\newpage
-
+$0 \entspricht$ wei\ss er Balken, $1 \entspricht$ schwarzer Balken. \\
+Codierung sorgt daf\"ur, dass nie mehr als 4 wei\ss e oder schwarze Balken nebeneinander stehen. \\
 \begin{figure}[h]
 	\centering
 	\includegraphics{./img/ean13.png}
 	\caption{EAN-13 Barcode}
 	\label{img:EAN-13 Barcode}
 \end{figure}
-
-Schmalen Balken in Mitte und am Rand, sind nur Abtrennzeichen, die nichts mit EAN zu tun haben und nur beim einscannen helfen.\\
-5 zu $0110001_2$ \\
 \\
+Schmalen Balken in Mitte und am Rand, sind nur Abtrennzeichen, die nichts mit EAN zu tun haben und nur beim einscannen helfen.\\
+\[
+	5 \text{ zu }0110001_2
+\]
 $C_2,\ldots, C_7$ werden nach Code A oder Code B codiert. $C_1$ bestimmt welcher dieser beiden Codes verwendet wird. \\
 $C_8,\ldots, C_{13}$ werden nach Code C codiert.\\
 $C_1$ ergibt sich aus der Art der Codierung von $C_2,\ldots,C_7$
 
-%Table shit here
 \begin{center}
 	\begin{tabular}{| c | c | c | c | p{2cm} |}
 	\hline
@@ -194,32 +197,23 @@ $C_1$ ergibt sich aus der Art der Codierung von $C_2,\ldots,C_7$
 	\hline
 	\end{tabular}
 \end{center}
-
-\noindent Codew\"orter von Code A,B oder C kommen nur einmal vor. Daher treten nie mehr als 4 gleiche Balken nebeneinander auf. \\
-
-
-
-
-
-
+Codew\"orter von Code A,B oder C kommen nur einmal vor. Daher treten nie mehr als 4 gleiche Balken nebeneinander auf. \\
 
 \section{Blockcodes}
-\[
-\begin{matrix}
-	00 & \rightarrow & 00000\\
-	01 & \rightarrow & 01101\\
-	10 & \rightarrow & 10110\\
-	11 & \rightarrow & 11011
-\end{matrix}
-\]
+\begin{align*}
+	00 \rightarrow & 00000\\
+	01 \rightarrow & 01101\\
+	10 \rightarrow & 10110\\
+	11 \rightarrow & 11011
+\end{align*}
 
 \subsection{Definition}
 
 $S$ endl. Menge (=Alphabet), $n \in \N$. \\
 Ein Blockcode $\mathcal{C}$
-der (Block-)L\"ange $n$ \"uber $S$ ist Teilmenge von $S^n=\underset{\longleftarrow \ \  n\ \  \longrightarrow}{S \times \ldots \times S}$ \\ % Pfeilspa§ <- n -> \times
+der (Block-)L\"ange $n$ \"uber $S$ ist Teilmenge von $S^n=\underset{\longleftarrow \ \  n\ \  \longrightarrow}{S \times \ldots \times S}$ \\ % Pfeilspass <- n -> \times
 \\
-Elemente von $\mathcal{C}$ hei§en \textbf{Codew\"orter}. \\
+Elemente von $\mathcal{C}$ hei\ss en \textbf{Codew\"orter}. \\
 Ist $\left| S \right| = 2$ (i.d.R. $S=\lbrace 0,1 \rbrace$, so \textbf{bin\"ar} Code.\\
 $\left| \mathcal{C} \right| = m$, so ist $m \leq \left| S \right| ^ n$. \\
 \\
@@ -230,43 +224,43 @@ $S$ endl. Alphabet, $n \in \N$. \\
 $a,b \in S^n$ $a=(a_1, \ldots, a_n)$, $b=(b_1, \ldots, b_n)$ \\
 $d(a, b)= \sharp \lbrace i : a_i \neq b_i \rbrace$ \\
 \textbf{Hamming-Abstand} von $a$ und $b$. \\
-(Richard W. Hamming, 1915-1998, Begr\"under der Codierungstheorie)\\
+(Richard W. Hamming, 1915-1998, Begr\"under der Codierungstheorie)
+
 \subsubsection{Eigenschaften}
 \begin{description}
 	\item[a)] $d(a,b)=0 \Leftrightarrow a=b$
 	\item[b)] $d(a,b)=d(b,a)$
 	\item[c)] $d(a,b) \leq d(a,c) + d(c,b)$ (Dreiecksungleichung) \\
-					($a_i \neq b_i \Rightarrow a_i \neq c_i$ oder $b_i \neq c_i$) 
-	\item[d)] Wenn $(S,+)$ komm. Gruppe, dann auch $S^n$\\
-					$[ (a_1,\ldots a_n) + (b_1, \ldots b_n) = (a_1+b_1,\ldots, a_n+b_n)]$\\
-					$d(a,b)=d(a+c,b+c)$ (Translationsinvarianz)				
+			($a_i \neq b_i \Rightarrow a_i \neq c_i$ oder $b_i \neq c_i$) 
+	\item[d)] 	Wenn $(S,+)$ komm. Gruppe, dann auch $S^n$\\
+				$[ (a_1,\ldots a_n) + (b_1, \ldots b_n) = (a_1+b_1,\ldots, a_n+b_n)]$\\
+				$d(a,b)=d(a+c,b+c)$ (Translationsinvarianz)				
 \end{description}
 
 \noindent Also: Wird $x \in \mathcal{C}$ gesendet und $y \in S^n$ wird empfangen und $d(x,y)=k$, so sind $k$ Fehler aufgetreten.
 \subsection{Definition}
 \subsubsection{a) Hamming-Decodierung}
 f\"ur Blockcode $\mathcal{C} \subseteq$ $S^n$ \\
-Wird $y \in S^n$ empfangen, so wird $y$ zu einem Codewort $x' \in \mathcal{C}$ decodiert, das unter allen Codew\"ortern minimalen Hamming-Abstand zu $y$ hat.\\
+Wird $y \in S^n$ empfangen, so wird $y$ zu einem Codewort $x' \in \mathcal{C}$ decodiert, das unter allen Codew\"ortern minimalen Hamming-Abstand zu $y$ hat.
 \[
 	d(x',y)=min\  d(x,y), x \in \mathcal{C}
 \]
-($x'$ muss nicht eindeutig bestimmt sein)	\\
+($x'$ muss nicht eindeutig bestimmt sein)\\
 z.B. $\mathcal{C}$ $ = \{ (0000), (1111) \}$\\
 Empfangen: $0011$ $x'$ nicht eindeutig in diesem Fall.\\
 \\
-($\left| S \right | = 2$: Hamming-Decodierung ist bestm\"oglich, falls jedes Symbol in einem Codewort mit der gleichen Wahrscheinlichkeit $p < \frac{1}{2}$ ver\"andert wird und wenn jedes Codewort gleich wahrscheinlich ist.)\\
+($\left| S \right | = 2$: Hamming-Decodierung ist bestm\"oglich, falls jedes Symbol in einem Codewort mit der gleichen Wahrscheinlichkeit $p < \frac{1}{2}$ ver\"andert wird und wenn jedes Codewort gleich wahrscheinlich ist.)
 
 \subsubsection{b) Minimalabstand}
-$\mathcal{C}$ Blockcode in $S^n$, Minimalabstand von $\mathcal{C}$: \\
+$\mathcal{C}$ Blockcode in $S^n$, Minimalabstand von $\mathcal{C}$:
 \[
 	d(\mathcal{C}) = min \  d(x,x')\mathbf{,}\ \  x,x' \in \mathcal{C}, x \neq x'
 \]
-
 (Ist $\left| \mathcal{C} \right| = 1$, so $d(\mathcal{C})=n$)\\
-$[Bsp: \mathcal{C} = \lbrace (00000),(01101),(10110),(11011) \rbrace , d(\mathcal{C})=3]$\\
+$[Bsp: \mathcal{C} = \lbrace (00000),(01101),(10110),(11011) \rbrace , d(\mathcal{C})=3]$
 
 \subsubsection{c)} 
-Ein Blockcode $\mathcal{C}$ ist \textbf{t-Felder-korrigierend}, falls $d(\mathcal{C}) \geq 2t+1$, und er hei§t \textbf{t-Fehler-erkennend}, falls $d(\mathcal{C}) \geq t+1$. \\
+Ein Blockcode $\mathcal{C}$ ist \textbf{t-Felder-korrigierend}, falls $d(\mathcal{C}) \geq 2t+1$, und er hei\ss t \textbf{t-Fehler-erkennend}, falls $d(\mathcal{C}) \geq t+1$. \\
 \\
 Begr\"undung f\"ur die Bezeichnung in c) \\
 "`Kugel"' vom Radius $t$ um $x \in \mathcal{C}: K_t(x) = \{y \in S^n: d(x,y) \leq t\}$\\
@@ -311,12 +305,12 @@ $y$ empfangen:
 \subsection{Definition: Perfekter Code}
 Code $\mathcal{C} \subseteq R^n$ heißt perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
 \[
-	R^n = \bigcup_{x\in \mathcal{C}} K_t(x) \ \text{u. $K_t(x) \cap K_t(x') = \emptyset$ f\"ur $x,x' \in \mathcal{C}, x \neq x'$}
+	R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \quad \text{und} \quad K_t(x) \cap K_t(x') = \emptyset \quad \text{f\"ur}\quad x,x' \in \mathcal{C},\ x \neq x'
 \]
 Dann ist $d(\mathcal{C})=2 \cdot t + 1$, falls $\left| \mathcal{C} \right| > 1$: \\
-Ang. $d(\mathcal{C}) \leq 2\cdot t$. W\"ahle $x,x' \in \mathcal{C}, x \neq x'$, mit $d(x,x') = d(\mathcal{C}) \leq 2 \cdot t$. \\
+Ang. $d(\mathcal{C}) \leq 2\cdot t$. W\"ahle $x,x' \in \mathcal{C},\ x \neq x'$, mit $d(x,x') = d(\mathcal{C}) \leq 2 \cdot t$. \\
 W\"ahle $y \in R^n$ mit $d(x,y)=t,\ d(y,x') \leq t$\\
-$y \in K_t(x) \cap K_t(x') \lightning$\\
+$y \in K_t(x) \cap K_t(x')$ Widerspruch\\
 $d(\mathcal{C}) \leq 2 \cdot t + 1$ \\
 \\
 W\"ahle $x \in \mathcal{C}$, w\"ahle $y \in R^n$ mit $d(x,y)=t+1$. Nach Vorraussetzung existiert $x' \in \mathcal{C}$ mit $y \in K_t(x')$. 
@@ -340,7 +334,7 @@ Trivial Beispiele:
 \subsection{Lemma}
 $\left| R \right| = q,\ x \in R^n,\ t \in \N$ \\
 Dann ist $\left| K_t(x) \right| = \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i$ \\
-$(\binom{n}{i}=\frac{n\!}{i\! \cdot (n-i)\!})$ \\
+$\left(\binom{n}{i}=\frac{n\!}{i\! \cdot (n-i)\!}\right)$
 
 \subsubsection{Beweis}
 Abstand 0 zu $x$: 1 Word (n\"amlich $x$): $\binom{n}{0} \cdot (q-1)^0 =1$ \\
@@ -348,15 +342,15 @@ Abstand $i>0$ zu x: \\
 Anzahl der Auswahl von $i$ Positionen aus $n$ Positionen: $\binom{n}{i}$ \\
 An jeder Position $q-1$ \"Anderungsm\"oglichkeiten. \\
 $\rightarrow$ insgesamt $(q-1)^i$ M\"oglichkeiten, \\
-Anzahl der W\"orter vom Abstand $i$ von $x$: $\binom{n}{i} \cdot (q-1)^i$ \\
+Anzahl der W\"orter vom Abstand $i$ von $x$: $\binom{n}{i} \cdot (q-1)^i$
+
 \subsubsection{Satz}
 Sei $\mathcal{C}$ ein Code der L\"ange $n$ \"uber $R$, $\left| \mathcal{C} \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\mathcal{C}) \geq 2 \cdot t + 1,\ t=\lfloor \frac{d(\mathcal{C})-1}{2}\rfloor$.
 \begin{itemize}
 	\item[a)] (Kugelpackungsschranke) \\
-	$ %FORMEL UNTEN IST EIN BISCHEN ZU KLEIN, mit \[ \] Sieht es aber bescheuert aus so weit in der mitte.
-	\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}\\
-	$
-	\item[b)] $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. $\left|\mathcal{C}\right| = \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
+	$\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
+	\item[b)] $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. \\
+	$\left|\mathcal{C}\right| = \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
 \end{itemize}
 
 \subsubsection{Beweis}
@@ -393,25 +387,24 @@ $dim(\mathcal{C})=4,\ C_4,C_5,C_6,C_7$ frei w\"ahlbar $\curvearrowright C_1,C_2,
 Basis:
 \begin{align*}
 	&(\ldots 1000) \rightarrow (1101000) \\
-	&(\ldots 0100) \rightarrow (0110100) \indent \left| \mathcal{C} \right| =2^4 =16\\
+	&(\ldots 0100) \rightarrow (0110100) \quad \left| \mathcal{C} \right| =2^4 =16\\
 	&(\ldots 0010) \rightarrow (1010010) \\
 	&(\ldots 0001) \rightarrow (1110001)
 \end{align*}
-
-
-\noindent $d(\mathcal{C})=3:$\\
+$d(\mathcal{C})=3:$\\
 Ang. $d(\mathcal{C})=d$. W\"ahle $x,x' \in \mathcal{C}$ mit $d(x,x')=d$\\
 Translationsinvarianz der Metrik: \\
-$d=d(x,x')=d(x+x,x+x')=d(0,x+x')$ \\
-$wt(x) = $ Anzahl der Einsen in $x$ \\
-\indent \ \ \ $= d(0,x)$. \\
-$d(\mathcal{C}) = min\ wt(x).\ x \in \mathcal{C},\ x \neq \mathcal{V}$. \\
-\\
+\begin{align*}
+	d &=d(x,x')=d(x+x,x+x')=d(0,x+x') \\
+	wt(x) &= \text{ Anzahl der Einsen in } x \\
+	&= d(0,x)\\
+	d(\mathcal{C}) &= \min wt(x),\quad x \in \mathcal{C},\quad x \neq \mathcal{V}
+\end{align*}
 Zeige: Jeder Vektor $\neq v$ in $\mathcal{C}$ enth\"alt mind. 3 Einsen.\\
 $= 3$ weist man nach durch \"uberpr\"ufen aller 15 von $\mathcal{V}$ verschiedenen Codew\"ortern oder durch Analyse der Gleichung. 
 \begin{align*}
 	&(C_1,\ldots,C_7) \in \mathcal{C} \text{ Ang. } C_7=1 \\
-	\Rightarrow &C_1+C_4+C_6=1. \text{Wenn alle Eins } \checked \\
+	\Rightarrow &C_1+C_4+C_6=1. \text{ Wenn alle Eins } \checked \\
 	&C_1=1,C_4=C_6=0\\
 	&C_4=1,C_1=C_6=0\\
 	&C_6=1,C_1=C_4=0\\
@@ -425,7 +418,7 @@ $d(\mathcal{C}) \leq 3,\ d(\mathcal{C})=3=2 \cdot 1 + 1$\\
 Pr\"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:
 \begin{align*}
 	\left|\mathcal{C}\right| &=16\\
-	\left|\mathcal{C}\right| &\leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i} \indent (q=2, t=1, n=7)\\
+	\left|\mathcal{C}\right| &\leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i} \quad (q=2, t=1, n=7)\\
 	&=\frac{2^7}{1+\binom{7}{1}}=\frac{2^7}{2^3}=2^4=16\\
 	&\mathcal{C}\text{ perfekt!}
 \end{align*}
