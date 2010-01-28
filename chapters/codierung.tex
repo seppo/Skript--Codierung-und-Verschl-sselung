@@ -223,7 +223,7 @@ Dann lassen sich $n$ Informationssymbole (oder Strings von Informationssymbolen)
 $S$ endl. Alphabet, $n \in \N$. \\
 $a,b \in S^n$ $a=(a_1, \ldots, a_n)$, $b=(b_1, \ldots, b_n)$ \\
 $d(a, b)= \sharp \lbrace i : a_i \neq b_i \rbrace$ \\
-\textbf{Hamming-Abstand} von $a$ und $b$. \\
+\textbf{Hamming-Abstand} von $a$ und $b$ (Anzahl der unterschiedlichen Stellen). \\
 (Richard W. Hamming, 1915-1998, Begr\"under der Codierungstheorie)
 
 \subsubsection{Eigenschaften}
@@ -291,7 +291,7 @@ $d(\mathcal{C}) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so i
 
 %Verbesser + Verschoenert, aber kein plan was der titel hier ist
 \section{Titel???}
-\noindent
+
 $d(\mathcal{C}) \geq 2 \cdot t + 1,\ \mathcal{C} \subseteq R^N$ \\
 $K_t(x) \cap K_t(x')=\emptyset$ \\
 $x, x' \in \mathcal{C},\ x \neq x'$ \\
@@ -303,7 +303,7 @@ $y$ empfangen:
 \end{itemize}
 
 \subsection{Definition: Perfekter Code}
-Code $\mathcal{C} \subseteq R^n$ heiﬂt perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
+Code $\mathcal{C} \subseteq R^n$ hei\ss t perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
 \[
 	R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \quad \text{und} \quad K_t(x) \cap K_t(x') = \emptyset \quad \text{f\"ur}\quad x,x' \in \mathcal{C},\ x \neq x'
 \]
@@ -314,7 +314,6 @@ $y \in K_t(x) \cap K_t(x')$ Widerspruch\\
 $d(\mathcal{C}) \leq 2 \cdot t + 1$ \\
 \\
 W\"ahle $x \in \mathcal{C}$, w\"ahle $y \in R^n$ mit $d(x,y)=t+1$. Nach Vorraussetzung existiert $x' \in \mathcal{C}$ mit $y \in K_t(x')$. 
-
 \begin{align*}
 	&d(x,x') \leq d(x,y) + d(y,x') \leq t+1+t = 2 \cdot t + 1 \\
 	&d(\mathcal{C}) \leq 2\cdot t + 1
@@ -422,3 +421,165 @@ Pr\"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:
 	&=\frac{2^7}{1+\binom{7}{1}}=\frac{2^7}{2^3}=2^4=16\\
 	&\mathcal{C}\text{ perfekt!}
 \end{align*}
+
+% Vorlesung vom 28.01.2010
+\section{Lineare Codes}
+Def: Sei $K$ ein endlicher K\"orper, $n \in \N$. Ein linearer Code $\mathcal{C}$ der L\"ange $n$ ist ein Unterraum von $K^n$. (Zeilenvektoren) [Alphabet = $k$] \\
+Ist $dim(\mathcal{C})=k$, so hei\ss t $\mathcal{C}$ $\left[n,k\right]$-Code.\\
+Ist $d(\mathcal{C})=d$, so $\left[ n,k,d \right]$-Code. \\
+Beachte: $\left| K \right| = q \Rightarrow \left| \mathcal{C} \right| =q^k$.\\
+Informationsrate (Rate) von $\mathcal{C}: \frac{k}{n}$.\\
+\subsection{Bemerkung \"uber endliche K\"orper}
+\begin{itemize}
+	\item[a)] $p$ Primzahl, $\Z_p$ ist K\"orper der Ordnung $p$
+	\item[b)] $K$ endlicher K\"orper $\Rightarrow \left| K \right| = p^m$, $p$ Primzahl, $m \in \N$.
+	\item[c)] Zu jeder Primzahlpotenz $p^m$ existiert (bis auf Isomorphie) genau ein K\"orper der Ordnung $p^m$.
+	\item[d)] $f$ sei irreduzibles Polynom vom Grad $m$ \"uber $\Z_p$. $K=\lbrace g \in \Z_p [x] : Grad(g) \leq m-1 \rbrace, \quad \left| K \right| = p^m$\\
+	$K$ wird K\"orper: Addition = \"ubliche Addition von Polynomen \\
+	Multiplikation = normale Multiplikation + Reduktion $\md{f}$ \\
+	(AES : $\left| K \right| = 2^8$)
+\end{itemize}
+
+\subsection{Bsp}
+\begin{itemize}
+	\item[a)] $n$-facher Wiederholungscode \"uber $\Z_p$\\
+	$\mathcal{C}=\lbrace (0,\ldots,0),(1,\ldots,1),\ldots,(p-1,\ldots,p-1)\rbrace$\\ % <- n ->
+	$\mathcal{C}$ ist linerer Code, $\mathcal{C}=<(1,\ldots,1)>$\\
+	$[n,1,n]$-Code
+	\item[b)] Hamming-Code ist linearer [7,4,3]-Code \"uber $\Z_2$
+	\item[c)] $\mathcal{C} = \lbrace (c_1,\ldots,c_n) : c_i \in \Z_p,\sum^n_{i=1}{c_i}=0 \rbrace$ \\
+	$(p=2 : \text{ Parity Check Code})$, linear $[n,n-1,2]$-Code \"uber $\Z_p$\\
+	Basis von $\mathcal{C}:(1,0,\ldots,0,p-1), (0,1,0,\ldots,0,p-1), \ldots, (0,\ldots,0,1,p-1)$
+\end{itemize}
+\subsection{Definition}
+$K$ endl. K\"orper\\
+\begin{itemize}
+	\item[a)] $x \in K^n$, so gewicht von $x$, $wt(x)$, definiert durch $wt(x)=\sharp \lbrace i:x_i\neq0 \rbrace$
+	\item[b)] $\lbrace 0 \rbrace \neq \mathcal{C} \subseteq K^n$, so ist das Minimalgewicht von $\mathcal{C}$ def. durch $wt(\mathcal{C})=\underset{x\in\mathcal{C}, x\neq 0}{min} wt(x)$
+\end{itemize}
+
+\subsection{Satz}
+Ist $\mathcal{C} \neq \lbrace 0 \rbrace$ ein linearer Code, so ist $d(\mathcal{C})=wt(\mathcal{C})$. (Beweis wie beim [7,4,3]-Hamming Code)
+
+\subsection{Definition}
+Sei $\mathcal{C}$ ein $[n,k]$-Code \"uber $K$, sei $g_1=(g_{11},\ldots,g_{1n}),\ldots,(g_{k1},\ldots,g_{kn})=(g_{k1},\ldots,g_{kn})$ eine Basis von $\mathcal{C}$.
+\[
+\text{Dann hei\ss t die } k\times n\text{ -Matix } G=(g_1,\ldots,g_k)^t=\begin{pmatrix}
+	g_{11}&\ldots&g_{1n}\\
+	\vdots&&\vdots\\
+	g_{k1}&\ldots&g_{kn}
+\end{pmatrix}
+\text{ Erzeugermatrix von } \mathcal{C}
+\]
+\subsection{Satz}
+Sei $G$ ein Erzeugermatrix von $\mathcal{C}$. Dann ist $\mathcal{C} = \lbrace \underset{1\times k}{u} \cdot \underset{k\times x}{G}: u \in K^k \rbrace$
+Beweis: $u=(u_1,\ldots,u_k),u_i\in K$\\
+$uG=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots,u_kg_k \in \mathcal{C}$\\
+\subsection{Bemerkung}
+\begin{itemize}
+	\item[a)] Die Abb $\lbrace K^k \rightarrow \mathcal{C}, u \longmapsto uG$ ist bijektiv. \\
+	$u \in K^k$ Informationsw\"orter \\
+	Codert in Codew\"orter durch $uG$.
+	\item[b)] Elementare Zeilenumformungen an Erzeugermatrix liefern Erzeugermatrix.
+\end{itemize}
+\subsection{Bsp: Hamming-$[7,4]$-Code \"uber $\Z_7$}
+%
+%hier Copy-Past-Spa\ss 
+%
+\noindent
+Erzeugermatrix
+\[	G=
+	\begin{pmatrix}
+		1 & 0 & 0 & 0 & 1 & 0 & 1\\
+		0 & 1 & 0 & 0 & 0 & 1 & 1\\
+		0 & 0 & 1 & 0 & 1 & 1 & 1\\
+		0 & 0 & 0 & 1 & 1 & 1 & 0
+	\end{pmatrix}
+\]
+Cod. eines Informationswort $(u_1,u_2,u_3,u_4)$ it $G$
+\[
+	(u_1,u_2,u_3,u_4) \rightarrow (u_1,u_2,u_3,u_4) \cdot G =  (u_1,u_2,u_3,u_4,u_1+u_3+u_4,u_2+u_3+u_4,u_1+u_2+u_3)
+\]
+\subsection{Def}
+$\mathcal{C} \quad [n,k]$-Code Erzeugermatix $\mathcal{C}$ ist eine Standardform, falls ei folg. Gestalt hat.
+%
+%	Matrix Spa\ss 
+%
+Cod. $(u_1,\ldots,u_k) \cdot G = (u_1,\ldots,u_k,*,\ldots,*)$
+\subsection{Satz}
+Sei $\mathcal{C}$ ein $[n,k]$-Code \"uber $K$. Dann existiert $(n-k)\times n$-Matrix $H$ \"uber $K$ mit folgenden Eigenschaften: \\
+Sei $y\in K^n$. Dann: $y \in \mathcal{C} \Leftrightarrow H \cdot y^t = \vec{0}$ 
+\\
+$H$ hei\ss t Kontrollmatrix von $\mathcal{C}$ ($\Leftrightarrow y \cdot H^t = \vec{0}$) \\
+Es ist $rg(H)=n-k$ (Dann ist $H \cdot G^t=0$)
+
+\subsection{Beweis}
+Sei $g_1,\ldots,g_k$ Basis von $\mathcal{C}$, $G=(g_1,\ldots,g_2)^t$ \\
+$g_i=(g_{i1},\ldots,g_{in})$\\
+Betrachte LGS: 
+\begin{align*}
+	g_{11} x_1 + \ldots + g_{1n} x_n &= 0\\
+	\vdots&\\
+	g_{k1} x_1 + \ldots + g_{kn} x_n &= 0
+\end{align*}
+d.h. $G \cdot (x_1,\ldots,x_n)^t = 0$. Koeffizientmatrix $G$ hat Rang $k$.\\
+Dim. des L\"oungsraums dieses LGS $= n - k$ \\
+Sei $h_1,\ldots,h_{n-k} \in K^n$ Basis des L\"osungsraums dieses LGS. \\
+\[
+	H_i=(h_1,\ldots, h_{n-k})^t, \quad H \cdot g^t = (h_1 g_i^t, \ldots, h_{n-k} g_i^t)=0,i=1,\ldots,k
+\]
+$H y^t=0$ f\"ur alle $y \in \mathcal{C}$.\\
+$rg(H)=n-k \Rightarrow dim Kern(H) = k = dim ( \mathcal{C})$\\
+$\mathcal{C}=Kern(H)$
+
+\subsection{Bermerkung}
+\begin{itemize}
+	\item Kontrollmatrix kann zur Fehlererkennung verwendet werden.	
+	\item Beweis liefert Verfahren: Erzeugermatrix $\rightarrow$ Kontrollmatrix
+	\item Umgekehrt: Kontrollmatrix $\rightarrow$ Erzeugermatrix (Bilde Basis des L\"osungsraums von $H y^t=0$
+\end{itemize}
+
+\subsection{Beispiel}
+\begin{itemize}
+	\item [a)] Parity-Check-Code \"uber $\Z_p$ \\
+	$\mathcal{C} = \lbrace (c_1,\ldots,c_n): \sum^n_{i=1}{c_i}=0 \rbrace,\quad k=n-1$\\
+	$H=(1,1,\ldots,1)$\\
+	$H \cdot (c_1,\ldots,c_n)^t = 0 \Leftrightarrow c_1 + \ldots c_n = 0 \Leftrightarrow (c_1,\ldots,c_n) \in \mathcal{C}$
+	\item [b)] $[7,4]$-Hamming-Code \\
+	%
+	%	Hamming-Code Spa\ss 
+	%
+	\[	H=
+		\begin{pmatrix}
+			1 & 0 & 0 & 1 & 0 & 1 & 1\\
+			0 & 1 & 0 & 1 & 1 & 0 & 1\\
+			0 & 0 & 1 & 0 & 1 & 1 & 1
+		\end{pmatrix}
+	\]
+	\item [c)] $\mathcal{C}$ Code mit Erzeugermatrix\\
+	$
+	\begin{pmatrix}
+		1 & 1 & 0 & 1\\
+		0 & 1 & 0 & 1
+	\end{pmatrix}$
+	 $[4,2]$-Code \"uber $\Z_2$\\
+	 $G \cdot (x_0,\ldots,x_4)=0$
+	 \begin{align*}
+	 	x_1+&x_2 + &x_4&=0\\
+	 	&x_2 + &x_4 &=0
+	\end{align*}
+	$x_5,x_4$ frei w\"ahlen, $x_1,x_2$ fesgelegt.\\
+	\[
+		\text{Basis }
+		(0 0 1 0), (0 1 0 1)
+	\]	
+	\[
+		\text{Kontrollmatrix }
+		H=
+		\begin{pmatrix}
+			0 & 0 & 1 & 0 \\
+			0 & 1 & 0 & 1
+		\end{pmatrix}
+	\]
+	$\mathcal{C} \lbrace (c_1,\ldots,c_4) : c_3=0,c_2+c_4=0\rbrace$	
+\end{itemize}
