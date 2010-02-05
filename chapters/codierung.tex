@@ -663,23 +663,23 @@ $\mathcal{C}=Kern(H)$
 %
 
 \subsection{Satz}
-$\varphi$ $[n,k]$-Code, $\varphi \neq \lbrace \vec{0} \rbrace, K^n$, Kontrollmatrix $H$.
-$d(\varphi)=wt(\varphi)=min\lbrace r : \text{ in H gibt es r linear abh\"anige Spalten} \rbrace = max \lbrace r \text{ je r-1 Spalten linear unabh\"ängig} \rbrace$
+$\mathcal{C}$ $[n,k]$-Code, $\mathcal{C} \neq \lbrace \vec{0} \rbrace, K^n$, Kontrollmatrix $H$.
+$d(\mathcal{C})=wt(\mathcal{C})=min\lbrace r : \text{ in H gibt es r linear abh\"anige Spalten} \rbrace = max \lbrace r \text{ je r-1 Spalten linear unabh\"angig} \rbrace$
 \subsection{Beweis}
-$s_1,\ldots,s_n$ Spalten von $H$, L\"ange $n-k$. $\varphi \neq \lbrace 0 \rbrace, k> 1, n-k<n \Rightarrow s_1,\ldots,s_n$ lin. abhängig.
-Sei $min \rbrace r: \ldots \lbrace = w$. $s_{i_1},\ldots, s_{i_w}$ lin. abhängig.
+$s_1,\ldots,s_n$ Spalten von $H$, L\"ange $n-k$. $\mathcal{C} \neq \lbrace 0 \rbrace, k> 1, n-k<n \Rightarrow s_1,\ldots,s_n$ lin. abh\"angig.
+Sei $min \rbrace r: \ldots \lbrace = w$. $s_{i_1},\ldots, s_{i_w}$ lin. abh\"angig.
 Ex. $c_{i_1},\ldots,c_{i_w} \in K$, nicht alle $=0$, $c_{i_1} s_{i_1}+\ldots+ c_{i_w} s_{i_w}=0$
 $w min \Rightarrow$ alle $c_{i_1},\ldots, c_{i_w} \neq 0$.
 
-Def: $c=(c_1, \ldots,  c_n)$ mit den $c_{i_j}$ an den Stellen, $i_j$, übrig. $c_i=0$
+Def: $c=(c_1, \ldots,  c_n)$ mit den $c_{i_j}$ an den Stellen, $i_j$, \"ubrig. $c_i=0$
 \begin{align*}
 	\sum{c_i s_i}^n_{i=1} = c_{i_1} s_{i_1} + \ldots + c_{i_w} s_{i_w} &=0\\
 	\sum{c_i s_i^t}^n_{i=1}&=0 \\
-	Hc^t=0 \quad c \in \varphi
+	Hc^t=0 \quad c \in \mathcal{C}
 \end{align*}
-$wt(c)=w$, Min. Gewicht von $\varphi \leq wt(c)=w$ \\
-Ang. es ex. $0 \neq c' \in \varphi, wt(c')=w' < w$. $Hc'^t=0$\\
-$c'=(c'_1, \ldots,  c'_n)$ $\sum{c'_i s_i}^n_{i=1}=0 \Rightarrow$ $w'$ der Spalten $c_1,\ldots,c_n$ sind linear abhänging. Widerspruch! \\
+$wt(c)=w$, Min. Gewicht von $\mathcal{C} \leq wt(c)=w$ \\
+Ang. es ex. $0 \neq c' \in \mathcal{C}, wt(c')=w' < w$. $Hc'^t=0$\\
+$c'=(c'_1, \ldots,  c'_n)$ $\sum{c'_i s_i}^n_{i=1}=0 \Rightarrow$ $w'$ der Spalten $c_1,\ldots,c_n$ sind linear abh\"anging. Widerspruch! \\
 $wt(c)=w$
 
 %
@@ -687,79 +687,79 @@ $wt(c)=w$
 %
 
 \subsection{Beispiel}
-$[7,4]$-Hamming-Code über $\Z_2$\\
+$[7,4]$-Hamming-Code \"uber $\Z_2$\\
 %
 % Kontrollmatrix hier
 %
-Keine Spalte ist Nullspalte, keine zwei Spalten sind  gleich. 1.,2.,4. Spalte sind linear abhänging.
+Keine Spalte ist Nullspalte, keine zwei Spalten sind  gleich. 1.,2.,4. Spalte sind linear abh\"anging.
 \[
-	(1,0,0)^t + (0,1,0)^t + (1,1,0)^t = (0,0,0)^t \quad d(\varphi)=3
+	(1,0,0)^t + (0,1,0)^t + (1,1,0)^t = (0,0,0)^t \quad d(\mathcal{C})=3
 \]
 \subsection{Korollar (Singleton-Schranke)}
-Ist $\varphi$ ein linearer $[n,k]$-Code, $d(\varphi)=d$, so gilt:
+Ist $\mathcal{C}$ ein linearer $[n,k]$-Code, $d(\mathcal{C})=d$, so gilt:
 \[
 	d \leq n-k + 1
 \]
 \subsection{Beweis}
-2. Gleichheit: $d \leq rg(H)+1=n-k+1$ (Zeilen von H sind lin. unabhängig)
+2. Gleichheit: $d \leq rg(H)+1=n-k+1$ (Zeilen von H sind lin. unabh\"angig)
 \subsection{Bemerkung}
-(Nebenklassen von Unterräumen in Vektorräumen)
-$\varphi$ ein Umterraum von Vektorraum $V$. Für jedes $v \in V$:
+(Nebenklassen von Unterr\"aumen in Vektorr\"aumen)
+$\mathcal{C}$ ein Umterraum von Vektorraum $V$. F\"ur jedes $v \in V$:
 \[
-	v + \varphi = \lbrace v+x : x \in \varphi \lbrace
+	v + \mathcal{C} = \lbrace v+x : x \in \mathcal{C} \lbrace
 \]
-Nebenklasse von $\varphi$ zu $v$
+Nebenklasse von $\mathcal{C}$ zu $v$
 \begin{itemize}
 	\item[a)] $v_1,v_2 \in V$. Dann: \\
-					$v_1 + \varphi = v_2 + \varphi$ oder $(v_1 + \varphi) \cap (v_2 + \varphi) = \emptyset$
-	\item[b)] $v_1 + \varphi = v_2 + \varphi \Leftrightarrow v_1-v_2 \in \varphi$\\
-						($v+ \varphi = \varphi (\vec{0}+\varphi) \leftrightarrow v \in \varphi$)
-	\item[c)] Wähle aus jeder Nebenklasse einen Vektor $v_i$:\\
+					$v_1 + \mathcal{C} = v_2 + \mathcal{C}$ oder $(v_1 + \mathcal{C}) \cap (v_2 + \mathcal{C}) = \emptyset$
+	\item[b)] $v_1 + \mathcal{C} = v_2 + \mathcal{C} \Leftrightarrow v_1-v_2 \in \mathcal{C}$\\
+						($v+ \mathcal{C} = \mathcal{C} (\vec{0}+\mathcal{C}) \leftrightarrow v \in \mathcal{C}$)
+	\item[c)] W\"ahle aus jeder Nebenklasse einen Vektor $v_i$:\\
 	\[
-			V=\bigcup^{\cdot} (v_i + \varphi)
+			V=\bigcup^{\cdot} (v_i + \mathcal{C})
 	\]
-	\item[d)] V VR über endl. Körper: $\left| v + \varphi \right| = \left| \varphi \right|$
-	\item[e)] $\varphi$ $[n,k]$-Code ($V=K^n, dim(\varphi)=k,\left|\varphi\right|=q^k, \text{ falls } \left|K\right|=q$) \\
+	\item[d)] V VR \"uber endl. K\"orper: $\left| v + \mathcal{C} \right| = \left| \mathcal{C} \right|$
+	\item[e)] $\mathcal{C}$ $[n,k]$-Code ($V=K^n, dim(\mathcal{C})=k,\left|\mathcal{C}\right|=q^k, \text{ falls } \left|K\right|=q$) \\
 						Anzahl der Nebenklassen ist $q^{n-k}$
 \end{itemize}
 
 \section{Syndrom-Decodierung linearer Code}
-$\varphi$ $[n,k]$-Code über $K$, $\left| K \right| = q$, Kontrollmatrix $H$, $(n-k) \times n$-Matrix. Ist $y \in K^n$, so heißt $Hy^t \in K^{n-k}$ heißt Syndrom von y.
+$\mathcal{C}$ $[n,k]$-Code \"uber $K$, $\left| K \right| = q$, Kontrollmatrix $H$, $(n-k) \times n$-Matrix. Ist $y \in K^n$, so hei\ss t $Hy^t \in K^{n-k}$ hei\ss t Syndrom von y.
 \begin{itemize}
-	\item[a)]	$x \in \varphi \Leftrightarrow Hx^t = 0$ ($x$ hat Syndrom $0$)
-	\item[b)] $y_1,y_2 \in K^n$. $y_1,y_2$ liegen in der gleichen Nebenklasse zu $\varphi$ (d.h. $y_1 + \varphi = y_2 + \varphi \Leftrightarrow y_1,y_2$ haben gleiches Syndrom \\
+	\item[a)]	$x \in \mathcal{C} \Leftrightarrow Hx^t = 0$ ($x$ hat Syndrom $0$)
+	\item[b)] $y_1,y_2 \in K^n$. $y_1,y_2$ liegen in der gleichen Nebenklasse zu $\mathcal{C}$ (d.h. $y_1 + \mathcal{C} = y_2 + \mathcal{C} \Leftrightarrow y_1,y_2$ haben gleiches Syndrom \\
 	(d.h. $Hy_1^t = Hy_2^t$)
 	\[
-		[y_1 + \varphi = y_2 + \varphi \Leftrightarrow y_1 - y_2 \in \varphi \Leftrightarrow 0 = H(y_1 - y_2)^t = Hy_1^t - Hy_2^t \Leftrightarrow Hy_1^t = Hy_2^t
+		[y_1 + \mathcal{C} = y_2 + \mathcal{C} \Leftrightarrow y_1 - y_2 \in \mathcal{C} \Leftrightarrow 0 = H(y_1 - y_2)^t = Hy_1^t - Hy_2^t \Leftrightarrow Hy_1^t = Hy_2^t
 	\]
 	\item[c)] Jedes $z \in K^{n-k}$ tritt als Syndrom auf.	 
 \end{itemize}
-Ang. $x \in \varphi$ wird gesendet, $y=x+f$, wird empfangen $f$ Fehlervektor. $y + \varphi = f + \varphi$, $y$ und $f$ haben das gleiche Syndrom, nämlich $Hy^t$
-Bestimmt in der Nebenklasse von $y$ ein $e$ mit kleinstmögliche Gewicht (Nebenklassenführer) \\
-Decod: $y \rightarrow y - e \in \varphi$ (Hamming-Decod.)
-Ordne die Nebenklassenführer nach der lexikogr. ihrer Syndome. \\
-Speicherbedarf: $q^{n-k}$ Nebenklassenführer, jeder hat Länge $n$ \\
-(Besser als Durchforsten der Liste aller Codewörter ($q^k$, falls $k \geq \frac{n}{2}$)\\
-$\varphi$ $[70,50]$-Code über $\Z_2$. $2^{20}$ Nebenklassenführer, je $70$ BitLänge. Speicher: $70 \cdot 2^{20} Bit ~ 8,75 MegaByte$ \\
-Speicher für Codewörter: $70 \cdot 2^{50} Bit 9 PetaByte$
+Ang. $x \in \mathcal{C}$ wird gesendet, $y=x+f$, wird empfangen $f$ Fehlervektor. $y + \mathcal{C} = f + \mathcal{C}$, $y$ und $f$ haben das gleiche Syndrom, n\"amlich $Hy^t$
+Bestimmt in der Nebenklasse von $y$ ein $e$ mit kleinstm\"ogliche Gewicht (Nebenklassenf\"uhrer) \\
+Decod: $y \rightarrow y - e \in \mathcal{C}$ (Hamming-Decod.)
+Ordne die Nebenklassenf\"uhrer nach der lexikogr. ihrer Syndome. \\
+Speicherbedarf: $q^{n-k}$ Nebenklassenf\"uhrer, jeder hat L\"ange $n$ \\
+(Besser als Durchforsten der Liste aller Codew\"orter ($q^k$, falls $k \geq \frac{n}{2}$)\\
+$\mathcal{C}$ $[70,50]$-Code \"uber $\Z_2$. $2^{20}$ Nebenklassenf\"uhrer, je $70$ BitL\"ange. Speicher: $70 \cdot 2^{20} Bit ~ 8,75 MegaByte$ \\
+Speicher f\"ur Codew\"orter: $70 \cdot 2^{50} Bit 9 PetaByte$
 %
 % Beispiel
 %
 \subsection{Beispiel}
-$\varphi$ $[5,2]$-Code über $\Z_2$, Kontrollmatrix
+$\mathcal{C}$ $[5,2]$-Code \"uber $\Z_2$, Kontrollmatrix
 \[
 	\begin{pmatrix}
 		H
 	\end{pmatrix}
 \]
-$d(\varphi)=3$\\
-$(x_1,\ldots,x_5) \in \varphi \Leftrightarrow x_1+x_5 = 0, x_2+x_3=0,x_2+x_4+x_5=0$
+$d(\mathcal{C})=3$\\
+$(x_1,\ldots,x_5) \in \mathcal{C} \Leftrightarrow x_1+x_5 = 0, x_2+x_3=0,x_2+x_4+x_5=0$
 $\begin{pmatrix}
 	G
 \end{pmatrix}
 $
-Nebernklasse von $\varphi$.\\
-$\varphi = (000000) + \varphi = \lbrace (00000),(11101),(011110),(10011)$
+Nebernklasse von $\mathcal{C}$.\\
+$\mathcal{C} = (000000) + \mathcal{C} = \lbrace (00000),(11101),(011110),(10011)$
 %10000 01101 11110 00011
 %01000 10101 00110 11011
 %00100 11001 01010 10111
@@ -767,28 +767,28 @@ $\varphi = (000000) + \varphi = \lbrace (00000),(11101),(011110),(10011)$
 
 \section{Beispiel guter linear Codes}
 \subsection{Hamming-Codes}
-Sei $q$ ein Primzahlpotenz, $K$ Körper mit $\left| K \right| = q$\\
+Sei $q$ ein Primzahlpotenz, $K$ K\"orper mit $\left| K \right| = q$\\
 Sei $l \in  \N$. $n=\frac{q^l-1}{q-1}, k=n-l$  \\
-Denn ex. perfekter $[n,k]$-Code $\varphi$ über $K$, $d(\varphi)=3$.
+Denn ex. perfekter $[n,k]$-Code $\mathcal{C}$ \"uber $K$, $d(\mathcal{C})=3$.
 Hamming-Code.
 \subsubsection{Konstruktion}
-$\left| K^l \backslash \lbrace \vec{0} \rbrace \right| = q^l -1$, je $q-1$ von $0$ versch. Vektoren erzeugen den gleichen 1-dim. Unterräume in $K^l$, d.h.
+$\left| K^l \backslash \lbrace \vec{0} \rbrace \right| = q^l -1$, je $q-1$ von $0$ versch. Vektoren erzeugen den gleichen 1-dim. Unterr\"aume in $K^l$, d.h.
 \[
 	n = \frac{q^l-1}{q^l-1} \quad \text{1-dim Unterraum}
 \]
-Bilde $l\times n$-Matrix $H$: Wähle aus jedem der 1-dim. Unterraum von $K^l$ einen Vektor $\neq 0$ aus und schreibe ihn als Spalte von $H$
-$\varphi = \lbrace x \in K^n : Hx^t=0 \rbrace$
+Bilde $l\times n$-Matrix $H$: W\"ahle aus jedem der 1-dim. Unterraum von $K^l$ einen Vektor $\neq 0$ aus und schreibe ihn als Spalte von $H$
+$\mathcal{C} = \lbrace x \in K^n : Hx^t=0 \rbrace$
 
 %
-% hier fehlt stuff
+% hier fehlt stuff 
 % 
 
-$rg(H)=l$, denn $H$ enthält $l$ lin. unabhängige Spalten.	$dim(\varphi)=n-l=k$, $\left| \varphi \right | = q^k$ \\
-$d(\varphi)=3$ Nach Konstruktion von $H$ sind je zwei Spalten linear unabhänging. Es gibt drei linear abhängige Spalten: $(a,0,\ldots,0)^t,(0,b,0,\ldots,0)^t, (c,c,0,\ldots,0)^t : a,b,c \neq 0$
+$rg(H)=l$, denn $H$ enth\"alt $l$ lin. unabh\"angige Spalten.	$dim(\mathcal{C})=n-l=k$, $\left| \mathcal{C} \right | = q^k$ \\
+$d(\mathcal{C})=3$ Nach Konstruktion von $H$ sind je zwei Spalten linear unabh\"anging. Es gibt drei linear abh\"angige Spalten: $(a,0,\ldots,0)^t,(0,b,0,\ldots,0)^t, (c,c,0,\ldots,0)^t : a,b,c \neq 0$
 \[
 	\frac{c}{a} a,0,\ldots,0)^t + \frac{c}{b} (0,b,0,\ldots,0)^t = (c,c,0,\ldots,0)^t
 \]
 Kugelpackungsbed:	
 $\sum{\binom{n}{j} (q-1)^i}_{j=0}^1=1 + n \cdot (q-1) = 1 + \frac{q^l-1}{q-1}=q^l$\\
-$\frac{q^n}{q^0}=q^{n-l}=q^k = \left| \varphi \right|$
-$\varphi$ perfekt.
+$\frac{q^n}{q^0}=q^{n-l}=q^k = \left| \mathcal{C} \right|$
+$\mathcal{C}$ perfekt.
