@@ -32,15 +32,15 @@ $k_d=k_e$ (oder $k_d$ leicht aus $k_e$ zu berechnen):\\
 
 \subsection{Beispiel f"ur (nicht sicheres) symmetrische Verfahren}
 
-\begin{itemize}
-	\item[a)] $R=S=\left\{0,1,\ldots,25\right\}$\\
+\begin{enumerate}[a)]
+	\item $R=S=\left\{0,1,\ldots,25\right\}$\\
 	Verfahren: Verschiebechiffre\\
 	Schl"ussel: $i \in \left\{0,1,\ldots,25\right\}$\\
 	Verfahren $ x \in \R \longrightarrow x+i \mod{26}=y$\\
 	$y\longmapsto y-i \mod{26} = y$\\
 	$m=x_1 ... x_2 \longrightarrow  c = (x_1 + i \mod{26}) \textbf{}\ldots (x_n +i \mod{26})$, $E(m,i)$\\
 	Unsicher, weil Schl"usselmenge klein ist (Brute Force Angriff).
-	\item[b)] R,S, Schl"usselmenge=Menge aller Permutationen von $\left\{1,\ldots,25\right\}=S_{26}$\\
+	\item R,S, Schl"usselmenge=Menge aller Permutationen von $\left\{1,\ldots,25\right\}=S_{26}$\\
 	Verschl.: W"ahle Permuation $\pi$\\
 	$x \in \R \longrightarrow \pi (x)=y$\\
 	Entschl.: $y \longrightarrow \pi^{-1}(y)=x$\\
@@ -55,7 +55,7 @@ $k_d=k_e$ (oder $k_d$ leicht aus $k_e$ zu berechnen):\\
 	Aufwand: $2\cdot10^{14}$ Sekunden $\approx 6.000.000$ Jahre\\
 	Trotzdem unsicher!\\
 	Grund: Charakteristisches H"aufigkeitsverteilung von Buchstaben in nat"urlichspr. Texten.
-\end{itemize}
+\end{enumerate}
 Verfahren beinhalten viele Verschl"usselungsm"oglichkeiten, abh"angig von der Auswahl des Schl"ussels.\\
 Verfahren bekannt, aber Schl"ussel $k_d$ geheim!\\
 \subsection{Prinzip von Kerkhoffs (1835-1903)}

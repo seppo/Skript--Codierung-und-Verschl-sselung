@@ -345,12 +345,12 @@ Anzahl der W"orter vom Abstand $i$ von $x$: $\binom{n}{i} \cdot (q-1)^i$
 
 \subsubsection{Satz}
 Sei $\mathcal{C}$ ein Code der L"ange $n$ "uber $R$, $\left| \mathcal{C} \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\mathcal{C}) \geq 2 \cdot t + 1,\ t=\lfloor \frac{d(\mathcal{C})-1}{2}\rfloor$.
-\begin{itemize}
-	\item[a)] (Kugelpackungsschranke) \\
+\begin{enumerate}[a)]
+	\item (Kugelpackungsschranke) \\
 	$\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
-	\item[b)] $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. \\
+	\item $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. \\
 	$\left|\mathcal{C}\right| = \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
-\end{itemize}
+\end{enumerate}
 
 \subsubsection{Beweis}
 a)
@@ -434,41 +434,41 @@ Beachte: $\left| K \right| = q \Rightarrow \left| \mathcal{C} \right| =q^k$.\\
 \subsection{Definition: Informationsrate}
 Informationsrate (Rate) von $\mathcal{C}: \frac{k}{n}$.\\
 \subsection{Bemerkung "uber endliche K"orper}
-\begin{itemize}
-	\item[a)] $p$ Primzahl, $\Z_p$ ist K"orper der Ordnung $p$
-	\item[b)] $K$ endlicher K"orper $\Rightarrow \left| K \right| = p^m$, $p$ Primzahl, $m \in \N$.
-	\item[c)] Zu jeder Primzahlpotenz $p^m$ existiert (bis auf Isomorphie) genau ein K"orper der Ordnung $p^m$.
-	\item[d)] $f$ sei irreduzibles Polynom vom Grad $m$ "uber $\Z_p$.\\
+\begin{enumerate}[a)]
+	\item $p$ Primzahl, $\Z_p$ ist K"orper der Ordnung $p$
+	\item $K$ endlicher K"orper $\Rightarrow \left| K \right| = p^m$, $p$ Primzahl, $m \in \N$.
+	\item Zu jeder Primzahlpotenz $p^m$ existiert (bis auf Isomorphie) genau ein K"orper der Ordnung $p^m$.
+	\item $f$ sei irreduzibles Polynom vom Grad $m$ "uber $\Z_p$.\\
 	 $K=\lbrace g \in \Z_p [x] : Grad(g) \leq m-1 \rbrace, \quad \left| K \right| = p^m$\\
 	$K$ wird K"orper:\\
 	Addition = "ubliche Addition von Polynomen \\
 	Multiplikation = normale Multiplikation + Reduktion $\md{f}$ \\
 	(AES : $\left| K \right| = 2^8$)
-\end{itemize}
+\end{enumerate}
 
 \subsection{Bsp}
-\begin{itemize}
-	\item[a)] $n$-facher Wiederholungscode "uber $\Z_p$\\
+\begin{enumerate}[a)]
+	\item $n$-facher Wiederholungscode "uber $\Z_p$\\
 	$\mathcal{C}=\lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},(1,\ldots,1),\ldots,(p-1,\ldots,p-1)\rbrace$\\
 	$\mathcal{C}$ ist linerer Code, $\mathcal{C}=<(1,\ldots,1)>$\\
 	$[n,1,n]$-Code
-	\item[b)] Hamming-Code ist linearer [7,4,3]-Code "uber $\Z_2$
-	\item[c)] $\mathcal{C} = \lbrace (c_1,\ldots,c_n) : c_i \in \Z_p,\sum^n_{i=1}{c_i}=0 \rbrace$ \\
+	\item Hamming-Code ist linearer [7,4,3]-Code "uber $\Z_2$
+	\item $\mathcal{C} = \lbrace (c_1,\ldots,c_n) : c_i \in \Z_p,\sum^n_{i=1}{c_i}=0 \rbrace$ \\
 	$(p=2 : \text{ Parity Check Code})$, linear $[n,n-1,2]$-Code "uber $\Z_p$\\
 	Basis von $\mathcal{C}:(1,0,\ldots,0,p-1), (0,1,0,\ldots,0,p-1), \ldots, (0,\ldots,0,1,p-1)$
-\end{itemize}
+\end{enumerate}
 \subsection{Definition: Gewicht und Minimalgewicht}
 $K$ endl. K"orper
-\begin{itemize}
-	\item[a)] $x \in K^n$, so Gewicht von $x$, $wt(x)$, definiert durch 
+\begin{enumerate}[a)]
+	\item $x \in K^n$, so Gewicht von $x$, $wt(x)$, definiert durch 
 	\[
 		wt(x)=\sharp \lbrace i:x_i\neq0 \rbrace
 	\]
-	\item[b)] $\lbrace 0 \rbrace \neq \mathcal{C} \subseteq K^n$, so ist das Minimalgewicht von $\mathcal{C}$ definiert durch 
+	\item $\lbrace 0 \rbrace \neq \mathcal{C} \subseteq K^n$, so ist das Minimalgewicht von $\mathcal{C}$ definiert durch 
 	\[
 		wt(\mathcal{C})=\underset{x\in\mathcal{C}, x\neq 0}{min} wt(x)
 	\]
-\end{itemize}
+\end{enumerate}
 
 \subsection{Satz}
 Ist $\mathcal{C} \neq \lbrace 0 \rbrace$ ein linearer Code, so ist $d(\mathcal{C})=wt(\mathcal{C})$. (Beweis wie beim [7,4,3]-Hamming Code)
@@ -497,16 +497,17 @@ Beweis:\\
 $u=(u_1,\ldots,u_k),u_i\in K$\\
 $uG=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots + u_kg_k \in \mathcal{C}$\\
 \subsection{Bemerkung}
-\begin{itemize}
-	\item[a)] Die Abb 
+\begin{enumerate}[a)]
+	\item Die Abb 
 	$\begin{cases}
 		K^k & \rightarrow \mathcal{C}\\
 		u & \mapsto uG
 	\end{cases}$ ist bijektiv. \\
 	$u \in K^k$ Informationsw"orter \\
 	Codert in Codew"orter durch $uG$.
-	\item[b)] Elementare Zeilenumformungen an Erzeugermatrix liefern Erzeugermatrix.
-\end{itemize}
+	\item Elementare Zeilenumformungen an Erzeugermatrix liefern Erzeugermatrix.
+\end{enumerate}
+
 \subsection{Beispiel: Hamming-$[7,4]$-Code "uber $\Z_7$}
 
 \begin{align*}
@@ -604,8 +605,8 @@ $\mathcal{C}=Kern(H)$
 \end{itemize}
 
 \subsection{Beispiel}
-\begin{itemize}
-	\item [a)] Parity-Check-Code "uber $\Z_p$ \\
+\begin{enumerate}[a)]
+	\item Parity-Check-Code "uber $\Z_p$ \\
 	$\mathcal{C} = \lbrace (c_1,\ldots,c_n): \sum^n_{i=1}{c_i}=0 \rbrace$\\ %,\quad k=n-1$\\ wo kam das hier her?
 	$H=(1,1,\ldots,1)$\\
 	$H \cdot
@@ -615,7 +616,7 @@ $\mathcal{C}=Kern(H)$
 	c_n
 	\end{pmatrix}
 	= 0 \Leftrightarrow c_1 + \ldots c_n = 0 \Leftrightarrow (c_1,\ldots,c_n) \in \mathcal{C}$
-	\item [b)] $[7,4]$-Hamming-Code
+	\item $[7,4]$-Hamming-Code
 	\begin{align*}
 	\mathcal{C} = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
 										&C_2 + C_4 + C_5 + C_7 = 0,\\
@@ -629,7 +630,7 @@ $\mathcal{C}=Kern(H)$
 			0 & 0 & 1 & 0 & 1 & 1 & 1
 		\end{pmatrix}
 	\]
-	\item [c)] $\mathcal{C}$ Code mit Erzeugermatrix\\
+	\item $\mathcal{C}$ Code mit Erzeugermatrix\\
 	$
 	\begin{pmatrix}
 		1 & 1 & 0 & 1\\
@@ -661,7 +662,7 @@ $\mathcal{C}=Kern(H)$
 		\end{pmatrix}
 	\]
 	$\mathcal{C} \lbrace (c_1,\ldots,c_4) : c_3=0,c_2+c_4=0\rbrace$	
-\end{itemize}
+\end{enumerate}
 
 %
 %	Vorlesung vom 04.02.2010
@@ -737,32 +738,32 @@ $\mathcal{C}$ ein Umterraum von Vektorraum $V$. F"ur jedes $v \in V$:
 	v + \mathcal{C} = \lbrace v+x : x \in \mathcal{C} \rbrace
 \]
 \textbf{Nebenklasse} von $\mathcal{C}$ zu $v$.
-\begin{itemize}
-	\item[a)] $v_1,v_2 \in V$. Dann: \\
+\begin{enumerate}[a)]
+	\item $v_1,v_2 \in V$. Dann: \\
 					$v_1 + \mathcal{C} = v_2 + \mathcal{C}$ oder $(v_1 + \mathcal{C}) \cap (v_2 + \mathcal{C}) = \emptyset$
-	\item[b)] $v_1 + \mathcal{C} = v_2 + \mathcal{C} \Leftrightarrow v_1-v_2 \in \mathcal{C}$\\
+	\item $v_1 + \mathcal{C} = v_2 + \mathcal{C} \Leftrightarrow v_1-v_2 \in \mathcal{C}$\\
 						($v+ \mathcal{C} = \mathcal{C} (=\vec{0}+\mathcal{C}) \Leftrightarrow v \in \mathcal{C}$)
-	\item[c)] W"ahle aus jeder Nebenklasse einen Vektor $v_i$:
+	\item W"ahle aus jeder Nebenklasse einen Vektor $v_i$:
 	\[
 			V=\bigcup^{\bullet} (v_i + \mathcal{C})
 	\]
-	\item[d)] V Vektorraum "uber endl. K"orper: $\left| v + \mathcal{C} \right| = \left| \mathcal{C} \right|$
-	\item[e)] $\mathcal{C}$ $[n,k]$-Code ($V=K^n, dim(\mathcal{C})=k,\left|\mathcal{C}\right|=q^k, \text{ falls } \left|K\right|=q$) \\
+	\item V Vektorraum "uber endl. K"orper: $\left| v + \mathcal{C} \right| = \left| \mathcal{C} \right|$
+	\item $\mathcal{C}$ $[n,k]$-Code ($V=K^n, dim(\mathcal{C})=k,\left|\mathcal{C}\right|=q^k, \text{ falls } \left|K\right|=q$) \\
 						Anzahl der Nebenklassen ist $q^{n-k}$
-\end{itemize}
+\end{enumerate}
 
 \section{Syndrom-Decodierung linearer Code}
 $\mathcal{C}$ $[n,k]$-Code "uber $K$, $\left| K \right| = q$, Kontrollmatrix $H$, $(n-k) \times n$-Matrix.\\
 Ist $y \in K^n$, so hei\ss t $Hy^t \in K^{n-k}$ \textbf{Syndrom} von $y$.
-\begin{itemize}
-	\item[a)]	$x \in \mathcal{C} \Leftrightarrow Hx^t = 0$ ($x$ hat Syndrom $0$)
-	\item[b)] $y_1,y_2 \in K^n$. $y_1,y_2$ liegen in der gleichen Nebenklasse zu $\mathcal{C}$ (d.h. $y_1 + \mathcal{C} = y_2 + \mathcal{C})\\ \Leftrightarrow y_1,y_2$ haben gleiches Syndrom \\
+\begin{enumerate}[a)]
+	\item $x \in \mathcal{C} \Leftrightarrow Hx^t = 0$ ($x$ hat Syndrom $0$)
+	\item $y_1,y_2 \in K^n$. $y_1,y_2$ liegen in der gleichen Nebenklasse zu $\mathcal{C}$ (d.h. $y_1 + \mathcal{C} = y_2 + \mathcal{C})\\ \Leftrightarrow y_1,y_2$ haben gleiches Syndrom \\
 	(d.h. $Hy_1^t = Hy_2^t$)
 	\[
 		[y_1 + \mathcal{C} = y_2 + \mathcal{C} \Leftrightarrow y_1 - y_2 \in \mathcal{C} \Leftrightarrow 0 = H(y_1 - y_2)^t = Hy_1^t - Hy_2^t \Leftrightarrow Hy_1^t = Hy_2^t]
 	\]
-	\item[c)] Jedes $z \in K^{n-k}$ tritt als Syndrom auf.	 
-\end{itemize}
+	\item Jedes $z \in K^{n-k}$ tritt als Syndrom auf.	 
+\end{enumerate}
 Ang. $x \in \mathcal{C}$ wird gesendet, $y=x+f$, wird empfangen. $f$ "`Fehlervektor"'.\\
 $y + \mathcal{C} = f + \mathcal{C}$, $y$ und $f$ haben das gleiche Syndrom, n"amlich $Hy^t$.\\
 Bestimmt in der Nebenklasse von $y$ ein $e$ mit kleinstm"ogliche Gewicht (\textbf{Nebenklassenf"uhrer}) \\
