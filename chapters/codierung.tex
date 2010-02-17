@@ -210,12 +210,12 @@ Codew"orter von Code A,B oder C kommen nur einmal vor. Daher treten nie mehr als
 \subsection{Definition}
 
 $S$ endl. Menge (=Alphabet), $n \in \N$. \\
-Ein Blockcode $\mathcal{C}$
+Ein Blockcode $\Code$
 der (Block-)L"ange $n$ "uber $S$ ist Teilmenge von $S^n=\underset{\longleftarrow \ \  n\ \  \longrightarrow}{S \times \ldots \times S}$ \\ % Pfeilspass <- n -> \times
 \\
-Elemente von $\mathcal{C}$ hei\ss en \textbf{Codew"orter}. \\
+Elemente von $\Code$ hei\ss en \textbf{Codew"orter}. \\
 Ist $\left| S \right| = 2$ (i.d.R. $S=\lbrace 0,1 \rbrace$, so \textbf{bin"ar} Code.\\
-$\left| \mathcal{C} \right| = m$, so ist $m \leq \left| S \right| ^ n$. \\
+$\left| \Code \right| = m$, so ist $m \leq \left| S \right| ^ n$. \\
 \\
 Dann lassen sich $n$ Informationssymbole (oder Strings von Informationssymbolen) codieren (Codierungsfunktion). Folge von Informationssymbolen (oder Strings) werden dann in Folge von Codew"ortern codiert.
 
@@ -237,40 +237,40 @@ $d(a, b)= \sharp \lbrace i : a_i \neq b_i \rbrace$ \\
 				$d(a,b)=d(a+c,b+c)$ (Translationsinvarianz)				
 \end{description}
 
-\noindent Also: Wird $x \in \mathcal{C}$ gesendet und $y \in S^n$ wird empfangen und $d(x,y)=k$, so sind $k$ Fehler aufgetreten.
+\noindent Also: Wird $x \in \Code$ gesendet und $y \in S^n$ wird empfangen und $d(x,y)=k$, so sind $k$ Fehler aufgetreten.
 \subsection{Definition}
 \subsubsection{a) Hamming-Decodierung}
-f"ur Blockcode $\mathcal{C} \subseteq$ $S^n$ \\
-Wird $y \in S^n$ empfangen, so wird $y$ zu einem Codewort $x' \in \mathcal{C}$ decodiert, das unter allen Codew"ortern minimalen Hamming-Abstand zu $y$ hat.
+f"ur Blockcode $\Code \subseteq$ $S^n$ \\
+Wird $y \in S^n$ empfangen, so wird $y$ zu einem Codewort $x' \in \Code$ decodiert, das unter allen Codew"ortern minimalen Hamming-Abstand zu $y$ hat.
 \[
-	d(x',y)=min\  d(x,y), x \in \mathcal{C}
+	d(x',y)=min\  d(x,y), x \in \Code
 \]
 ($x'$ muss nicht eindeutig bestimmt sein)\\
-z.B. $\mathcal{C}$ $ = \{ (0000), (1111) \}$\\
+z.B. $\Code$ $ = \{ (0000), (1111) \}$\\
 Empfangen: $0011$ $x'$ nicht eindeutig in diesem Fall.\\
 \\
 ($\left| S \right | = 2$: Hamming-Decodierung ist bestm"oglich, falls jedes Symbol in einem Codewort mit der gleichen Wahrscheinlichkeit $p < \frac{1}{2}$ ver"andert wird und wenn jedes Codewort gleich wahrscheinlich ist.)
 
 \subsubsection{b) Minimalabstand}
-$\mathcal{C}$ Blockcode in $S^n$, Minimalabstand von $\mathcal{C}$:
+$\Code$ Blockcode in $S^n$, Minimalabstand von $\Code$:
 \[
-	d(\mathcal{C}) = min \  d(x,x')\mathbf{,}\ \  x,x' \in \mathcal{C}, x \neq x'
+	d(\Code) = min \  d(x,x')\mathbf{,}\ \  x,x' \in \Code, x \neq x'
 \]
-(Ist $\left| \mathcal{C} \right| = 1$, so $d(\mathcal{C})=n$)\\
-$[Bsp: \mathcal{C} = \lbrace (00000),(01101),(10110),(11011) \rbrace , d(\mathcal{C})=3]$
+(Ist $\left| \Code \right| = 1$, so $d(\Code)=n$)\\
+$[Bsp: \Code = \lbrace (00000),(01101),(10110),(11011) \rbrace , d(\Code)=3]$
 
 \subsubsection{c)} 
-Ein Blockcode $\mathcal{C}$ ist \textbf{t-Felder-korrigierend}, falls $d(\mathcal{C}) \geq 2t+1$, und er hei\ss t \textbf{t-Fehler-erkennend}, falls $d(\mathcal{C}) \geq t+1$. \\
+Ein Blockcode $\Code$ ist \textbf{t-Felder-korrigierend}, falls $d(\Code) \geq 2t+1$, und er hei\ss t \textbf{t-Fehler-erkennend}, falls $d(\Code) \geq t+1$. \\
 \\
 Begr"undung f"ur die Bezeichnung in c) \\
-"`Kugel"' vom Radius $t$ um $x \in \mathcal{C}: K_t(x) = \{y \in S^n: d(x,y) \leq t\}$\\
+"`Kugel"' vom Radius $t$ um $x \in \Code: K_t(x) = \{y \in S^n: d(x,y) \leq t\}$\\
 \\
-Ist $d(\mathcal{C}) \geq 2t+1$, so sind Kugelm vom Radius $t$ um Codew"orter disjunkt. \\
+Ist $d(\Code) \geq 2t+1$, so sind Kugelm vom Radius $t$ um Codew"orter disjunkt. \\
 \\
-Angenommen es existiert $y \in S^n$ mit $y \in K_t(x)\cap K_t(x')$, $x,x' \in \mathcal{C}, x \neq x'$. Dann $d(x,x') \leq d(x,y)+d(y,x') \leq t+t = 2t$. Widerspruch\\ %LIGHTNING ARROW \lightning
-$x \in \mathcal{C}$ gesendet, $y$ wird empfangen, und angenommen maximal $t$-Fehler sind aufgetreten, dann $y \in K_t(x)$ und Abstand zu jedem anderem Codewort ist $> t$\\
+Angenommen es existiert $y \in S^n$ mit $y \in K_t(x)\cap K_t(x')$, $x,x' \in \Code, x \neq x'$. Dann $d(x,x') \leq d(x,y)+d(y,x') \leq t+t = 2t$. Widerspruch\\ %LIGHTNING ARROW \lightning
+$x \in \Code$ gesendet, $y$ wird empfangen, und angenommen maximal $t$-Fehler sind aufgetreten, dann $y \in K_t(x)$ und Abstand zu jedem anderem Codewort ist $> t$\\
 $\Rightarrow$ Hamming-Decodierung ist korrekt.\\
-$d(\mathcal{C}) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so ist $y$ kein Codewort.\\
+$d(\Code) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so ist $y$ kein Codewort.\\
 \\
 \textbf{Bsp}: 
 \begin{description}
@@ -282,52 +282,52 @@ $d(\mathcal{C}) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so i
 		S_k & \rightarrow & \underset{\longleftarrow \ \ n \ \ \longrightarrow}{S_k S_k \ldots S_k}
 	\end{matrix}$\\
 	\\
-	$\mathcal{C}=\lbrace (s,s,\ldots,s): s \in S \rbrace \subseteq S^n$ \\
-	$d(\mathcal{C})=n$ \\
+	$\Code=\lbrace (s,s,\ldots,s): s \in S \rbrace \subseteq S^n$ \\
+	$d(\Code)=n$ \\
 	\\
 	$\left\lfloor \frac{n-1}{2} \right\rfloor$-Fehler-korr.
-	\item[b)] ISBN, EAN-Codes, $d(\mathcal{C})=2$, 1-Fehler-erkennend.
+	\item[b)] ISBN, EAN-Codes, $d(\Code)=2$, 1-Fehler-erkennend.
 \end{description}
 
 %Verbesser + Verschoenert, aber kein plan was der titel hier ist
 \section{Titel???}
 
-$d(\mathcal{C}) \geq 2 \cdot t + 1,\ \mathcal{C} \subseteq R^N$ \\
+$d(\Code) \geq 2 \cdot t + 1,\ \Code \subseteq R^N$ \\
 $K_t(x) \cap K_t(x')=\emptyset$ \\
-$x, x' \in \mathcal{C},\ x \neq x'$ \\
+$x, x' \in \Code,\ x \neq x'$ \\
 \\
 $y$ empfangen:
 \begin{itemize}
-\item falls $y$ in $K_t(x)$ liegt f"ur einen $x \in \mathcal{C}$, so wird $y$ nach $x$ decodiert (Korrekt, falls max. $t$ Fehler aufgetreten sind)
+\item falls $y$ in $K_t(x)$ liegt f"ur einen $x \in \Code$, so wird $y$ nach $x$ decodiert (Korrekt, falls max. $t$ Fehler aufgetreten sind)
 \item  falls $y$ in keiner $K_t(x)$ liegt, so kann es mehrere Codew"orter geben mit gleichem min. Abstand zu $y$. (Dann keine eindeutige  Decodierung)
 \end{itemize}
 
 \subsection{Definition: Perfekter Code}
-Code $\mathcal{C} \subseteq R^n$ hei\ss t perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
+Code $\Code \subseteq R^n$ hei\ss t perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
 \[
-	R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \quad \text{und} \quad K_t(x) \cap K_t(x') = \emptyset \quad \text{f"ur}\quad x,x' \in \mathcal{C},\ x \neq x'
+	R^n = \bigcup_{x \in \Code} K_t(x) \quad \text{und} \quad K_t(x) \cap K_t(x') = \emptyset \quad \text{f"ur}\quad x,x' \in \Code,\ x \neq x'
 \]
-Dann ist $d(\mathcal{C})=2 \cdot t + 1$, falls $\left| \mathcal{C} \right| > 1$: \\
-Ang. $d(\mathcal{C}) \leq 2\cdot t$. W"ahle $x,x' \in \mathcal{C},\ x \neq x'$, mit $d(x,x') = d(\mathcal{C}) \leq 2 \cdot t$. \\
+Dann ist $d(\Code)=2 \cdot t + 1$, falls $\left| \Code \right| > 1$: \\
+Ang. $d(\Code) \leq 2\cdot t$. W"ahle $x,x' \in \Code,\ x \neq x'$, mit $d(x,x') = d(\Code) \leq 2 \cdot t$. \\
 W"ahle $y \in R^n$ mit $d(x,y)=t,\ d(y,x') \leq t$\\
 $y \in K_t(x) \cap K_t(x')$ Widerspruch\\
-$d(\mathcal{C}) \leq 2 \cdot t + 1$ \\
+$d(\Code) \leq 2 \cdot t + 1$ \\
 \\
-W"ahle $x \in \mathcal{C}$, w"ahle $y \in R^n$ mit $d(x,y)=t+1$. Nach Vorraussetzung existiert $x' \in \mathcal{C}$ mit $y \in K_t(x')$. 
+W"ahle $x \in \Code$, w"ahle $y \in R^n$ mit $d(x,y)=t+1$. Nach Vorraussetzung existiert $x' \in \Code$ mit $y \in K_t(x')$. 
 \begin{align*}
 	&d(x,x') \leq d(x,y) + d(y,x') \leq t+1+t = 2 \cdot t + 1 \\
-	&d(\mathcal{C}) \leq 2\cdot t + 1
+	&d(\Code) \leq 2\cdot t + 1
 \end{align*}	
 
 \subsection{Gibt es perfekte Codes?}
 Trivial Beispiele:
 \begin{itemize}
 	\item einelementige Codes (t=n)
-	\item $\mathcal{C} = R^n$ (t=0) \\
+	\item $\Code = R^n$ (t=0) \\
 				(Jedes Element ist ein Codewort)
 	\item $n$-fache Wiederholungscode "uber $Z_2$ \\
 				$n=2 \cdot t +1$ \\
-				$\mathcal{C} = \lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},\underset{\longleftarrow n \longrightarrow}{(1,\ldots,1)}\rbrace$
+				$\Code = \lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},\underset{\longleftarrow n \longrightarrow}{(1,\ldots,1)}\rbrace$
 \end{itemize}
 
 \subsection{Lemma}
@@ -344,65 +344,65 @@ $\rightarrow$ insgesamt $(q-1)^i$ M"oglichkeiten, \\
 Anzahl der W"orter vom Abstand $i$ von $x$: $\binom{n}{i} \cdot (q-1)^i$
 
 \subsubsection{Satz}
-Sei $\mathcal{C}$ ein Code der L"ange $n$ "uber $R$, $\left| \mathcal{C} \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\mathcal{C}) \geq 2 \cdot t + 1,\ t=\lfloor \frac{d(\mathcal{C})-1}{2}\rfloor$.
+Sei $\Code$ ein Code der L"ange $n$ "uber $R$, $\left| \Code \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\Code) \geq 2 \cdot t + 1,\ t=\lfloor \frac{d(\Code)-1}{2}\rfloor$.
 \begin{enumerate}[a)]
 	\item (Kugelpackungsschranke) \\
-	$\left|\mathcal{C}\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
-	\item $\mathcal{C}$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. \\
-	$\left|\mathcal{C}\right| = \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
+	$\left|\Code\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
+	\item $\Code$ ist perfekt $\Leftrightarrow$ in a) gilt Gleichheit, d.h. \\
+	$\left|\Code\right| = \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
 \end{enumerate}
 
 \subsubsection{Beweis}
 a)
 \begin{align*}
-	&d(\mathcal{C}) \geq 2 \cdot t + 1,\text{ daher }K_t(x) \cap K_t(x')=\emptyset,\ x\neq x',\ x,x' \in \mathcal{C}  \\
-	&R^n \geq \underset{x \in \mathcal{C}}{\bigcup} K_t(x) \\
+	&d(\Code) \geq 2 \cdot t + 1,\text{ daher }K_t(x) \cap K_t(x')=\emptyset,\ x\neq x',\ x,x' \in \Code  \\
+	&R^n \geq \underset{x \in \Code}{\bigcup} K_t(x) \\
 	&q^n=\left|R^n\right| \\
-	&\left| \bigcup_{x \in \mathcal{C}} K_t(x) \right| = \sum_{x \in \mathcal{C}} \left| K_t(x) \right|
-	\underset{Lemma}{=}\left| \mathcal{C} \right| \cdot \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i\\
+	&\left| \bigcup_{x \in \Code} K_t(x) \right| = \sum_{x \in \Code} \left| K_t(x) \right|
+	\underset{Lemma}{=}\left| \Code \right| \cdot \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i\\
 \end{align*}
 b)
 \begin{align*}
-	&\Rightarrow:d(\mathcal{C})=2 \cdot t +1 \\
-	&R^n = \bigcup_{x \in \mathcal{C}} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
-	&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup K_t(x) \Rightarrow \mathcal{C} \text{ perfekt.}
+	&\Rightarrow:d(\Code)=2 \cdot t +1 \\
+	&R^n = \bigcup_{x \in \Code} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
+	&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup K_t(x) \Rightarrow \Code \text{ perfekt.}
 \end{align*}
 
 %Teil 2 der Vorlesung
 \subsection{Bsp: Bin"arer Hamming-Code der L"ange 7}
 
-$R=\Z_2=\lbrace 0,1 \rbrace$ $\mathcal{C}$ perfekt, $d(\mathcal{C})=3,\ \left| \mathcal{C} \right| = 16$ \\
+$R=\Z_2=\lbrace 0,1 \rbrace$ $\Code$ perfekt, $d(\Code)=3,\ \left| \Code \right| = 16$ \\
 1-Fehler-Korrigierend
 \begin{align*}
-\mathcal{C} = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
+\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
 										&C_2 + C_4 + C_5 + C_7 = 0,\\
 										&C_3 + C_5 + C_6 + C_7 = 0\\
 										 &\rbrace \subseteq \Z_2^7
 \end{align*}
-$\mathcal{C}$ ist Unterraum von $\Z_2^7$ \\
-$(C_1,\ldots,C_7) \in \mathcal{C},\ (C_1',\ldots,C_7') \in \mathcal{C}$ \\
+$\Code$ ist Unterraum von $\Z_2^7$ \\
+$(C_1,\ldots,C_7) \in \Code,\ (C_1',\ldots,C_7') \in \Code$ \\
 $(C_1 + C_1',\ldots,C_7+C_7')\ \ (C_1+C_1') + (C_4+C_4') + (C_6+C_6') + (C_7+C_7') = 0$ \\
-$dim(\mathcal{C})=4,\ C_4,C_5,C_6,C_7$ frei w"ahlbar $\curvearrowright C_1,C_2,C_3$ festgelegt \\
+$dim(\Code)=4,\ C_4,C_5,C_6,C_7$ frei w"ahlbar $\curvearrowright C_1,C_2,C_3$ festgelegt \\
 Basis:
 \begin{align*}
 	&(\ldots 1000) \rightarrow (1101000) \\
-	&(\ldots 0100) \rightarrow (0110100) \quad \left| \mathcal{C} \right| =2^4 =16\\
+	&(\ldots 0100) \rightarrow (0110100) \quad \left| \Code \right| =2^4 =16\\
 	&(\ldots 0010) \rightarrow (1010010) \\
 	&(\ldots 0001) \rightarrow (1110001)
 \end{align*}
-$d(\mathcal{C})=3:$\\
-Ang. $d(\mathcal{C})=d$. W"ahle $x,x' \in \mathcal{C}$ mit $d(x,x')=d$\\
+$d(\Code)=3:$\\
+Ang. $d(\Code)=d$. W"ahle $x,x' \in \Code$ mit $d(x,x')=d$\\
 Translationsinvarianz der Metrik: \\
 \begin{align*}
 	d &=d(x,x')=d(x+x,x+x')=d(0,x+x') \\
 	wt(x) &= \text{ Anzahl der Einsen in } x \\
 	&= d(0,x)\\
-	d(\mathcal{C}) &= \min wt(x),\quad x \in \mathcal{C},\quad x \neq \mathcal{V}
+	d(\Code) &= \min wt(x),\quad x \in \Code,\quad x \neq \mathcal{V}
 \end{align*}
-Zeige: Jeder Vektor $\neq v$ in $\mathcal{C}$ enth"alt mind. 3 Einsen.\\
+Zeige: Jeder Vektor $\neq v$ in $\Code$ enth"alt mind. 3 Einsen.\\
 $= 3$ weist man nach durch "uberpr"ufen aller 15 von $\mathcal{V}$ verschiedenen Codew"ortern oder durch Analyse der Gleichung. 
 \begin{align*}
-	&(C_1,\ldots,C_7) \in \mathcal{C} \text{ Ang. } C_7=1 \\
+	&(C_1,\ldots,C_7) \in \Code \text{ Ang. } C_7=1 \\
 	\Rightarrow &C_1+C_4+C_6=1. \text{ Wenn alle Eins } \checked \\
 	&C_1=1,C_4=C_6=0\\
 	&C_4=1,C_1=C_6=0\\
@@ -412,27 +412,27 @@ $= 3$ weist man nach durch "uberpr"ufen aller 15 von $\mathcal{V}$ verschiedenen
 2. Fall: $C_7=1,C_4=1,C_1=0,C_2 \text{ oder } C_3=1$ \\
 3. Fall: analog zu Fall 2.\\
 1. Fall: $C_1=1,C_4=C_6=0, C_7=1$, o.B.d.A. $C_2=C_3=0 \Rightarrow C_5=1$\\
-$d(\mathcal{C}) \leq 3,\ d(\mathcal{C})=3=2 \cdot 1 + 1$\\
+$d(\Code) \leq 3,\ d(\Code)=3=2 \cdot 1 + 1$\\
 \\
 Pr"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:
 \begin{align*}
-	\left|\mathcal{C}\right| &=16\\
-	\left|\mathcal{C}\right| &\leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i} \quad (q=2, t=1, n=7)\\
+	\left|\Code\right| &=16\\
+	\left|\Code\right| &\leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i} \quad (q=2, t=1, n=7)\\
 	&=\frac{2^7}{1+\binom{7}{1}}=\frac{2^7}{2^3}=2^4=16\\
-	&\mathcal{C}\text{ perfekt!}
+	&\Code\text{ perfekt!}
 \end{align*}
 
 % Vorlesung vom 28.01.2010
 \section{Lineare Codes}
 \subsection{Definition: linearer Code}
-Sei $K$ ein endlicher K"orper, $n \in \N$. Ein linearer Code $\mathcal{C}$ der L"ange $n$ ist ein Unterraum von $K^n$. (Zeilenvektoren) [Alphabet = $k$] \\
+Sei $K$ ein endlicher K"orper, $n \in \N$. Ein linearer Code $\Code$ der L"ange $n$ ist ein Unterraum von $K^n$. (Zeilenvektoren) [Alphabet = $k$] \\
 \\
-Ist $dim(\mathcal{C})=k$, so hei\ss t $\mathcal{C}$ $\left[n,k\right]$-Code.\\
-Ist $d(\mathcal{C})=d$, so $\left[ n,k,d \right]$-Code. \\
+Ist $dim(\Code)=k$, so hei\ss t $\Code$ $\left[n,k\right]$-Code.\\
+Ist $d(\Code)=d$, so $\left[ n,k,d \right]$-Code. \\
 \\
-Beachte: $\left| K \right| = q \Rightarrow \left| \mathcal{C} \right| =q^k$.\\
+Beachte: $\left| K \right| = q \Rightarrow \left| \Code \right| =q^k$.\\
 \subsection{Definition: Informationsrate}
-Informationsrate (Rate) von $\mathcal{C}: \frac{k}{n}$.\\
+Informationsrate (Rate) von $\Code: \frac{k}{n}$.\\
 \subsection{Bemerkung "uber endliche K"orper}
 \begin{enumerate}[a)]
 	\item $p$ Primzahl, $\Z_p$ ist K"orper der Ordnung $p$
@@ -449,13 +449,13 @@ Informationsrate (Rate) von $\mathcal{C}: \frac{k}{n}$.\\
 \subsection{Bsp}
 \begin{enumerate}[a)]
 	\item $n$-facher Wiederholungscode "uber $\Z_p$\\
-	$\mathcal{C}=\lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},(1,\ldots,1),\ldots,(p-1,\ldots,p-1)\rbrace$\\
-	$\mathcal{C}$ ist linerer Code, $\mathcal{C}=<(1,\ldots,1)>$\\
+	$\Code=\lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},(1,\ldots,1),\ldots,(p-1,\ldots,p-1)\rbrace$\\
+	$\Code$ ist linerer Code, $\Code=<(1,\ldots,1)>$\\
 	$[n,1,n]$-Code
 	\item Hamming-Code ist linearer [7,4,3]-Code "uber $\Z_2$
-	\item $\mathcal{C} = \lbrace (c_1,\ldots,c_n) : c_i \in \Z_p,\sum^n_{i=1}{c_i}=0 \rbrace$ \\
+	\item $\Code = \lbrace (c_1,\ldots,c_n) : c_i \in \Z_p,\sum^n_{i=1}{c_i}=0 \rbrace$ \\
 	$(p=2 : \text{ Parity Check Code})$, linear $[n,n-1,2]$-Code "uber $\Z_p$\\
-	Basis von $\mathcal{C}:(1,0,\ldots,0,p-1), (0,1,0,\ldots,0,p-1), \ldots, (0,\ldots,0,1,p-1)$
+	Basis von $\Code:(1,0,\ldots,0,p-1), (0,1,0,\ldots,0,p-1), \ldots, (0,\ldots,0,1,p-1)$
 \end{enumerate}
 \subsection{Definition: Gewicht und Minimalgewicht}
 $K$ endl. K"orper
@@ -464,17 +464,17 @@ $K$ endl. K"orper
 	\[
 		wt(x)=\sharp \lbrace i:x_i\neq0 \rbrace
 	\]
-	\item $\lbrace 0 \rbrace \neq \mathcal{C} \subseteq K^n$, so ist das Minimalgewicht von $\mathcal{C}$ definiert durch 
+	\item $\lbrace 0 \rbrace \neq \Code \subseteq K^n$, so ist das Minimalgewicht von $\Code$ definiert durch 
 	\[
-		wt(\mathcal{C})=\underset{x\in\mathcal{C}, x\neq 0}{min} wt(x)
+		wt(\Code)=\underset{x\in\Code, x\neq 0}{min} wt(x)
 	\]
 \end{enumerate}
 
 \subsection{Satz}
-Ist $\mathcal{C} \neq \lbrace 0 \rbrace$ ein linearer Code, so ist $d(\mathcal{C})=wt(\mathcal{C})$. (Beweis wie beim [7,4,3]-Hamming Code)
+Ist $\Code \neq \lbrace 0 \rbrace$ ein linearer Code, so ist $d(\Code)=wt(\Code)$. (Beweis wie beim [7,4,3]-Hamming Code)
 
 \subsection{Definition: Erzeugermatrix} %Nochmal im Vid anschauen....bin mir nicht sicher ob das hier stimmt.
-Sei $\mathcal{C}$ ein $[n,k]$-Code "uber $K$, sei $g_1=(g_{11},\ldots,g_{1n}),\ldots,(g_{k1},\ldots,g_{kn})=(g_{k1},\ldots,g_{kn})$ eine Basis von $\mathcal{C}$.
+Sei $\Code$ ein $[n,k]$-Code "uber $K$, sei $g_1=(g_{11},\ldots,g_{1n}),\ldots,(g_{k1},\ldots,g_{kn})=(g_{k1},\ldots,g_{kn})$ eine Basis von $\Code$.
 \[
 \text{Dann hei\ss t die } k\times n\text{ -Matix } G=
 \begin{pmatrix}
@@ -488,19 +488,19 @@ g_k\\
 	\vdots&&\vdots\\
 	g_{k1}&\ldots&g_{kn}
 \end{pmatrix}
-\text{ Erzeugermatrix von } \mathcal{C}
+\text{ Erzeugermatrix von } \Code
 \]
 \subsection{Satz}
-Sei $G$ ein Erzeugermatrix von $\mathcal{C}$.\\
-Dann ist $\mathcal{C} = \lbrace \underset{1\times k}{u} \cdot \underset{k\times x}{G}: u \in K^k \rbrace$\\
+Sei $G$ ein Erzeugermatrix von $\Code$.\\
+Dann ist $\Code = \lbrace \underset{1\times k}{u} \cdot \underset{k\times x}{G}: u \in K^k \rbrace$\\
 Beweis:\\
 $u=(u_1,\ldots,u_k),u_i\in K$\\
-$uG=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots + u_kg_k \in \mathcal{C}$\\
+$uG=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots + u_kg_k \in \Code$\\
 \subsection{Bemerkung}
 \begin{enumerate}[a)]
 	\item Die Abb 
 	$\begin{cases}
-		K^k & \rightarrow \mathcal{C}\\
+		K^k & \rightarrow \Code\\
 		u & \mapsto uG
 	\end{cases}$ ist bijektiv. \\
 	$u \in K^k$ Informationsw"orter \\
@@ -511,7 +511,7 @@ $uG=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots + u_kg_k \in \mathca
 \subsection{Beispiel: Hamming-$[7,4]$-Code "uber $\Z_7$}
 
 \begin{align*}
-\mathcal{C} = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
+\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
 										&C_2 + C_4 + C_5 + C_7 = 0,\\
 										&C_3 + C_5 + C_6 + C_7 = 0\\
 										 &\rbrace \subseteq \Z_2^7
@@ -531,7 +531,7 @@ Cod. eines Informationswort $(u_1,u_2,u_3,u_4)$ mit $G$
 	(u_1,u_2,u_3,u_4) \rightarrow (u_1,u_2,u_3,u_4) \cdot G =  (\mathbf{u_1,u_2,u_3,u_4},u_1+u_3+u_4,u_2+u_3+u_4,u_1+u_2+u_3)
 \]
 \subsection{Definition: Standardform}
-$\mathcal{C} \  [n,k]$-Code Erzeugermatix $\mathcal{C}$ ist in Standardform, falls sie folgende Gestalt hat.
+$\Code \  [n,k]$-Code Erzeugermatix $\Code$ ist in Standardform, falls sie folgende Gestalt hat.
 \begin{align*}
 	G= \quad
 	k
@@ -549,14 +549,14 @@ $\mathcal{C} \  [n,k]$-Code Erzeugermatix $\mathcal{C}$ ist in Standardform, fal
 Cod. $(u_1,\ldots,u_k) \cdot G = (u_1,\ldots,u_k,*,\ldots,*)$
 
 \subsection{Satz}
-Sei $\mathcal{C}$ ein $[n,k]$-Code "uber $K$. Dann existiert $(n-k)\times n$-Matrix $H$ "uber $K$ mit folgenden Eigenschaften: \\
-Sei $y\in K^n$. Dann: $y \in \mathcal{C} \Leftrightarrow H \cdot y^t = \vec{0}$ 
+Sei $\Code$ ein $[n,k]$-Code "uber $K$. Dann existiert $(n-k)\times n$-Matrix $H$ "uber $K$ mit folgenden Eigenschaften: \\
+Sei $y\in K^n$. Dann: $y \in \Code \Leftrightarrow H \cdot y^t = \vec{0}$ 
 \\
-$H$ hei\ss t Kontrollmatrix von $\mathcal{C}$ ($\Leftrightarrow y \cdot H^t = \vec{0}$) \\
+$H$ hei\ss t Kontrollmatrix von $\Code$ ($\Leftrightarrow y \cdot H^t = \vec{0}$) \\
 Es ist $rg(H)=n-k$ (Dann ist $H \cdot G^t=0$)
 
 \subsection{Beweis}
-Sei $g_1,\ldots,g_k$ Basis von $\mathcal{C}$, $G=
+Sei $g_1,\ldots,g_k$ Basis von $\Code$, $G=
 \begin{pmatrix}
 g_1 \\
 \vdots \\
@@ -593,9 +593,9 @@ Sei $h_1,\ldots,h_{n-k} \in K^n$ Basis des L"osungsraums dieses LGS. \\
 	\end{pmatrix}
 	 =0,i=1,\ldots,k
 \]
-$H y^t=0$ f"ur alle $y \in \mathcal{C}$.\\
-$rg(H)=n-k \Rightarrow dim\ Kern(H) = k = dim ( \mathcal{C})$\\
-$\mathcal{C}=Kern(H)$
+$H y^t=0$ f"ur alle $y \in \Code$.\\
+$rg(H)=n-k \Rightarrow dim\ Kern(H) = k = dim ( \Code)$\\
+$\Code=Kern(H)$
 
 \subsection{Bermerkung}
 \begin{itemize}
@@ -607,7 +607,7 @@ $\mathcal{C}=Kern(H)$
 \subsection{Beispiel}
 \begin{enumerate}[a)]
 	\item Parity-Check-Code "uber $\Z_p$ \\
-	$\mathcal{C} = \lbrace (c_1,\ldots,c_n): \sum^n_{i=1}{c_i}=0 \rbrace$\\ %,\quad k=n-1$\\ wo kam das hier her?
+	$\Code = \lbrace (c_1,\ldots,c_n): \sum^n_{i=1}{c_i}=0 \rbrace$\\ %,\quad k=n-1$\\ wo kam das hier her?
 	$H=(1,1,\ldots,1)$\\
 	$H \cdot
 	\begin{pmatrix}
@@ -615,10 +615,10 @@ $\mathcal{C}=Kern(H)$
 	\vdots \\
 	c_n
 	\end{pmatrix}
-	= 0 \Leftrightarrow c_1 + \ldots c_n = 0 \Leftrightarrow (c_1,\ldots,c_n) \in \mathcal{C}$
+	= 0 \Leftrightarrow c_1 + \ldots c_n = 0 \Leftrightarrow (c_1,\ldots,c_n) \in \Code$
 	\item $[7,4]$-Hamming-Code
 	\begin{align*}
-	\mathcal{C} = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
+	\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
 										&C_2 + C_4 + C_5 + C_7 = 0,\\
 										&C_3 + C_5 + C_6 + C_7 = 0\\
 										 &\rbrace \subseteq \Z_2^7
@@ -630,7 +630,7 @@ $\mathcal{C}=Kern(H)$
 			0 & 0 & 1 & 0 & 1 & 1 & 1
 		\end{pmatrix}
 	\]
-	\item $\mathcal{C}$ Code mit Erzeugermatrix\\
+	\item $\Code$ Code mit Erzeugermatrix\\
 	$
 	\begin{pmatrix}
 		1 & 1 & 0 & 1\\
@@ -661,22 +661,22 @@ $\mathcal{C}=Kern(H)$
 			0 & 1 & 0 & 1
 		\end{pmatrix}
 	\]
-	$\mathcal{C} \lbrace (c_1,\ldots,c_4) : c_3=0,c_2+c_4=0\rbrace$	
+	$\Code \lbrace (c_1,\ldots,c_4) : c_3=0,c_2+c_4=0\rbrace$	
 \end{enumerate}
 
 %
 %	Vorlesung vom 04.02.2010
 %
 \subsection{Satz}
-$\mathcal{C}$ $[n,k]$-Code, $\mathcal{C} \neq \lbrace \vec{0} \rbrace, K^n$, Kontrollmatrix $H$.\\
+$\Code$ $[n,k]$-Code, $\Code \neq \lbrace \vec{0} \rbrace, K^n$, Kontrollmatrix $H$.\\
 \begin{align*}
-d(\mathcal{C})=wt(\mathcal{C}) &= min \quad 	\lbrace r : \text{ in H gibt es r linear abh"anige Spalten}  \rbrace \\
+d(\Code)=wt(\Code) &= min \quad 	\lbrace r : \text{ in H gibt es r linear abh"anige Spalten}  \rbrace \\
 &= max  \quad \lbrace r : \text{ je r-1 Spalten linear unabh"angig} \rbrace
 \end{align*}
 
 \subsubsection{Beweis}
 $s_1,\ldots,s_n$ Spalten von $H$, L"ange $n-k$. \\
-$\mathcal{C} \neq \lbrace \vec{0} \rbrace, k \geq	 1, n-k<n \Rightarrow s_1,\ldots,s_n$ lin. abh"angig.\\
+$\Code \neq \lbrace \vec{0} \rbrace, k \geq	 1, n-k<n \Rightarrow s_1,\ldots,s_n$ lin. abh"angig.\\
 Sei $min \lbrace r: \ldots \rbrace = w$. $s_{i_1},\ldots, s_{i_w}$ lin. abh"angig. \\
 Existiert $c_{i_1},\ldots,c_{i_w} \in K$, nicht alle $=0$, $c_{i_1} s_{i_1}+\ldots+ c_{i_w} s_{i_w}=0$ \\
 $w \quad min \Rightarrow$ alle $c_{i_1},\ldots, c_{i_w} \neq 0$. \\
@@ -684,10 +684,10 @@ Def. $c=(c_1, \ldots,  c_n)$ mit den $c_{i_j}$ an den Stellen $i_j$, "ubrige $c_
 \begin{align*}
 	\sum^n_{i=1}{c_i s_i} = c_{i_1} s_{i_1} + \ldots + c_{i_w} s_{i_w} &=0\\
 	\sum^n_{i=1}{c_i s_i^t}&=0 \\
-	Hc^t=0 \quad c \in \mathcal{C}
+	Hc^t=0 \quad c \in \Code
 \end{align*}
-$wt(c)=w$, Min. Gewicht von $\mathcal{C} \leq wt(c)=w$ \\
-Ang. es ex. $0 \neq c' \in \mathcal{C}, wt(c')=w' < w$. $Hc'^t=0$\\
+$wt(c)=w$, Min. Gewicht von $\Code \leq wt(c)=w$ \\
+Ang. es ex. $0 \neq c' \in \Code, wt(c')=w' < w$. $Hc'^t=0$\\
 $c'=(c'_1, \ldots,  c'_n)$ \quad $\sum{c'_i s_i}^n_{i=1}=0 \Rightarrow$ $w'$ der Spalten $c_1,\ldots,c_n$ sind linear abh"anging. Widerspruch! \\
 $wt(c)=w$
 
@@ -723,61 +723,61 @@ Keine Spalte ist Nullspalte, keine zwei Spalten sind  gleich. 1.,2.,4. Spalte si
 	0\\
 	0\\
 	0\\
-	\end{pmatrix} \quad d(\mathcal{C})=3
+	\end{pmatrix} \quad d(\Code)=3
 \]
 \subsection{Korollar: (Singleton-Schranke)}
-Ist $\mathcal{C}$ ein linearer $[n,k]$-Code, $d(\mathcal{C})=d$, so gilt:
+Ist $\Code$ ein linearer $[n,k]$-Code, $d(\Code)=d$, so gilt:
 \[
 	d \leq n-k + 1
 \]
 \subsubsection{Beweis}
 2. Gleichheit: $d \leq rg(H)+1=n-k+1$ (Zeilen von H sind lin. unabh"angig)
 \subsection{Bemerkung: (Nebenklassen von Unterr"aumen in Vektorr"aumen)}
-$\mathcal{C}$ ein Umterraum von Vektorraum $V$. F"ur jedes $v \in V$:
+$\Code$ ein Umterraum von Vektorraum $V$. F"ur jedes $v \in V$:
 \[
-	v + \mathcal{C} = \lbrace v+x : x \in \mathcal{C} \rbrace
+	v + \Code = \lbrace v+x : x \in \Code \rbrace
 \]
-\textbf{Nebenklasse} von $\mathcal{C}$ zu $v$.
+\textbf{Nebenklasse} von $\Code$ zu $v$.
 \begin{enumerate}[a)]
 	\item $v_1,v_2 \in V$. Dann: \\
-					$v_1 + \mathcal{C} = v_2 + \mathcal{C}$ oder $(v_1 + \mathcal{C}) \cap (v_2 + \mathcal{C}) = \emptyset$
-	\item $v_1 + \mathcal{C} = v_2 + \mathcal{C} \Leftrightarrow v_1-v_2 \in \mathcal{C}$\\
-						($v+ \mathcal{C} = \mathcal{C} (=\vec{0}+\mathcal{C}) \Leftrightarrow v \in \mathcal{C}$)
+					$v_1 + \Code = v_2 + \Code$ oder $(v_1 + \Code) \cap (v_2 + \Code) = \emptyset$
+	\item $v_1 + \Code = v_2 + \Code \Leftrightarrow v_1-v_2 \in \Code$\\
+						($v+ \Code = \Code (=\vec{0}+\Code) \Leftrightarrow v \in \Code$)
 	\item W"ahle aus jeder Nebenklasse einen Vektor $v_i$:
 	\[
-			V=\bigcup^{\bullet} (v_i + \mathcal{C})
+			V=\bigcup^{\bullet} (v_i + \Code)
 	\]
-	\item V Vektorraum "uber endl. K"orper: $\left| v + \mathcal{C} \right| = \left| \mathcal{C} \right|$
-	\item $\mathcal{C}$ $[n,k]$-Code ($V=K^n, dim(\mathcal{C})=k,\left|\mathcal{C}\right|=q^k, \text{ falls } \left|K\right|=q$) \\
+	\item V Vektorraum "uber endl. K"orper: $\left| v + \Code \right| = \left| \Code \right|$
+	\item $\Code$ $[n,k]$-Code ($V=K^n, dim(\Code)=k,\left|\Code\right|=q^k, \text{ falls } \left|K\right|=q$) \\
 						Anzahl der Nebenklassen ist $q^{n-k}$
 \end{enumerate}
 
 \section{Syndrom-Decodierung linearer Code}
-$\mathcal{C}$ $[n,k]$-Code "uber $K$, $\left| K \right| = q$, Kontrollmatrix $H$, $(n-k) \times n$-Matrix.\\
+$\Code$ $[n,k]$-Code "uber $K$, $\left| K \right| = q$, Kontrollmatrix $H$, $(n-k) \times n$-Matrix.\\
 Ist $y \in K^n$, so hei\ss t $Hy^t \in K^{n-k}$ \textbf{Syndrom} von $y$.
 \begin{enumerate}[a)]
-	\item $x \in \mathcal{C} \Leftrightarrow Hx^t = 0$ ($x$ hat Syndrom $0$)
-	\item $y_1,y_2 \in K^n$. $y_1,y_2$ liegen in der gleichen Nebenklasse zu $\mathcal{C}$ (d.h. $y_1 + \mathcal{C} = y_2 + \mathcal{C})\\ \Leftrightarrow y_1,y_2$ haben gleiches Syndrom \\
+	\item $x \in \Code \Leftrightarrow Hx^t = 0$ ($x$ hat Syndrom $0$)
+	\item $y_1,y_2 \in K^n$. $y_1,y_2$ liegen in der gleichen Nebenklasse zu $\Code$ (d.h. $y_1 + \Code = y_2 + \Code)\\ \Leftrightarrow y_1,y_2$ haben gleiches Syndrom \\
 	(d.h. $Hy_1^t = Hy_2^t$)
 	\[
-		[y_1 + \mathcal{C} = y_2 + \mathcal{C} \Leftrightarrow y_1 - y_2 \in \mathcal{C} \Leftrightarrow 0 = H(y_1 - y_2)^t = Hy_1^t - Hy_2^t \Leftrightarrow Hy_1^t = Hy_2^t]
+		[y_1 + \Code = y_2 + \Code \Leftrightarrow y_1 - y_2 \in \Code \Leftrightarrow 0 = H(y_1 - y_2)^t = Hy_1^t - Hy_2^t \Leftrightarrow Hy_1^t = Hy_2^t]
 	\]
 	\item Jedes $z \in K^{n-k}$ tritt als Syndrom auf.	 
 \end{enumerate}
-Ang. $x \in \mathcal{C}$ wird gesendet, $y=x+f$, wird empfangen. $f$ "`Fehlervektor"'.\\
-$y + \mathcal{C} = f + \mathcal{C}$, $y$ und $f$ haben das gleiche Syndrom, n"amlich $Hy^t$.\\
+Ang. $x \in \Code$ wird gesendet, $y=x+f$, wird empfangen. $f$ "`Fehlervektor"'.\\
+$y + \Code = f + \Code$, $y$ und $f$ haben das gleiche Syndrom, n"amlich $Hy^t$.\\
 Bestimmt in der Nebenklasse von $y$ ein $e$ mit kleinstm"ogliche Gewicht (\textbf{Nebenklassenf"uhrer}) \\
-Decodierung: $y \rightarrow y - e \in \mathcal{C}$ (Hamming-Decodierung)\\
+Decodierung: $y \rightarrow y - e \in \Code$ (Hamming-Decodierung)\\
 \\
 Ordne die Nebenklassenf"uhrer nach der lexikogr. ihrer Syndome. \\
 Speicherbedarf: $q^{n-k}$ Nebenklassenf"uhrer, jeder hat L"ange $n$ \\
 (Besser als Durchforsten der Liste aller Codew"orter ($q^k$), falls $k \geq \frac{n}{2}$)\\
-$\mathcal{C}$ $[70,50]$-Code "uber $\Z_2$. $2^{20}$ Nebenklassenf"uhrer, je $70$ BitL"ange.\\
+$\Code$ $[70,50]$-Code "uber $\Z_2$. $2^{20}$ Nebenklassenf"uhrer, je $70$ BitL"ange.\\
 Speicher: $70 \cdot 2^{20} Bit \approx 8,75 \text{ MegaByte}$ \\
 Speicher f"ur Codew"orter: $70 \cdot 2^{50} \text{ Bit} = 9 \text{ PetaByte}$
 
 \subsection{Beispiel}
-$\mathcal{C}$ $[5,2]$-Code "uber $\Z_2$, Kontrollmatrix
+$\Code$ $[5,2]$-Code "uber $\Z_2$, Kontrollmatrix
 \[
 	H=
 	\begin{pmatrix}
@@ -786,9 +786,9 @@ $\mathcal{C}$ $[5,2]$-Code "uber $\Z_2$, Kontrollmatrix
 		0 & 1 & 0 & 1 & 1\\
 	\end{pmatrix}
 \]
-$d(\mathcal{C})=3$
+$d(\Code)=3$
 \begin{align*}
-(x_1,\ldots,x_5) \in \mathcal{C} \Leftrightarrow &x_1+x_5 = 0\\
+(x_1,\ldots,x_5) \in \Code \Leftrightarrow &x_1+x_5 = 0\\
 & x_2+x_3=0\\
 &x_2+x_4+x_5=0
 \end{align*}
@@ -800,21 +800,21 @@ $d(\mathcal{C})=3$
 	\end{pmatrix}
 \]
 \begin{align*}
-\text{Nebenklassen von } \mathcal{C}.\\
-\mathcal{C} = &(00000) + \mathcal{C} = \lbrace (00000),(11101),(01110),(10011) \rbrace\\
-					  &(10000) + \mathcal{C} = \lbrace (10000),(01101),(11110),(00011) \rbrace\\
+\text{Nebenklassen von } \Code.\\
+\Code = &(00000) + \Code = \lbrace (00000),(11101),(01110),(10011) \rbrace\\
+					  &(10000) + \Code = \lbrace (10000),(01101),(11110),(00011) \rbrace\\
 					  &\quad \text{Nebenklassenf"uhrer:} (10000)\\
-					  &(01000) + \mathcal{C} = \lbrace (01000),(10101),(00110),(11011) \rbrace\\
+					  &(01000) + \Code = \lbrace (01000),(10101),(00110),(11011) \rbrace\\
 					  &\quad \text{Nebenklassenf"uhrer:} (01000)\\
-					  &(00100) + \mathcal{C} = \lbrace (00100),(11001),(01010),(10111) \rbrace\\
+					  &(00100) + \Code = \lbrace (00100),(11001),(01010),(10111) \rbrace\\
 					  &\quad \text{Nebenklassenf"uhrer:} (00100)\\
-					  &(00010) + \mathcal{C} = \lbrace (00010),(11111),(01100),(10001) \rbrace\\
+					  &(00010) + \Code = \lbrace (00010),(11111),(01100),(10001) \rbrace\\
 					  &\quad \text{Nebenklassenf"uhrer:} (00010)\\
-					  &(00001) + \mathcal{C} = \lbrace (00001),(11100),(01111),(10010) \rbrace\\
+					  &(00001) + \Code = \lbrace (00001),(11100),(01111),(10010) \rbrace\\
 					  &\quad \text{Nebenklassenf"uhrer:} (00001)\\
-					  &(00111) + \mathcal{C} = \lbrace (00111),(11010),(01001),(10100) \rbrace\\
+					  &(00111) + \Code = \lbrace (00111),(11010),(01001),(10100) \rbrace\\
 					  &\quad \text{M"ogliche Nebenklassenf"uhrer:} (01001), (10100)\\
-					  &(00101) + \mathcal{C} = \lbrace (00101),(11000),(01011),(10110) \rbrace\\
+					  &(00101) + \Code = \lbrace (00101),(11000),(01011),(10110) \rbrace\\
 					  &\quad \text{M"ogliche Nebenklassenf"uhrer:} (00101), (11000)\\
 \end{align*}
 Angenommen als Nebenklassenf"uhrer werden gew"ahlt:\\
@@ -840,14 +840,14 @@ Hf^t_7=\begin{pmatrix}1 \\ 1 \\ 1 \end{pmatrix}$\\
 \\
 Empfangen: $y=(10110) \\
 Hy^t=\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ \\
-Decodierung: $y \rightarrow y + f_7 = (10011) \in \mathcal{C}$\\
-(H"atte man f"ur die Nebenklasse $f_7 + \mathcal{C}$ als Nebenklassenf"uhrer $(11000)$ gew"ahlt, so w"are decodiert worden in $y + (11000) = (01110) \in \mathcal{C}$)
+Decodierung: $y \rightarrow y + f_7 = (10011) \in \Code$\\
+(H"atte man f"ur die Nebenklasse $f_7 + \Code$ als Nebenklassenf"uhrer $(11000)$ gew"ahlt, so w"are decodiert worden in $y + (11000) = (01110) \in \Code$)
 
 \section{Beispiel guter linear Codes}
 \subsection{Hamming-Codes}
 Sei $q$ ein Primzahlpotenz, $K$ K"orper mit $\left| K \right| = q$\\
 Sei $l \in  \N$. $n=\frac{q^l-1}{q-1}, k=n-l$  \\
-Denn ex. perfekter $[n,k]$-Code $\mathcal{C}$ "uber $K$, $d(\mathcal{C})=3$.
+Denn ex. perfekter $[n,k]$-Code $\Code$ "uber $K$, $d(\Code)=3$.
 Hamming-Code.
 \subsubsection{Konstruktion}
 $\left| K^l \backslash \lbrace \vec{0} \rbrace \right| = q^l -1$, je $q-1$ von $0$ versch. Vektoren erzeugen den gleichen 1-dim. Unterr"aume in $K^l$, d.h.
@@ -855,13 +855,13 @@ $\left| K^l \backslash \lbrace \vec{0} \rbrace \right| = q^l -1$, je $q-1$ von $
 	n = \frac{q^l-1}{q^l-1} \quad \text{1-dim Unterraum}
 \]
 Bilde $l\times n$-Matrix $H$: W"ahle aus jedem der 1-dim. Unterraum von $K^l$ einen Vektor $\neq 0$ aus und schreibe ihn als Spalte in $H$\\
-$\mathcal{C} = \lbrace x \in K^n : Hx^t=0 \rbrace$
+$\Code = \lbrace x \in K^n : Hx^t=0 \rbrace$
 %
 % hier fehlt stuff
 % Chris: Habs leider auch nicht, kein plan...fragen den Chris Duta mal was er hat vllt.
 $rg(H)=l$, denn $H$ enth"alt $l$ lin. unabh"angige Spalten.\\
-$dim(\mathcal{C})=n-l=k$, $\left| \mathcal{C} \right | = q^k$ \\
-$d(\mathcal{C})=3$\\
+$dim(\Code)=n-l=k$, $\left| \Code \right | = q^k$ \\
+$d(\Code)=3$\\
 Nach Konstruktion von $H$ sind je zwei Spalten linear unabh"anging. Es gibt drei linear abh"angige Spalten:
 \begin{align*}
 	&\begin{pmatrix}
@@ -888,5 +888,5 @@ Nach Konstruktion von $H$ sind je zwei Spalten linear unabh"anging. Es gibt drei
 \end{align*}
 \subsubsection{Kugelpackungsbed.:}
 $\sum_{j=0}^1{\binom{n}{j} (q-1)^i}=1 + n \cdot (q-1) = 1 + \frac{q^l-1}{q-1}=q^l$\\
-$\frac{q^n}{q^l}=q^{n-l}=q^k = \left| \mathcal{C} \right|$\\
-$\mathcal{C}$ perfekt.
+$\frac{q^n}{q^l}=q^{n-l}=q^k = \left| \Code \right|$\\
+$\Code$ perfekt.
