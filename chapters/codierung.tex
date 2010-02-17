@@ -890,3 +890,142 @@ Nach Konstruktion von $H$ sind je zwei Spalten linear unabh"anging. Es gibt drei
 $\sum_{j=0}^1{\binom{n}{j} (q-1)^i}=1 + n \cdot (q-1) = 1 + \frac{q^l-1}{q-1}=q^l$\\
 $\frac{q^n}{q^l}=q^{n-l}=q^k = \left| \Code \right|$\\
 $\Code$ perfekt.
+
+%
+% Vorlesung vom 11.02.2010
+%
+
+
+%
+% Wiederholung
+%	Hamming-Code
+%
+\subsection{Beispiel}
+\begin{enumerate}[a)]
+	\item $q=2 (K= \Z_2), l=3, n=7$
+	\[
+	H=\begin{pmatrix}
+		1 & 0 & 0 & 1 & 1 & 0 & 1 \\ 
+		0 & 1 & 0 & 1 & 0 & 1 & 1 \\ 
+		0 & 0 & 1 & 0 & 1 & 1 & 1
+	\end{pmatrix}
+	\]
+	$[7,4]$-Hamming-Code "uber $\Z_2$
+	\item  $q=3 (K= \Z_3), l=3, n=\frac{3^3-1}{3-1}=13$
+	\[
+	\begin{pmatrix}
+	%	1 & 0 & 0 & 1 & 2 & 1 & 2 & 0 & 0 & 1 & 1 & 1 & 2 \\ 
+	%	0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 2 & 1 & 1 & 2 & 1 \\ 
+	%	0 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 2 & 1 & 1
+	\end{pmatrix}
+	\]
+	$\dim \Code = 10\quad [13,10]$-H.C. "uber $\Z_3$ $\left| \Code \right| =3^{10}=59049$
+	\item
+	$q=2 (K= \Z_2), l=4, n=\frac{2^4.1}{2-1}=15$
+	\[
+	%momomonster matrix
+	\]
+	$\dim \Code =11,\quad [15,11]$-Code "uber $Z_2$, $\left| \Code \right| = 2^{11}=2048$\\
+	Ang. $y=(110101110000110)$ empfangen.\\
+	Ist $y \in \Code$? 
+	\[
+		H \cdot y^t = 
+		\begin{pmatrix}
+			0 \\ 
+			1 \\ 
+			0 \\ 
+			0
+		\end{pmatrix} +
+		\begin{pmatrix}
+			0 \\ 
+			0 \\ 
+			0 \\ 
+			0
+		\end{pmatrix}
+		\Rightarrow y  not \in \Code
+	\]
+	Decodierung : $y \rightarrow x \in \Code\quad (d(x,y)=1)$\\
+	$y$ unterscheidet sich von $x$ an genau einer Stelle $i$, statt $y_i$ steht in $x$ $y_i+1$.
+	\[
+		(0,1,0,0)^{trans}=H\cdot y^t=H\cdot (x^t + (0,\ldots,\underset{\uparrow}{i},0,\ldots,0)^t) = H \cdot x^t + H \cdot (0,\ldots,0,1,0,\ldots,0)^{trans} = (h_{1i},h_{2i},h_{3i},h_{4i})^{trans} \Rightarrow i=2
+	\]
+	$x=(100101110000110) \in \Code$
+\end{enumerate}
+\subsection{Decodierung bin"arer Hamming-Codes}
+$y$ empfangen. Ist $H y^t=0$ so ist $y \in \Code$\\%$\checekd.\\
+Ist $Hy^t \neq 0$, so w"ahle in H diejenige Spalte, die mit $Hy^t$ "ubereinstimmt. Ist dies die $i-te$ Spalte von $H$, so wird $y$ an Stelle $i$ ge"andert $\curvearrowright x \in \Code$.
+\section{Reed-Solomon-Codes}
+$K$ K"orper, $\left| K \right|=q \quad 1 \leq k \leq n \leq q$\\
+$K[x]_{k-1}=\lbrace f \in K[x] : grad(f) \leq k-1 \rbrace$\\
+K-Vektorraum der Dimension $k$\\
+W"ahle $M= \lbrace a_1,\ldots,a_n \rbrace \subset K,\quad a_i \neq a_j, \text{f"ur } i \neq j,\quad (\text{geht, da } n \leq q)$\\
+$\Code = \Code_M = \lbrace (f(a_i),\ldots,f(a_n) : f \in K[x]_{k-1} \rbrace$
+\subsection{Reed-Solomon-Code} Auswertungscode \\
+(Besonderes wichtiger Fall: $n=q-1$ \\
+$a_i=a^i$, wobei $a$ ein Erzeuger von $K^{*}$, d.h. $K^*=<a>=\lbrace a^1,a^2,\ldots,a^{q-1} \rbrace$) % a^q-1 = 1
+\begin{enumerate}[(1)]
+	\item
+	$\dim \Code = k:$ \\
+	$\alpha \begin{cases} K[x]_{k-1} &\rightarrow \Code \\ f &\longmapsto (f(a_1),\ldots,f(a_n)) \end{cases}$
+
+$\alpha$ ist $K$-lineare Abbildung, surjektiv.\\
+$f \in \ker \alpha$, d.h. $/f(a_1),\ldots,f(a_n))=(0,\ldots,0)$\\
+$f=0 \Leftarrow \begin{cases}
+f \text{ hat mind. $n$ Nullstellen} \\
+Grad(f)=k-1 < n
+\end{cases}$ \\
+$Ker \alpha=\lbrace \vec{0} \rbrace$, $\alpha$ bijektiv. $dim \Code = dim K[x]_{k-1}=k$
+\item
+	$d(\Code)=n-k+1:$ Jedes $f\neq 0$ in $K[x]_{k-1}$ hat h"ochstens $k-1$ Nullstellen, d.h., mind. $n-(k-1)$ Eintr"age jedes Codeworts $\neq 0$ sind $\neq 0$, $d \Code = wt \Code \geq n-k+1$\\
+	$f \longmapsto c=(\underset{\leftarrow k-1 \rightarrow}{0,\ldots,0},\underset{\neq 0}{\underbrace{*,\ldots,*}})\quad wt c = n-k+1$\\
+	$d \Code = n-k+1$
+	\item
+	Reed-Solomon-Codes sind MDS-Codes (f"ur $q=2$ nur triviale Codes)
+	\item
+	\[
+	G=
+	\begin{pmatrix}
+		1 & \ldots & 1 \\ 
+		a_1 & \ldots & a_n \\ 
+		a_1^2 & \ldots & a_n^2 \\ 
+		 & \vdots &  \\ 
+		a_1^{k-1} & \ldots & a_n^{k-1}
+	\end{pmatrix} \text{ ist Erzeugermatrix von } \Code 
+	\]
+	$K[x]_{k-1} \tilde{=}\Code$\\
+	Basis: $1,x,x^2,\ldots,x^{k-1} \overrightarrow{\alpha} \underset{\text{Basis von } \Code}{(1,\ldots,1),(a_1,\ldots,a_n),\ldots,(a_1^{k-1},\ldots,a_n^{k-1})}$
+\end{enumerate}
+\section{MDS-Codes}
+\begin{enumerate}[(1)]
+	\item
+	\[
+		\tilde{G}=%hier komisches matrix
+	\]
+	$\left| K \right| = q\quad  \tilde{\Code}$ der Code mit Erzeugermatrix $\tilde{G}$. L"ange: $n+1$, Dim. $k$\\
+	$d(\tilde{G})=n-k+2$\\
+	$d(\tilde{G})\leq (n+1)-k+1 = n-k+2$\\ %simpleton underset bei leq
+	$0 \neq \tilde{x} \in \tilde{\Code}$ Falls $ \tilde{x}$ Linearkombination des ersten $k-1$ Zeilen von $ \tilde{G}$, so $ \tilde{x}=(x,0),\ x\in\Code$.\\
+	$x=(f(a_1),\ldots,f(a_n))$, wobei $f$ Polynom von Grad $\leq k-2$\\
+	$wt \tilde{x} = wt x \geq n-(k-2)=n-k+2$\\
+	Falls die letzte Zeile von $ \tilde{g}$ in der Linearkombination von $ \tilde{x}$ vorkommt, so $ \tilde{x}=(x,a),\ x\in K,\ a \neq 0,\ x \in \Code$\\
+	$wt \tilde{x} = wt (x) + 1 \geq n-k+1+1=n-k+2$\\
+	$d \tilde{\Code} = n-k+2 = (n+1)-k+1$ MDS-Code. \\
+	W"ahle $n=q$. $ \tilde{\Code}$ Mds-Code der L"ange $q \neq 1$
+	\item
+	$\overline{G} =
+	\begin{pmatrix}
+		1 & \ldots & 1 & 0 & 0 \\ 
+		a_1 & \ldots & a_n & 1 & 0 \\ 
+		a_1^2 & \ldots & a_n^2 & 0 & 1
+	\end{pmatrix}$
+	Code $ \overline{\Code}$ der L"ange $q+2$ Dimension 3.\\
+	$d(\overline{\Code})=q=(q+2)-3+q+1$ MDS-Code.\\
+	falls $q=2^l$
+	\item
+	MDS-Vermutung\\
+	Falls $\Code$ $[n,k]$-Code "uber $K$, $\left| K \right| =q$, mit $d(\Code)=n-k+1$ (MDS-Code), so $n \leq q+2$ (und falls $q=2^l$ sogar $n\leq q+1$) 
+	\item
+	Ist $\Code$ $[n,k]$-MDS-Code, $n \geq 2$, $d = d \Code = n-k+1$\\
+	$ \check{\Code}=\lbrace (c_1,\ldots,c_{n-1}: (c_1,\ldots,c_{n-1},0) \in \Code \rbrace$ (Verk"urzung von $\Code$) ist $[n-1,k-1,d]$-Code, $d=(n-1)-(k-1)+1$\\
+	$ \check{\Code}$ MDS-Code
+\end{enumerate}
