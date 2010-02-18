@@ -1029,3 +1029,53 @@ $Ker \alpha=\lbrace \vec{0} \rbrace$, $\alpha$ bijektiv. $dim \Code = dim K[x]_{
 	$ \check{\Code}=\lbrace (c_1,\ldots,c_{n-1}: (c_1,\ldots,c_{n-1},0) \in \Code \rbrace$ (Verk"urzung von $\Code$) ist $[n-1,k-1,d]$-Code, $d=(n-1)-(k-1)+1$\\
 	$ \check{\Code}$ MDS-Code
 \end{enumerate}
+\section{Codierung von Audio-CDs}
+Ausl"oschung: Bit kann nicht mehr gelesen werden. (Man weiﬂ wo der Fehler liegt)\\
+B"undelfehlern: %Bild 1
+\subsection{Lemma: $[n,k,d]$-Code}
+kann B"undelfehler bis zur L"ange $d-1$ korrigieren (pro Codewort). (Ebenso: $d-1$ Ausl"oschungen)\\
+Bew: $c$ gesendet, $y$ empfangen $(c_1 \ldots c_i \underset{a \leq d-1}{\underbrace{\left| * \ldots * \right|}} c_j \ldots c_n)$ % underbrace a \leq d-1
+Sei $c' \in \Code$, das um Stelle $1,\ldots,i,j,\ldots,n$ mit $y$ "ubereinstimmen. $d(c,c')\leq a \leq d-1$
+\subsection{Interleaving (Spreizung)}
+Def: Sei $\Code$ ein $[n,k]-Code$. \\
+Interleaving von $\Code$ zur Tiefe $s$ liefert lin. Code $\Code (s) \subseteq K^{n\cdot s}$ auf folgende Art:\\
+W"ahle $s$ Codew"orter von $\Code$, schreibe diese als Spalten einer Matrix:
+\[
+c_1=(c_{11},\ldots,c_{n1},\ldots,c_s=(c_{1s},\ldots,c_{ns})
+\begin{pmatrix}
+c_{11} & \ldots & c_{1s} \\ 
+\vdots &  & \vdots \\ 
+c_{n1} & \ldots & c_{ns}
+\end{pmatrix} 
+\]
+$s$ Codew"orter aus $\Code \rightarrow$ \fbox{Interleaver} $\rightarrow $ Codew"orter der L"ange $ns$.\\
+$\Code(s)\ [ns,ks]$-Code, $d(\Code(s))=d(\Code)$\\
+In $\Code(s)$ k"onnen B"undelfehler der L"ange $b \leq (d-1) \cdot s$ korrigieren.
+\[
+\begin{pmatrix}
+c_{11} & \ldots & c_{1s} \\ 
+\vdots &  & \vdots \\ 
+c_{n1} & \ldots & c_{ns}
+\end{pmatrix} 
+\] % hier B‹ndelfehlermatrix
+B"undelfehler der L"ange $b \leq (d-1) \cdot s$ bewirkt B"undelfehler der L"ange $\leq d-1$ zu jedem der urspr"unglichen Codew"orter aus $\Code$. Korrigierbar nach Lemma.
+\subsection{Cross-Interleaving}
+Def: $\Code_1, \Code_2$ $[n_i,k_i]$-Code $(i=1,2)$ "uber $K$, $\Code_1$ besitzt Erzeugermatrix in Standardform $(E_{k_1} | A)$. Das Cross-Interleaving des inneren Codes $\Code_1$ mit "au\ss ern Code $\Code_2$ ist ein Code $\Code \subseteq K^{n_1 n_2}$, der so entsteht:\\
+W"ahle $k_1$ Codew"orter $c_1,\ldots,c_{k_1}$ aus $\Code_2 \subseteq K^{n_2}$ $c_i=(c_{1i}, \ldots, c_{n_2 i}), i=1,\ldots, k_1$, und schreibe sie spaltenweise in eine Matrix:
+\[
+\begin{pmatrix}
+c_{11} & \ldots & c_{1k_1} \\ 
+\vdots &  & \vdots \\ 
+c_{n_2 1} & \ldots & c_{n_2 k_1}
+\end{pmatrix} 
+\]%Kontrollsymbole
+Codiere jede Zeile mit $(E_{k_1} | A)$ zu Codew"ortern zu $\Code_1$. $C \cdot (E_{k_1} | A)$: Letzte $n_1-k_1$ Spalten dieser Matrix sind L.K., der ersten $k_1$ Spalten. %Srsly nichtlesbar, auf Video warten
+Lese zeilenweise aus!\\
+Liefert $[n_1 \cdot n_2, k_1 \cdot k_2, d_1 \cdot d_2]$-Code.\\ $k_1$ Codew"orter aus $\Code_1 \rightarrow$ \fbox{Cross-Interleaver} $\rightarrow$ Codew"orter aus $\Code$ der L"ange $n_1\cdot n_2$ ($n_2$ hintereinander folgende Codew"orter aus $\Code_1$). $\Code$ kann B"undelfehler der L"ange $(d2-1)\cdot n_1$ korrigieren.\\
+Das l"asst sich durch sogenanntes Cross-Interleaving mit $t$-facher Verz"ogerung mit Burst der L"ange $(d_2-1) \cdot n_1 \cdot t$ erh"ohen.
+\subsection{Audio-CD}
+Ausgangscode Reed-Solomon-Code $R=[255,251,5]$ "uber $\F_{2^8}$\\
+$\Code_1$ $[32,28,5]$-Code 223-fache Verk"urzung von R.\\
+$\Code_2$ $[28,24,5]$-Code 227-fache Verk"urzung von R.\\
+Cross-Interleaving mit $\Code_1,\Code_2$ mit 4-facher Verz"ogerung. (CIRC = Cross Interleave Reed-Solomon Code)\\
+Kann Bursts bis zur L"ange $4\cdot 32 \cdot 4=512$
