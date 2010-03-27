@@ -26,7 +26,7 @@ $E$=Verschl"usselungs Funktion, $m$=Klartext, $c$=Chiffretext
 \]	
 ($k_d$ zu $k_e$ geh"origer Dechiffrierschl"ussel!)\\
 $k_d=k_e$ (oder $k_d$ leicht aus $k_e$ zu berechnen):\\
-\textbf{symmetrisches Verschl.verf.}, ansonsten \textbf{asymmetrische Verschl.verf.}. Ist $k_d$ nur sehr schwer (oder gar nicht) zu $k_e$ berechenbar, so kann $k_e$ ver"offentl. werden:\\
+\textbf{symmetrisches Verschl"usselungsverfahren}, ansonsten \textbf{asymmetrische Verschl"usselungsverfahren}. Ist $k_d$ nur sehr schwer (oder gar nicht) zu $k_e$ berechenbar, so kann $k_e$ ver"offentlicht werden:\\
 \textbf{Public-Key-Verfahren}.
 
 \subsection{Beispiel f"ur (nicht sicheres) symmetrische Verfahren}
@@ -53,7 +53,7 @@ $k_d=k_e$ (oder $k_d$ leicht aus $k_e$ zu berechnen):\\
 	Warum? Man muss im Schnitt 50\% der Permutationen testen. Angenommen man k"onnte $10^12$ Perm. pro Sekunde testen.\\
 	Aufwand: $2\cdot10^{14}$ Sekunden $\approx 6.000.000$ Jahre\\
 	Trotzdem unsicher!\\
-	Grund: Charakteristisches H"aufigkeitsverteilung von Buchstaben in nat"urlichspr. Texten.
+	Grund: Charakteristisches H"aufigkeitsverteilung von Buchstaben in nat"urlichsprachigen Texten.
 \end{enumerate}
 Verfahren beinhalten viele Verschl"usselungsm"oglichkeiten, abh"angig von der Auswahl des Schl"ussels.\\
 Verfahren bekannt, aber Schl"ussel $k_d$ geheim!\\
@@ -208,7 +208,7 @@ $n \times m$-Matrix A,B
 	c_{1l}=(a_{i1} \cdot b_{ij})+(a_{i2} \cdot b_{2j}) + \ldots + (a_{im} \cdot b_{mj})
 \]
 \[
-	(A+B)\cdot C = A\cdot B + B\cot C
+	(A+B)\cdot C = A\cdot B + B \cdot C
 \]
 
 Im Allgemeinem: $A\cdot B \neq B\cdot A$\\
@@ -495,7 +495,7 @@ Version mit 128 Bit Block und Schl"ussel"ange. \\
 \end{figure}Vorbemerkung: 128-Bit Bl"ocke werden dargestellt als:\\
 \[
 	\begin{pmatrix}
-		a_{01} & a_{02} & \ldots & a_{03} \\
+		a_{00} & a_{01} & \ldots & a_{03} \\
 		a_{10} & a_{11} & \ldots & a_{13}\\
 		\vdots & \vdots  & \vdots & \vdots \\
 		a_{30} & \ldots  & \ldots & a_{33}
@@ -539,7 +539,7 @@ g^{-1} \odot g = ((u \mod{h}) \cdot g) \mod{h} = u \cdot g \mod{h} = (1 - vh) \m
 \subsection{SubBytes-Transfer}
 $S_{i-1} =
 \begin{pmatrix}
-	a_{01} & a_{02} & \ldots & a_{03} \\
+	a_{00} & a_{01} & \ldots & a_{03} \\
 	a_{10} & a_{11} & \ldots & a_{13}\\
 	\vdots & \vdots  & \vdots & \vdots \\
 	a_{30} & \ldots  & \ldots & a_{33}
@@ -650,7 +650,7 @@ Wende auf $b, c, d, a$ SubBytes-Transformation an $\rightarrow e, f, g, h$\\
 \]	
 Rundenschl"ussel $K_i$: 4x4-Matrix mit Spalten $w(4i),; w(4i+1),; w(4i+2),; w(4i+3)$\\
 \\
-(Nebenbemerkung: Linear heiﬂt $f(x+y) = f(x) + f(y)$)
+(Nebenbemerkung: Linear hei\ss t $f(x+y) = f(x) + f(y)$)
 
 %p6
 
@@ -660,7 +660,7 @@ Rundenschl"ussel $K_i$: 4x4-Matrix mit Spalten $w(4i),; w(4i+1),; w(4i+2),; w(4i
 Diffie, Hellman, 1976
 Jeder Teilenehmer hat ein Paar von Schl"usseln:
 \begin{itemize}
-	\item[-] "Offentlichen Schl"ussel $P_A$
+	\item[-] "offentlichen Schl"ussel $P_A$
 	\item[-] geheimen Schl"ussel $G_A$
 \end{itemize}
 Zu $P_A$ geh"ort "offentlich bekannte Verschl"usselungsfunktion $E_{P_A}$ (=$E(\cdot, P_A$)\\
@@ -686,10 +686,11 @@ Es ist unbekannt ob Einwegfunktion existieren! Notwendig f"ur die Existenz von E
 Es gibt Kandidaten f"ur Einwegfunktionen.
 
 \section{RSA-Verfahren} (Rivest, Shamir, Adleman, 1977)
-Beruht auf Schwierigkeit groﬂe Zahlen zu  faktorisieren!
+\\
+Beruht auf Schwierigkeit gro\ss e Zahlen zu  faktorisieren!
 
 \subsection{Schl"usseslerzeugung}
-W"ahle zwei groﬂe Primzahlen $p,q (p\neq q)$ (mindestens 500 Bit L"ange)\\
+W"ahle zwei gro\ss e Primzahlen $p,q (p\neq q)$ (mindestens 500 Bit L"ange)\\
 Bilde $n=p\cdot q$\\
 \[
 	\varphi(n)=\| \{a \in \N : 1 \leq a < n, ggt(a,n)=1\}\|
@@ -790,7 +791,7 @@ Eve f"angt $c_1,\ c_2,\ c_3$ ab: Chinesisches Restsatz:
 \end{align*}
 Wenn $e=5$, dann braucht man 5 Nachrichten.
 
-\subsection{Wie bestimmt man groﬂe Primzahlen?}
+\subsection{Wie bestimmt man gro\ss e Primzahlen?}
 
 \begin{align*}
 	p	\text{ Primzahl},\quad a \in \Z,\quad ggT(a,p)=1\\
@@ -897,7 +898,6 @@ Jeder Empf"anger muss digitale Signatur verifizieren k"onnen.
 
 $A$ will Dokument $m$ signieren. \\
 $A$ besitzt "offentlichen RSA-Schl"ussel $(n,e)$, geheimen Schl"ussel $d$.
-
 Signatur: $m^d \mod{n}$ sendet $(m,\ m^d \mod{n})$ an $B$.\\
 $(m^d \mod{n})^e = m^{e \cdot d} \mod{n} = m\ (\md{n})$\\
 $m < n$\\
@@ -978,7 +978,7 @@ dass zwei gleich sind ungef"ahr $\frac{1}{2}$.\\
 $n=64 : 2^{32}$ Hashwerte $(~4 \cdot 10^9)$ unsicher.\\
 Weit verbreitet waren und sind:
 \begin{itemize}
-	\item[] MD5 (message digerst / Ron Rivest, 1991, 128 Bit)
+	\item[] MD5 (message digest / Ron Rivest, 1991, 128 Bit)
 	\item[] SHA-1 (Secure Hash Algorithm, NSA, 1992/1993, 160 Bit)
 \end{itemize}
 
@@ -1014,7 +1014,7 @@ Damit $B$ sich sicher seien kann, dass es wirklich $A$ ist, kann $B$ so oft wie 
 
 \section{Secret Sharing Scheme}
 Geheimnis wird auf mehrere Teilnehmer verteilt (Teilgeheimnisse), so dass gewisse Teilmengen der Teilnehmer das Geheimnis mit ihren Teilgeheimnissen rekonstruieren k"onnen, die anderen nicht. \\ \\
-$T$ = \{ $t_1, \ldots , t_n$\}, $k < n$ \ \ (T Menge der Teilnehmer) \\ \\
+$T = \left\lbrace t_1, \ldots , t_n \right\rbrace,\quad k < n\quad$ (T Menge der Teilnehmer) \\ \\
 Jede Teilmenge von $T$ mit mindestens $k$ Teilnehmer sollen Geheimnis rekonstruieren k"onnen, Teilmengen von $T$ mit weniger als $k$ Teilnehmer nicht.\\
 \subsection{($k, n$) - Schwellenwertsysteme}
 1979 Shamir (How to share a secret)

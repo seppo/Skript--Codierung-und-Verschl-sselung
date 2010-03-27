@@ -27,188 +27,174 @@ Vorteil: keine Verz"ogerung der "Ubertragung aber ggf. gro\ss e Redundanz notwen
 
 \subsection{ARQ-Verfahren (Automatic Repeat Request)}
 Aufgetretene Fehler sollen erkannt werden, werden nicht korrigiert. Stattdessen  wiederholt die "Ubertragung beim Sender anfordern.\\
-\\
-Vorteil: geringe Redundanz, aber Verz"ogerung.\\
-\\
+Vorteil: geringe Redundanz, aber Verz"ogerung.
 \subsubsection{Beispiele}
-\subsection{Parity-Check-Codes}
-z.B. Nachrichten: 00, 01, 10, 11\\
-\\
-Codierung:
-\begin{align*}
-	00 &\rightarrow 000\\
-	01 &\rightarrow 011\\
-	10 &\rightarrow 101\\
-	11 &\rightarrow 110
-\end{align*}
-(gerade Anzahl von Einsen in den Codew"ortern)\\
-\\
-1 Fehler wird erkannt, nicht korrigiert.\\
-2 Fehler werden nicht erkannt.
+\begin{enumerate}
+	\item Parity-Check-Codes\\
+		z.B. Nachrichten: 00, 01, 10, 11\\
+		Codierung:
+		\begin{align*}
+			00 &\rightarrow 000\\
+			01 &\rightarrow 011\\
+			10 &\rightarrow 101\\
+			11 &\rightarrow 110
+		\end{align*}
+		(gerade Anzahl von Einsen in den Codew"ortern)\\
+		1 Fehler wird erkannt, nicht korrigiert.\\
+		2 Fehler werden nicht erkannt.
+	\item Wiederholungscode\\
+		Nachrichten wie in 1.\\
+		\\
+		Codierung:
+		\begin{align*}
+			00 &\rightarrow 000000\\
+			01 &\rightarrow 010101\\
+			10 &\rightarrow 101010\\
+			11 &\rightarrow 111111
+		\end{align*}	
+		(3-Fache Wiederholung)\\
+		\\
+		1 Fehler wird erkannt und korrigiert.\\
+		\underline{01}11\underline{01} $\overset{\text{Decod}}{\curvearrowright}$ 010101 $\curvearrowright$ 01
+	\item Nachrichten wie in 1. und 2. \\
+		Codierung:
+		\begin{align*}
+			00 &\rightarrow 00000\\
+			01 &\rightarrow 01101\\
+			10 &\rightarrow 10110\\
+			11 &\rightarrow 11011
+		\end{align*}
+		Je zwei Codew"orter unterscheiden sich an mindestens 3 Positionen.\\
+		Angenommen 1 Fehler tritt bei "Ubertragung auf. Dann gibt es genau ein Codewort, dass sich vom empfangenen Wort an genau einer Stelle unterscheidet; in das wird decodiert.
+	\item (ehmaliger) ISBN-Code \\
+		International Standard Book Number\\
+		\\
+		10-Stelliger Code\\
+		Erste 9 Ziffern haben inhaltliche Bedingung ($\entspricht$ Nachricht)\\
+		10. Ziffer: Pr"ufziffer\\
+		\\
+		Beispiel: 3-540-26121-? (Land - Verlag - Buchnummer - Pr"ufziffer)\\
+		\\
+		Uncodierte W"orter sind gebildet "uber $R=\lbrace 0, \ldots, 9\rbrace$\\
+		Codierte W"orter sind gebildet "uber $S=\lbrace 0, \ldots, 9, X\rbrace$\\
+		ISBN-Wort $C_{10}C_9\ldots C_2C_1$\\
+		$C_{10}\ldots C_2$ inhaltliche Bedeutung, $C_1$ wird so gew"ahlt, dass
+		\begin{align*}
+			\sum^{10}_{k=1} k \cdot C_k &\equiv 0 (\md{11})\\
+			10\cdot C_{10}+\ldots + 2\cdot C_2 + C_1 &\equiv 0(\md{11})
+		\end{align*}
+		falls $C_1 = 10$ so setzte $C_1 = X$\\
+		$C_1$ vom Beispiel ausrechnen.
+		\begin{align*}
+			10\cdot 3+9\cdot 5+8\cdot 4+7\cdot 0+6\cdot 2+5\cdot 6+4\cdot 1+3\cdot 2+2\cdot 1+C_1 &\equiv 0 (\md{11})\\
+			161 + C_1 &\equiv 0 (\md{11}) \Rightarrow C_1 = 4
+		\end{align*}
+		"Andern einer Ziffer wird erkannt:\\
+		$C_{10} C_9\ldots C_2 C_1 \curvearrowright C_i$ wird $X_i \neq C_i$ ersetzt\\
+		$C_{10} \ldots C_{i+1} X_i C_{i-1} \ldots C_1$
+		\[
+			\sum^{10}_{k=1, k \neq i} k \cdot C_k + i \cdot x_i = 
+			\underbrace{\sum^{10}_{k=1, k \neq i} k \cdot C_k}_{\equiv 0 (\md{11})}+
+			\overbrace{
+					\underset{\underset{\nequiv 0 (\md{11})}{\uparrow}}{i} 
+					\cdot (\underbrace{x_i-c_i}_{\nequiv 0 (\md{11})}) 
+			}^{\nequiv 0 (\md{11})\rightarrow 11 = Prim}
+			\nequiv 0(\md{11})	
+		\]
+		Fehler wird erkannt, Korrektur nicht m"oglich.\\
+		\\
+		$3-540-26121-4 \equiv 0(\md{11})$\\ \\
+		$\left.
+		\begin{matrix}
+			3-540-26121-\mathbf{6} \\
+			3-540-2612\mathbf{2}-4
+		\end{matrix}
+		\right\} \text{Pr"ufsumme 2.}
+		$\\
+		Vertauschung von Zwei Ziffern wird erkannt.\\
+		$C_i$ und $C_j$ vertauscht.\\
+		O.B.d.A $C_i \neq C_j$\\
+		$C_{10} \ldots \underset{\stackrel{\uparrow}{i}}{C_j} \ldots \underset{\stackrel{\uparrow}{j}}{C_i} \ldots C_1$\\
+		\begin{align*}
+			\sum^{10}_{k=1, k\neq i,j} k \cdot C_k + i \cdot 	C_j + j \cdot C_i
+			&= \sum^{10}_{k=1} k \cdot C_k + i(C_j-C_i)+j(C_i-C_j)\\
+			&= 
+			\underbrace{\sum^{10}_{k=1} k \cdot C_k}_{\equiv 0 (\md{11})}
+			 + 
+			 \underbrace{(C_j-C_i)}_{\nequiv 0 (\md{11})}
+			 \underbrace{(i-j)}_{\nequiv 0 (\md{11})}
+			 \nequiv 0 (\md{11})
+		\end{align*}
+		Vertauschung wird durch gewichtete Quersummen erkannt.
+\item EAN-13-Code\\
+		European Article Number\\
+		13-Stelliger Code, erste 12 Ziffer sind inhaltlich festgelegt. 13. Ziffer ist Pr"ufziffer.\\
+		$R=S=\lbrace 0, \ldots, 9\rbrace$ \\
+		\[C_1 \ldots C_{12} C_{13}\]
+		$C_1 \ldots C_{12}$ inhaltliche Angabe (in der Regel):\\
+		$C_1 C_2$ Herstellerland (40-43 Deutschland)\\
+		$C_6 \ldots C_7$ Hersteller
+		$C_8 \ldots C_{12}$ interne Produktions Nummer\\
+		$C_{13}$ so gew"ahlt, dass
+		\[
+			C_1 + 3\cdot C_2 + C_3 + 3\cdot C_4 + \ldots + 3\cdot C_{12} + C_{13} \equiv 0 (\md{10})
+		\]
+		1 Fehler wird erkannt. $x \rightarrow 3\cdot x (\md{10})$ Permutation auf $\Z_{10}$, da $ggT(3,10)=1$, %FORMATTING vom ggT?
+		Vertauschung werden nicht immer erkannt. \\
+		"Ubersetzung in Barcode:
+		\[	
+			C_1 C_2 \ldots C_7 C_8 \ldots C_{13}
+		\]
+		Jede der Ziffern $C_2, \ldots, C_{13}$ wird durch einen 0-1-String der L"ange 7 bin"ar codiert. \\
+		$0 \entspricht$ wei\ss er Balken, $1 \entspricht$ schwarzer Balken. \\
+		Codierung sorgt daf"ur, dass nie mehr als 4 wei\ss e oder schwarze Balken nebeneinander stehen. \\
+		\begin{figure}[h]
+			\centering
+			\includegraphics{./img/ean13.png}
+			\caption{EAN-13 Barcode}
+			\label{img:EAN-13 Barcode}
+		\end{figure}
+		\\
+		Schmalen Balken in Mitte und am Rand, sind nur Abtrennzeichen, die nichts mit EAN zu tun haben und nur beim einscannen helfen.\\
+		\[
+			5 \text{ zu }0110001_2
+		\]
+		$C_2,\ldots, C_7$ werden nach Code A oder Code B codiert. $C_1$ bestimmt welcher dieser beiden Codes verwendet wird. \\
+		$C_8,\ldots, C_{13}$ werden nach Code C codiert.\\
+		$C_1$ ergibt sich aus der Art der Codierung von $C_2,\ldots,C_7$
 
-\subsection{Wiederholungscode}
-Nachrichten wie in 1.\\
-\\
-Codierung:
-\begin{align*}
-	00 &\rightarrow 000000\\
-	01 &\rightarrow 010101\\
-	10 &\rightarrow 101010\\
-	11 &\rightarrow 111111
-\end{align*}	
-(3-Fache Wiederholung)\\
-\\
-1 Fehler wird erkannt und korrigiert.\\
-\underline{01}01\underline{01} $\rightarrow$ 010101 $\rightarrow$ 01 \\
-Nachrichten wie in 1.
-Codierung:
-\begin{align*}
-	00 &\rightarrow 00000\\
-	01 &\rightarrow 01101\\
-	10 &\rightarrow 10110\\
-	11 &\rightarrow 11011
-\end{align*}
-Je zwei Codew"orter unterscheiden sich an mindestens 3 Positionen.\\
-Angenommen 1 Fehler tritt bei "Ubertragung auf. Dann gibt es genau ein Codewort, dass sich vom empfangenen Wort an genau einer Stelle unterscheidet; in das wird decodiert.
-
-Muss immer Ungerade unterschiede in Codew"ortern sein. Bei 5 diffs sind 2 Fehler korrigierbar.
-
-\subsection{(ehmaliger) ISBN-Code}
-International Standard Book Number\\
-\\
-10-Stelliger Code\\
-Erste 9 Ziffern haben inhaltliche Bedingung ($\entspricht$ Nachricht)\\
-10. Ziffer: Pr"ufziffer\\
-\\
-Beispiel: 3-540-26121-? (Land - Verlag - Buchnummer - Pr"ufziffer)\\
-\\
-Uncodierte W"orter sind gebildet "uber $R=\{0, \ldots, 9\}$\\
-Codierte W"orter sind gebildet "uber $S=\{0, \ldots, 9, X\}$\\
-\\
-ISBN-Wort $C_{10}C_9\ldots C_2C_1$\\
-$C_{10}\ldots C_2$ inhaltliche Bedingung, $C_1$ wird so gew"ahlt, dass
-\begin{align*}
-	\sum^{10}_{k=1} k \cdot C_k &\equiv 0 (\md{11})\\
-	10\cdot C_{10}+\ldots + 2\cdot C_2 + C_1 &\equiv 0(\md{11})
-\end{align*}
-falls $C_1 = 10$ so setzte $C_1 = X$\\
-$C_1$ vom Beispiel ausrechnen.
-\begin{align*}
-	10\cdot 3+9\cdot 5+8\cdot 4+7\cdot 0+6\cdot 2+5\cdot 6+4\cdot 1+3\cdot 2+2\cdot 1+C_1 &\equiv 0 (\md{11})\\
-	161 + C_1 &\equiv 0 (\md{11}) \Rightarrow C_1 = 4
-\end{align*}
-"Andern einer Ziffer wird erkannt:\\
-$C_{10} C_9\ldots C_2 C_1 \rightarrow\ C_i$ wird $X_i \neq C_i$ ersetzt\\
-$C_{10} \ldots C_{i+1} X_i C_{i-1} \ldots C_1$
-\[
-	\sum^{10}_{k=1, k \neq i} k \cdot C_k + i \cdot x_i = 
-	\underbrace{\sum^{10}_{k=1, k \neq i} k \cdot C_k}_{\equiv 0 (\md{11})}
-	\overbrace{
-			\underset{\underset{\nequiv 0 (\md{11})}{\uparrow}}{i} 
-			\cdot (\underbrace{x_i-c_i}_{\nequiv 0 (\md{11})}) 
-	}^{\nequiv 0 (\md{11})}
-	\nequiv 0(\md{11})	
-\]
-Fehler wird erkannt, Korrektur nicht m"oglich.\\
-\\
-$3-540-26121-4 \equiv 0(\md{11})$\\ \\
-$\left.
-\begin{matrix}
-	3-540-26121-\mathbf{6} \\
-	3-540-2612\mathbf{2}-4
-\end{matrix}
-\right\} \text{Pr"ufsumme 2.}
-$\\
-Vertauschung von Zwei Ziffern wird erkannt.\\
-$C_i$ und $C_j$ vertauscht.\\
-O.B.d.A $C_i \neq C_j$\\
-$C_{10} \ldots \underset{\stackrel{\uparrow}{i}}{C_j} \ldots \underset{\stackrel{\uparrow}{j}}{C_i} \ldots C_1$\\
-\begin{align*}
-	\sum^{10}_{k=1, k\neq i,j} k \cdot C_k + i \cdot 	C_j + j \cdot C_i
-	&= \sum^{10}_{k=1} k \cdot C_k + i(C_j-C_i)+j(C_i-C_j)\\
-	&= 
-	\underbrace{\sum^{10}_{k=1} k \cdot C_k}_{\equiv 0 (\md{11})}
-	 + 
-	 \underbrace{(C_j-C_i)}_{\nequiv 0 (\md{11})}
-	 \underbrace{(i-j)}_{\nequiv 0 (\md{11})}
-	 \nequiv 0 (\md{11})
-\end{align*}
-Vertauschung wird durch gewichtete Quersummen erkannt.
-
-
-\subsection{EAN-13-Code}
-European Article Number\\
-13-Stelliger Code, erste 12 Ziffer sind inhaltlich festgelegt.\\
-13. Ziffer ist Pr"ufziffer.\\
-$R=S=\{ 0, \ldots, 9\}$ \\
-$C_1 \ldots C_{12} C_{13}$\\
-\\
-$C_1 \ldots C_{12}$ inhaltliche Angabe (in der Regel):\\
-$C_1 C_2$ Herstellerland (40-43 Deutschland)\\
-$C_6 \ldots C_7$ Hersteller
-$C_8 \ldots C_{12}$ interne Produktions Nummer\\
-\\
-$C_{13}$ so gew"ahlt, dass
-\[
-	C_1 + 3\cdot C_2 + C_3 + 3\cdot C_4 + \ldots + 3\cdot C_{12} + C_{13} \equiv 0 (\md{10})
-\]
-$x \rightarrow 3x$ Permutation auf $\Z_{10} (\md{10})$, da $ggT(3,10)=1$, %FORMATTING vom ggT?
-1 Fehler wird erkannt. Vertauschung in der Regel nicht erkannt. \\
-\\
-"Ubersetzung in Barcode:
-\[	
-	C_1 C_2 \ldots C_7 C_8 \ldots C_{13}
-\]
-Jede der Ziffern $C_2, \ldots, C_{13}$ wird durch einen 0-1-String der L"ange 7 bin"ar codiert. \\
-$0 \entspricht$ wei\ss er Balken, $1 \entspricht$ schwarzer Balken. \\
-Codierung sorgt daf"ur, dass nie mehr als 4 wei\ss e oder schwarze Balken nebeneinander stehen. \\
-\begin{figure}[h]
-	\centering
-	\includegraphics{./img/ean13.png}
-	\caption{EAN-13 Barcode}
-	\label{img:EAN-13 Barcode}
-\end{figure}
-\\
-Schmalen Balken in Mitte und am Rand, sind nur Abtrennzeichen, die nichts mit EAN zu tun haben und nur beim einscannen helfen.\\
-\[
-	5 \text{ zu }0110001_2
-\]
-$C_2,\ldots, C_7$ werden nach Code A oder Code B codiert. $C_1$ bestimmt welcher dieser beiden Codes verwendet wird. \\
-$C_8,\ldots, C_{13}$ werden nach Code C codiert.\\
-$C_1$ ergibt sich aus der Art der Codierung von $C_2,\ldots,C_7$
-
-\begin{center}
-	\begin{tabular}{| c | c | c | c | p{2cm} |}
-	\hline
-	 &\multicolumn{2}{|c|}{\textbf{Ziffern $\mathbf{C_2 - C_7}$}} & \textbf{Ziffern $\mathbf{C_8 - C_{13}}$} & \textbf{bestimmt durch} $\mathbf{C_1}$ \\
-	\hline
-	\textbf{Zeichen} & \textbf{Code A} & \textbf{Code B} & \textbf{Code C} & \textbf{Code D}\\
-	\hline
-	\textbf{0} &	0001101 &	0100111 &	1110010 &	AAAAAA\\
-	\textbf{1} &	0011001 &	0110011 &	1100110 &	AABABB\\
-	\textbf{2} &	0010011 &	0011011 &	1101100 &	AABBAB\\
-	\textbf{3} &	0111101 &	0100001 &	1000010 &	AABBBA\\
-	\textbf{4} &	0100011 &	0011101 &	1011100 &	ABAABB\\
-	\textbf{5} &	0110001 &	0111001 &	1001110 &	ABBAAB\\
-	\textbf{6} &	0101111 &	0000101 &	1010000 &	ABBBAA\\
-	\textbf{7} &	0111011 &	0010001 &	1000100 & 	ABABAB\\
-	\textbf{8} &	0110111 &	0001001 &	1001000 &	ABABBA\\
-	\textbf{9} &	0001011 &	0010111 &	1110100 &	ABBABA\\
-	\hline
-	\end{tabular}
-\end{center}
-Codew"orter von Code A,B oder C kommen nur einmal vor. Daher treten nie mehr als 4 gleiche Balken nebeneinander auf. \\
+		\begin{center}
+			\begin{tabular}{| c | c | c | c | p{2cm} |}
+			\hline
+			 &\multicolumn{2}{|c|}{\textbf{Ziffern $\mathbf{C_2 - C_7}$}} & \textbf{Ziffern $\mathbf{C_8 - C_{13}}$} & \textbf{bestimmt durch} $\mathbf{C_1}$ \\
+			\hline
+			\textbf{Zeichen} & \textbf{Code A} & \textbf{Code B} & \textbf{Code C} & \textbf{Code D}\\
+			\hline
+			\textbf{0} &	0001101 &	0100111 &	1110010 &	AAAAAA\\
+			\textbf{1} &	0011001 &	0110011 &	1100110 &	AABABB\\
+			\textbf{2} &	0010011 &	0011011 &	1101100 &	AABBAB\\
+			\textbf{3} &	0111101 &	0100001 &	1000010 &	AABBBA\\
+			\textbf{4} &	0100011 &	0011101 &	1011100 &	ABAABB\\
+			\textbf{5} &	0110001 &	0111001 &	1001110 &	ABBAAB\\
+			\textbf{6} &	0101111 &	0000101 &	1010000 &	ABBBAA\\
+			\textbf{7} &	0111011 &	0010001 &	1000100 & 	ABABAB\\
+			\textbf{8} &	0110111 &	0001001 &	1001000 &	ABABBA\\
+			\textbf{9} &	0001011 &	0010111 &	1110100 &	ABBABA\\
+			\hline
+			\end{tabular}
+		\end{center}
+		Codew"orter von Code A,B oder C kommen nur einmal vor. Daher treten nie mehr als 4 gleiche Balken nebeneinander auf. \\
+\end{enumerate}
 
 \section{Blockcodes}
-\begin{align*}
-	00 \rightarrow & 00000\\
-	01 \rightarrow & 01101\\
-	10 \rightarrow & 10110\\
-	11 \rightarrow & 11011
-\end{align*}
-
+		\begin{align*}
+			00 \rightarrow & 00000\\
+			01 \rightarrow & 01101\\
+			10 \rightarrow & 10110\\
+			11 \rightarrow & 11011
+		\end{align*}
+		
 \subsection{Definition}
-
 $S$ endl. Menge (=Alphabet), $n \in \N$. \\
 Ein Blockcode $\Code$
 der (Block-)L"ange $n$ "uber $S$ ist Teilmenge von $S^n=\underset{\longleftarrow \ \  n\ \  \longrightarrow}{S \times \ldots \times S}$ \\ % Pfeilspass <- n -> \times
@@ -289,19 +275,6 @@ $d(\Code) \geq t+1$ und es treten maximal $t$ minimal $1$ Fehler auf, so ist $y$
 	\item[b)] ISBN, EAN-Codes, $d(\Code)=2$, 1-Fehler-erkennend.
 \end{description}
 
-%Verbesser + Verschoenert, aber kein plan was der titel hier ist
-\section{Titel???}
-
-$d(\Code) \geq 2 \cdot t + 1,\ \Code \subseteq R^N$ \\
-$K_t(x) \cap K_t(x')=\emptyset$ \\
-$x, x' \in \Code,\ x \neq x'$ \\
-\\
-$y$ empfangen:
-\begin{itemize}
-\item falls $y$ in $K_t(x)$ liegt f"ur einen $x \in \Code$, so wird $y$ nach $x$ decodiert (Korrekt, falls max. $t$ Fehler aufgetreten sind)
-\item  falls $y$ in keiner $K_t(x)$ liegt, so kann es mehrere Codew"orter geben mit gleichem min. Abstand zu $y$. (Dann keine eindeutige  Decodierung)
-\end{itemize}
-
 \subsection{Definition: Perfekter Code}
 Code $\Code \subseteq R^n$ hei\ss t perfekt, falls es ein $t \in \N_0$ gibt, mit der Eigenschaft:
 \[
@@ -333,10 +306,10 @@ Trivial Beispiele:
 \subsection{Lemma}
 $\left| R \right| = q,\ x \in R^n,\ t \in \N$ \\
 Dann ist $\left| K_t(x) \right| = \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i$ \\
-$\left(\binom{n}{i}=\frac{n\!}{i\! \cdot (n-i)\!}\right)$
+$\left(\binom{n}{i}=\frac{n!}{i! \cdot (n-i)!}\right)$
 
 \subsubsection{Beweis}
-Abstand 0 zu $x$: 1 Word (n"amlich $x$): $\binom{n}{0} \cdot (q-1)^0 =1$ \\
+Abstand 0 zu $x$: 1 Wort (n"amlich $x$): $\binom{n}{0} \cdot (q-1)^0 =1$ \\
 Abstand $i>0$ zu x: \\
 Anzahl der Auswahl von $i$ Positionen aus $n$ Positionen: $\binom{n}{i}$ \\
 An jeder Position $q-1$ "Anderungsm"oglichkeiten. \\
@@ -344,7 +317,7 @@ $\rightarrow$ insgesamt $(q-1)^i$ M"oglichkeiten, \\
 Anzahl der W"orter vom Abstand $i$ von $x$: $\binom{n}{i} \cdot (q-1)^i$
 
 \subsubsection{Satz}
-Sei $\Code$ ein Code der L"ange $n$ "uber $R$, $\left| \Code \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\Code) \geq 2 \cdot t + 1,\ t=\lfloor \frac{d(\Code)-1}{2}\rfloor$.
+Sei $\Code$ ein Code der L"ange $n$ "uber $R$, $\left| \Code \right|> 1, \left|R\right| = q$. Sei $t \in \N_0$ maximal mit $d(\Code) \geq 2 \cdot t + 1,\ t=\left\lfloor \frac{d(\Code)-1}{2}\right\rfloor$.
 \begin{enumerate}[a)]
 	\item (Kugelpackungsschranke) \\
 	$\left|\Code\right| \leq \frac{q^n}{\sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i}$
@@ -353,42 +326,41 @@ Sei $\Code$ ein Code der L"ange $n$ "uber $R$, $\left| \Code \right|> 1, \left|R
 \end{enumerate}
 
 \subsubsection{Beweis}
-a)
-\begin{align*}
-	&d(\Code) \geq 2 \cdot t + 1,\text{ daher }K_t(x) \cap K_t(x')=\emptyset,\ x\neq x',\ x,x' \in \Code  \\
-	&R^n \geq \underset{x \in \Code}{\bigcup} K_t(x) \\
-	&q^n=\left|R^n\right| \\
-	&\left| \bigcup_{x \in \Code} K_t(x) \right| = \sum_{x \in \Code} \left| K_t(x) \right|
-	\underset{Lemma}{=}\left| \Code \right| \cdot \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i\\
-\end{align*}
-b)
-\begin{align*}
-	&\Rightarrow:d(\Code)=2 \cdot t +1 \\
-	&R^n = \bigcup_{x \in \Code} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
-	&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup K_t(x) \Rightarrow \Code \text{ perfekt.}
-\end{align*}
-
+\begin{enumerate}[a)]
+	\item \begin{align*}
+			&d(\Code) \geq 2 \cdot t + 1,\text{ daher }K_t(x) \cap K_t(x')=\emptyset,\ x\neq x',\ x,x' \in \Code  \\
+			&R^n \geq \bigcup^{\bullet}_{x \in \Code} K_t(x) \\
+			&q^n=\left|R^n\right| \geq \left| \bigcup^{\bullet}_{x \in \Code} K_t(x) \right| = \sum_{x \in \Code} \left| K_t(x) \right|
+			\underset{Lemma}{=}\left| \Code \right| \cdot \sum_{i=0}^t \binom{n}{i} \cdot (q-1)^i\\
+		\end{align*}
+	\item \begin{align*}
+			&\Rightarrow:d(\Code)=2 \cdot t +1 \\
+			&\quad R^n = \bigcup^{\bullet}_{x \in \Code} K_t(x) \Rightarrow \text{Gleichheit in a)}\\
+			&\Leftarrow: \text{Gleichheit} \Rightarrow R^n=\bigcup^{\bullet}_{x \in \Code} K_t(x) \Rightarrow \Code \text{ perfekt.}
+		\end{align*}
+\end{enumerate}
 %Teil 2 der Vorlesung
-\subsection{Bsp: Bin"arer Hamming-Code der L"ange 7}
+\subsection{Bin"arer Hamming-Code der L"ange 7}
 
-$R=\Z_2=\lbrace 0,1 \rbrace$ $\Code$ perfekt, $d(\Code)=3,\ \left| \Code \right| = 16$ \\
-1-Fehler-Korrigierend
+$R=\Z_2=\lbrace 0,1 \rbrace$, $\Code$ perfekt, $d(\Code)=3,\ \left| \Code \right| = 16$, (korrigiert 1 Fehler)
 \begin{align*}
-\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
-										&C_2 + C_4 + C_5 + C_7 = 0,\\
-										&C_3 + C_5 + C_6 + C_7 = 0\\
-										 &\rbrace \subseteq \Z_2^7
+	\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\
+		&C_1 + C_4 + C_6 + C_7 = 0,\\
+		&C_2 + C_4 + C_5 + C_7 = 0,\\
+		&C_3 + C_5 + C_6 + C_7 = 0\\
+		&\rbrace \subseteq \Z_2^7
 \end{align*}
 $\Code$ ist Unterraum von $\Z_2^7$ \\
 $(C_1,\ldots,C_7) \in \Code,\ (C_1',\ldots,C_7') \in \Code$ \\
-$(C_1 + C_1',\ldots,C_7+C_7')\ \ (C_1+C_1') + (C_4+C_4') + (C_6+C_6') + (C_7+C_7') = 0$ \\
+$(C_1 + C_1',\ldots,C_7+C_7')\quad (C_1+C_1') + (C_4+C_4') + (C_6+C_6') + (C_7+C_7') = 0$ \\
 $dim(\Code)=4,\ C_4,C_5,C_6,C_7$ frei w"ahlbar $\curvearrowright C_1,C_2,C_3$ festgelegt \\
 Basis:
 \begin{align*}
 	&(\ldots 1000) \rightarrow (1101000) \\
-	&(\ldots 0100) \rightarrow (0110100) \quad \left| \Code \right| =2^4 =16\\
+	&(\ldots 0100) \rightarrow (0110100) \\
 	&(\ldots 0010) \rightarrow (1010010) \\
-	&(\ldots 0001) \rightarrow (1110001)
+	&(\ldots 0001) \rightarrow (1110001) \\
+	&\left| \Code \right| =2^4 =16
 \end{align*}
 $d(\Code)=3:$\\
 Ang. $d(\Code)=d$. W"ahle $x,x' \in \Code$ mit $d(x,x')=d$\\
@@ -397,23 +369,23 @@ Translationsinvarianz der Metrik: \\
 	d &=d(x,x')=d(x+x,x+x')=d(0,x+x') \\
 	wt(x) &= \text{ Anzahl der Einsen in } x \\
 	&= d(0,x)\\
-	d(\Code) &= \min wt(x),\quad x \in \Code,\quad x \neq \mathcal{V}
+	d(\Code) &= \min wt(x),\quad x \in \Code,\quad x \neq \vec{0}
 \end{align*}
-Zeige: Jeder Vektor $\neq v$ in $\Code$ enth"alt mind. 3 Einsen.\\
-$= 3$ weist man nach durch "uberpr"ufen aller 15 von $\mathcal{V}$ verschiedenen Codew"ortern oder durch Analyse der Gleichung. 
+Zeige: Jeder Vektor $\neq \vec{0}$ in $\Code$ enth"alt mind. 3 Einsen.\\
+$d(\Code) = 3$ weist man nach durch "uberpr"ufen aller 15 von $\vec{0}$ verschiedenen Codew"ortern oder durch Analyse der Gleichung. 
 \begin{align*}
 	&(C_1,\ldots,C_7) \in \Code \text{ Ang. } C_7=1 \\
-	\Rightarrow &C_1+C_4+C_6=1. \text{ Wenn alle Eins } \checked \\
+	\Rightarrow &C_1+C_4+C_6=1. \text{ Wenn alle Eins } \checked \text{, sonst 3 F"alle:} \\
 	&C_1=1,C_4=C_6=0\\
 	&C_4=1,C_1=C_6=0\\
 	&C_6=1,C_1=C_4=0\\
-	&C_1, C_2\text{ oder } C_3 = 1
+	&\text{Addition alle Gleichungen} \Rightarrow C_1+C_2+C_3+C_7=0\\
+	&C_1, C_2\text{ oder } C_3 = 1 \\
+	&\text{2. Fall: } C_7=1,C_4=1,C_1=0,C_2 \text{ oder } C_3=1 \\
+	&\text{3. Fall: analog zu Fall 2.}\\
+	&\text{1. Fall: } C_1=1,C_4=C_6=0, C_7=1, \text{ o.B.d.A. } C_2=C_3=0 \Rightarrow C_5=1\\
+	&d(\Code) \leq 3,\ d(\Code)=3=2 \cdot 1 + 1
 \end{align*}
-2. Fall: $C_7=1,C_4=1,C_1=0,C_2 \text{ oder } C_3=1$ \\
-3. Fall: analog zu Fall 2.\\
-1. Fall: $C_1=1,C_4=C_6=0, C_7=1$, o.B.d.A. $C_2=C_3=0 \Rightarrow C_5=1$\\
-$d(\Code) \leq 3,\ d(\Code)=3=2 \cdot 1 + 1$\\
-\\
 Pr"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:
 \begin{align*}
 	\left|\Code\right| &=16\\
@@ -425,11 +397,9 @@ Pr"ufe nach, ob bei Kugelpackungsschranke Gleichheit gilt:
 % Vorlesung vom 28.01.2010
 \section{Lineare Codes}
 \subsection{Definition: linearer Code}
-Sei $K$ ein endlicher K"orper, $n \in \N$. Ein linearer Code $\Code$ der L"ange $n$ ist ein Unterraum von $K^n$. (Zeilenvektoren) [Alphabet = $k$] \\
-\\
+Sei $K$ ein endlicher K"orper, $n \in \N$. Ein linearer Code $\Code$ der L"ange $n$ ist ein Unterraum von $K^n$. (Zeilenvektoren) [Alphabet = $K$] \\
 Ist $dim(\Code)=k$, so hei\ss t $\Code$ $\left[n,k\right]$-Code.\\
 Ist $d(\Code)=d$, so $\left[ n,k,d \right]$-Code. \\
-\\
 Beachte: $\left| K \right| = q \Rightarrow \left| \Code \right| =q^k$.\\
 \subsection{Definition: Informationsrate}
 Informationsrate (Rate) von $\Code: \frac{k}{n}$.\\
@@ -450,11 +420,12 @@ Informationsrate (Rate) von $\Code: \frac{k}{n}$.\\
 \begin{enumerate}[a)]
 	\item $n$-facher Wiederholungscode "uber $\Z_p$\\
 	$\Code=\lbrace \underset{\longleftarrow n \longrightarrow}{(0,\ldots,0)},(1,\ldots,1),\ldots,(p-1,\ldots,p-1)\rbrace$\\
-	$\Code$ ist linerer Code, $\Code=<(1,\ldots,1)>$\\
+	$\Code$ ist linearer Code, $\Code=<(1,\ldots,1)>$\\
 	$[n,1,n]$-Code
 	\item Hamming-Code ist linearer [7,4,3]-Code "uber $\Z_2$
-	\item $\Code = \lbrace (c_1,\ldots,c_n) : c_i \in \Z_p,\sum^n_{i=1}{c_i}=0 \rbrace$ \\
-	$(p=2 : \text{ Parity Check Code})$, linear $[n,n-1,2]$-Code "uber $\Z_p$\\
+	\item $\Code = \lbrace (C_1,\ldots,C_n) : C_i \in \Z_p,\sum^n_{i=1}{C_i}=0 \rbrace$ \\
+	$(p=2 : \text{ Parity Check Code})$\\
+	linear $[n,n-1,2]$-Code "uber $\Z_p$\\
 	Basis von $\Code:(1,0,\ldots,0,p-1), (0,1,0,\ldots,0,p-1), \ldots, (0,\ldots,0,1,p-1)$
 \end{enumerate}
 \subsection{Definition: Gewicht und Minimalgewicht}
@@ -464,59 +435,58 @@ $K$ endl. K"orper
 	\[
 		wt(x)=\sharp \lbrace i:x_i\neq0 \rbrace
 	\]
-	\item $\lbrace 0 \rbrace \neq \Code \subseteq K^n$, so ist das Minimalgewicht von $\Code$ definiert durch 
+	\item $\lbrace \vec{0} \rbrace \neq \Code \subseteq K^n$, so ist das Minimalgewicht von $\Code$ definiert durch 
 	\[
-		wt(\Code)=\underset{x\in\Code, x\neq 0}{min} wt(x)
+		wt(\Code)=\underset{x\in\Code, x\neq \vec{0}}{min} wt(x)
 	\]
 \end{enumerate}
 
 \subsection{Satz}
-Ist $\Code \neq \lbrace 0 \rbrace$ ein linearer Code, so ist $d(\Code)=wt(\Code)$. (Beweis wie beim [7,4,3]-Hamming Code)
+Ist $\Code \neq \lbrace \vec{0} \rbrace$ ein linearer Code, so ist $d(\Code)=wt(\Code)$. (Beweis wie beim [7,4,3]-Hamming Code)
 
 \subsection{Definition: Erzeugermatrix} %Nochmal im Vid anschauen....bin mir nicht sicher ob das hier stimmt.
-Sei $\Code$ ein $[n,k]$-Code "uber $K$, sei $g_1=(g_{11},\ldots,g_{1n}),\ldots,(g_{k1},\ldots,g_{kn})=(g_{k1},\ldots,g_{kn})$ eine Basis von $\Code$.
+Sei $\Code$ ein $[n,k]$-Code "uber $K$, sei $g_1=(g_{11},\ldots,g_{1n}),\ldots,g_k=(g_{k1},\ldots,g_{kn})$ eine Basis von $\Code$.
 \[
-\text{Dann hei\ss t die } k\times n\text{ -Matix } G=
-\begin{pmatrix}
-g_1\\
-\vdots \\
-g_k\\
-\end{pmatrix}
-=
-\begin{pmatrix}
-	g_{11}&\ldots&g_{1n}\\
-	\vdots&&\vdots\\
-	g_{k1}&\ldots&g_{kn}
-\end{pmatrix}
-\text{ Erzeugermatrix von } \Code
+	\text{Dann hei\ss t die } k\times n\text{ -Matix } G=
+	\begin{pmatrix}
+		g_1 \\ \vdots \\ g_k \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		g_{11}&\ldots&g_{1n}\\
+		\vdots&&\vdots\\
+		g_{k1}&\ldots&g_{kn}
+	\end{pmatrix}
+	\text{ Erzeugermatrix von } \Code
 \]
 \subsection{Satz}
-Sei $G$ ein Erzeugermatrix von $\Code$.\\
-Dann ist $\Code = \lbrace \underset{1\times k}{u} \cdot \underset{k\times x}{G}: u \in K^k \rbrace$\\
-Beweis:\\
-$u=(u_1,\ldots,u_k),u_i\in K$\\
-$uG=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots + u_kg_k \in \Code$\\
+Sei $G$ ein Erzeugermatrix von $\Code$. Dann ist $\Code = \lbrace \underset{\underset{1 \times n}{\underbrace{1\times k \cdot k\times n}}}{u \cdot G}: u \in K^k \rbrace$\\
+Beweis:
+\begin{align*}
+	u&=(u_1,\ldots,u_k),u_i\in K\\
+	uG&=(u_1,\ldots,u_k) \cdot (g_1,\ldots,g_k)^t=u_1g_1+\ldots + u_kg_k \in \Code
+\end{align*}
 \subsection{Bemerkung}
 \begin{enumerate}[a)]
 	\item Die Abb 
 	$\begin{cases}
-		K^k & \rightarrow \Code\\
-		u & \mapsto uG
+		K^k & \longrightarrow \Code\\
+		u & \longmapsto uG
 	\end{cases}$ ist bijektiv. \\
 	$u \in K^k$ Informationsw"orter \\
-	Codert in Codew"orter durch $uG$.
+	Codiert in Codew"orter durch $uG$.
 	\item Elementare Zeilenumformungen an Erzeugermatrix liefern Erzeugermatrix.
 \end{enumerate}
 
-\subsection{Beispiel: Hamming-$[7,4]$-Code "uber $\Z_7$}
+\subsection{Beispiel: Hamming-$[7,4]$-Code "uber $\Z_2$}
 
 \begin{align*}
-\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\ &C_1 + C_4 + C_6 + C_7 = 0,\\
-										&C_2 + C_4 + C_5 + C_7 = 0,\\
-										&C_3 + C_5 + C_6 + C_7 = 0\\
-										 &\rbrace \subseteq \Z_2^7
+	\Code = \lbrace (C_1,\ldots,C_7) : C_i \in \Z_2,\
+		&C_1 + C_4 + C_6 + C_7 = 0,\\
+		&C_2 + C_4 + C_5 + C_7 = 0,\\
+		&C_3 + C_5 + C_6 + C_7 = 0\\
+		&\rbrace \subseteq \Z_2^7
 \end{align*}
-\noindent
 Erzeugermatrix:
 \[	G=
 	\begin{pmatrix}
@@ -526,27 +496,21 @@ Erzeugermatrix:
 		0 & 0 & 0 & 1 & 1 & 1 & 0
 	\end{pmatrix}
 \]
-Cod. eines Informationswort $(u_1,u_2,u_3,u_4)$ mit $G$
+Codierung eines Informationswort $(u_1,u_2,u_3,u_4)$ mit $G$
 \[
 	(u_1,u_2,u_3,u_4) \rightarrow (u_1,u_2,u_3,u_4) \cdot G =  (\mathbf{u_1,u_2,u_3,u_4},u_1+u_3+u_4,u_2+u_3+u_4,u_1+u_2+u_3)
 \]
 \subsection{Definition: Standardform}
-$\Code \  [n,k]$-Code Erzeugermatix $\Code$ ist in Standardform, falls sie folgende Gestalt hat.
+$\Code \  [n,k]$-Code Erzeugermatrix $\Code$ ist in Standardform, falls sie folgende Gestalt hat.
 \begin{align*}
-	G= \quad
-	k
-	\underset{\leftarrow \quad k \quad \rightarrow \quad \leftarrow (n-k) \rightarrow}{
-	\begin{cases}
+	G= 
 	\begin{pmatrix}
 		1 & & 0\\
 		 & \ddots & & & * & \\
 		0 & & 1 & &
 	\end{pmatrix}
-	\end{cases}
-	}
 \end{align*}
-
-Cod. $(u_1,\ldots,u_k) \cdot G = (u_1,\ldots,u_k,*,\ldots,*)$
+Codierung $(u_1,\ldots,u_k) \cdot G = (u_1,\ldots,u_k,*,\ldots,*)$
 
 \subsection{Satz}
 Sei $\Code$ ein $[n,k]$-Code "uber $K$. Dann existiert $(n-k)\times n$-Matrix $H$ "uber $K$ mit folgenden Eigenschaften: \\
@@ -566,7 +530,7 @@ $g_i=(g_{i1},\ldots,g_{in})$\\
 Betrachte LGS: 
 \begin{align*}
 	g_{11} x_1 + \ldots + g_{1n} x_n &= 0\\
-	\vdots&\\
+	&\vdots\\
 	g_{k1} x_1 + \ldots + g_{kn} x_n &= 0
 \end{align*}
 d.h. $G \cdot
@@ -631,98 +595,85 @@ $\Code=Kern(H)$
 		\end{pmatrix}
 	\]
 	\item $\Code$ Code mit Erzeugermatrix\\
-	$
-	\begin{pmatrix}
+	\[
+		\begin{pmatrix}
 		1 & 1 & 0 & 1\\
 		0 & 1 & 0 & 1
-	\end{pmatrix}$
-	 $[4,2]$-Code "uber $\Z_2$\\
-	 $G \cdot
-	 \begin{pmatrix}
-	 x_1 \\
-	 \vdots \\
-	 x_4
-	 \end{pmatrix}
-	 =0$
-	 \begin{align*}
+	\end{pmatrix}\quad [4,2]\text{-Code "uber } \Z_2\quad
+	G \cdot
+	\begin{pmatrix}
+		x_1 \\	\vdots \\	x_4
+	\end{pmatrix}=0
+	\]	
+	\begin{align*}
 	 	x_1+&x_2 + x_4=0\\
-	 	&x_2 + x_4 =0
+	 		&x_2 + x_4 =0
 	\end{align*}
 	$x_5,x_4$ frei w"ahlen, $x_1,x_2$ fesgelegt.\\
-	\[
-		\text{Basis }
-		(0 0 1 0), (0 1 0 1)
-	\]	
-	\[
-		\text{Kontrollmatrix }
+\begin{align*}
+		\text{Basis }&
+		(0 0 1 0), (0 1 0 1)\\
+		\text{Kontrollmatrix }&
 		H=
 		\begin{pmatrix}
 			0 & 0 & 1 & 0 \\
 			0 & 1 & 0 & 1
-		\end{pmatrix}
-	\]
-	$\Code \lbrace (c_1,\ldots,c_4) : c_3=0,c_2+c_4=0\rbrace$	
+		\end{pmatrix}\\
+		&\Code \lbrace (c_1,\ldots,c_4) : c_3=0,c_2+c_4=0\rbrace
+\end{align*}
 \end{enumerate}
 
 %
 %	Vorlesung vom 04.02.2010
 %
 \subsection{Satz}
-$\Code$ $[n,k]$-Code, $\Code \neq \lbrace \vec{0} \rbrace, K^n$, Kontrollmatrix $H$.\\
+$\Code$ $[n,k]$-Code, $\Code \neq \lbrace \vec{0} \rbrace,\ K^n$, Kontrollmatrix $H$.\\
 \begin{align*}
-d(\Code)=wt(\Code) &= min \quad 	\lbrace r : \text{ in H gibt es r linear abh"anige Spalten}  \rbrace \\
-&= max  \quad \lbrace r : \text{ je r-1 Spalten linear unabh"angig} \rbrace
+d(\Code)=wt(\Code) &= \min \lbrace r : \text{ in H gibt es $r$ linear abh"anige Spalten}  \rbrace \\
+&= \max \lbrace r : \text{ je $r-1$ Spalten linear unabh"angig} \rbrace
 \end{align*}
 
 \subsubsection{Beweis}
 $s_1,\ldots,s_n$ Spalten von $H$, L"ange $n-k$. \\
-$\Code \neq \lbrace \vec{0} \rbrace, k \geq	 1, n-k<n \Rightarrow s_1,\ldots,s_n$ lin. abh"angig.\\
-Sei $min \lbrace r: \ldots \rbrace = w$. $s_{i_1},\ldots, s_{i_w}$ lin. abh"angig. \\
+$\Code \neq \lbrace \vec{0} \rbrace, k > 1, n-k<n \Rightarrow s_1,\ldots,s_n$ lin. abh"angig.\\
+Sei $\min \lbrace r: \ldots \rbrace = w$. $s_{i_1},\ldots, s_{i_w}$ lin. abh"angig. \\
 Existiert $c_{i_1},\ldots,c_{i_w} \in K$, nicht alle $=0$, $c_{i_1} s_{i_1}+\ldots+ c_{i_w} s_{i_w}=0$ \\
-$w \quad min \Rightarrow$ alle $c_{i_1},\ldots, c_{i_w} \neq 0$. \\
+$w \min \Rightarrow$ alle $c_{i_1},\ldots, c_{i_w} \neq 0$. \\
 Def. $c=(c_1, \ldots,  c_n)$ mit den $c_{i_j}$ an den Stellen $i_j$, "ubrige $c_i=0$
 \begin{align*}
 	\sum^n_{i=1}{c_i s_i} = c_{i_1} s_{i_1} + \ldots + c_{i_w} s_{i_w} &=0\\
 	\sum^n_{i=1}{c_i s_i^t}&=0 \\
-	Hc^t=0 \quad c \in \Code
+	Hc^t&=0. \quad c \in \Code .
 \end{align*}
 $wt(c)=w$, Min. Gewicht von $\Code \leq wt(c)=w$ \\
-Ang. es ex. $0 \neq c' \in \Code, wt(c')=w' < w$. $Hc'^t=0$\\
-$c'=(c'_1, \ldots,  c'_n)$ \quad $\sum{c'_i s_i}^n_{i=1}=0 \Rightarrow$ $w'$ der Spalten $c_1,\ldots,c_n$ sind linear abh"anging. Widerspruch! \\
-$wt(c)=w$
-
-%
-% Stuff     <- What stuff? Hab hier nichts zwischen den beiden
-%
+Ang. es ex. $0 \neq c' \in \Code,\ wt(c')=w' < w.\quad Hc'^t=0$\\
+$c'=(c'_1, \ldots, c'_n) \quad \sum{c'_i s_i}^n_{i=1}=0 \Rightarrow w'$ der Spalten $c_1,\ldots,c_n$ sind linear abh"anging. Widerspruch! \\
+\[
+	wt(\Code)=w
+\]
 
 \subsection{Beispiel: $[7,4]$-Hamming-Code "uber $\Z_2$}
-$H =
-\begin{pmatrix}
-1 & & 0 & 1 & 0 & 1\\
-   &\ddots &    & 0 & 1 & 1\\
-0 & & 1 & 1 & 1 & 1\\
-\end{pmatrix}$ Kontrollmatrix.\\
-Keine Spalte ist Nullspalte, keine zwei Spalten sind  gleich. 1.,2.,4. Spalte sind linear abh"anging.
+\[
+	H =
+	\begin{pmatrix}
+		1 & 0 & 0 & 1 & 1 & 0 & 1 \\
+		0 & 1 & 0 & 1 & 0 & 1 & 1 \\
+		0 & 0 & 1 & 0 & 1 & 1 & 1 \\
+	\end{pmatrix} \text{ Kontrollmatrix}
+\]
+Keine Spalte ist Nullspalte, keine zwei Spalten sind  gleich, 1.,2.,4. Spalte sind linear abh"anging.
 \[
 	\begin{pmatrix}
-	1\\
-	0\\
-	0\\
+		1\\	0\\	0\\
 	\end{pmatrix} +
 	\begin{pmatrix}
-	0\\
-	1\\
-	0\\
+		0\\	1\\	0\\
 	\end{pmatrix} +
 	\begin{pmatrix}
-	1\\
-	1\\
-	0\\
+		1\\	1\\	0\\
 	\end{pmatrix} =
 	\begin{pmatrix}
-	0\\
-	0\\
-	0\\
+		0\\	0\\	0\\
 	\end{pmatrix} \quad d(\Code)=3
 \]
 \subsection{Korollar: (Singleton-Schranke)}
@@ -786,7 +737,7 @@ $\Code$ $[5,2]$-Code "uber $\Z_2$, Kontrollmatrix
 		0 & 1 & 0 & 1 & 1\\
 	\end{pmatrix}
 \]
-$d(\Code)=3$
+\[d(\Code)=3\]
 \begin{align*}
 (x_1,\ldots,x_5) \in \Code \Leftrightarrow &x_1+x_5 = 0\\
 & x_2+x_3=0\\
@@ -843,24 +794,23 @@ Hy^t=\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ \\
 Decodierung: $y \rightarrow y + f_7 = (10011) \in \Code$\\
 (H"atte man f"ur die Nebenklasse $f_7 + \Code$ als Nebenklassenf"uhrer $(11000)$ gew"ahlt, so w"are decodiert worden in $y + (11000) = (01110) \in \Code$)
 
-\section{Beispiel guter linear Codes}
+\section{Beispiele guter linear Codes}
 \subsection{Hamming-Codes}
 Sei $q$ ein Primzahlpotenz, $K$ K"orper mit $\left| K \right| = q$\\
-Sei $l \in  \N$. $n=\frac{q^l-1}{q-1}, k=n-l$  \\
+Sei $l \in  \N,\ l \geq 2$. $n=\frac{q^l-1}{q-1},\ k=n-l$  \\
 Denn ex. perfekter $[n,k]$-Code $\Code$ "uber $K$, $d(\Code)=3$.
 Hamming-Code.
 \subsubsection{Konstruktion}
-$\left| K^l \backslash \lbrace \vec{0} \rbrace \right| = q^l -1$, je $q-1$ von $0$ versch. Vektoren erzeugen den gleichen 1-dim. Unterr"aume in $K^l$, d.h.
+$\left| K^l \backslash \left\lbrace \vec{0} \right\rbrace \right| = q^l -1$, je $q-1$ von $0$ versch. Vektoren erzeugen den gleichen 1-dim. Unterr"aume in $K^l$, d.h.
 \[
-	n = \frac{q^l-1}{q^l-1} \quad \text{1-dim Unterraum}
+	n = \frac{q^l-1}{q-1} \quad \text{1-dim Unterraum}
 \]
-Bilde $l\times n$-Matrix $H$: W"ahle aus jedem der 1-dim. Unterraum von $K^l$ einen Vektor $\neq 0$ aus und schreibe ihn als Spalte in $H$\\
-$\Code = \lbrace x \in K^n : Hx^t=0 \rbrace$
-%
-% hier fehlt stuff
-% Chris: Habs leider auch nicht, kein plan...fragen den Chris Duta mal was er hat vllt.
+Bilde $l\times n$-Matrix $H$: W"ahle aus jedem der 1-dim. Unterr"aume von $K^l$ einen Vektor $\neq 0$ aus und schreibe ihn als Spalte in $H$.\\
+\[
+	\Code = \lbrace x \in K^n : Hx^t=0 \rbrace
+\]
 $rg(H)=l$, denn $H$ enth"alt $l$ lin. unabh"angige Spalten.\\
-$dim(\Code)=n-l=k$, $\left| \Code \right | = q^k$ \\
+$dim(\Code)=n-l=k$, $\left| \Code \right| = q^k$ \\
 $d(\Code)=3$\\
 Nach Konstruktion von $H$ sind je zwei Spalten linear unabh"anging. Es gibt drei linear abh"angige Spalten:
 \begin{align*}
@@ -887,14 +837,15 @@ Nach Konstruktion von $H$ sind je zwei Spalten linear unabh"anging. Es gibt drei
 	\end{pmatrix}
 \end{align*}
 \subsubsection{Kugelpackungsbed.:}
-$\sum_{j=0}^1{\binom{n}{j} (q-1)^i}=1 + n \cdot (q-1) = 1 + \frac{q^l-1}{q-1}=q^l$\\
-$\frac{q^n}{q^l}=q^{n-l}=q^k = \left| \Code \right|$\\
-$\Code$ perfekt.
 
+\begin{align*}
+	\sum_{j=0}^1{\binom{n}{j} (q-1)^i}=1 + n \cdot (q-1) = 1 + \frac{q^l-1}{q-1}=q^l\\
+	\frac{q^n}{q^l}=q^{n-l}=q^k = \left| \Code \right|\\
+	\Code \text{ perfekt.}
+\end{align*}
 %
 % Vorlesung vom 11.02.2010
 %
-
 
 %
 % Wiederholung
@@ -912,73 +863,86 @@ $\Code$ perfekt.
 	\]
 	$[7,4]$-Hamming-Code "uber $\Z_2$
 	\item  $q=3 (K= \Z_3), l=3, n=\frac{3^3-1}{3-1}=13$
-	\[
+	\[H=
 	\begin{pmatrix}
-	%	1 & 0 & 0 & 1 & 2 & 1 & 2 & 0 & 0 & 1 & 1 & 1 & 2 \\ 
-	%	0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 2 & 1 & 1 & 2 & 1 \\ 
-	%	0 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 2 & 1 & 1
+		1 & 0 & 0 & 1 & 2 & 1 & 2 & 0 & 0 & 1 & 1 & 1 & 2 \\ 
+		0 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 2 & 1 & 1 & 2 & 1 \\ 
+		0 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 2 & 1 & 1
 	\end{pmatrix}
 	\]
-	$\dim \Code = 10\quad [13,10]$-H.C. "uber $\Z_3$ $\left| \Code \right| =3^{10}=59049$
+	$dim (\Code) = 10\quad [13,10]$-H.C. "uber $\Z_3$ $\left| \Code \right| =3^{10}=59049$
 	\item
 	$q=2 (K= \Z_2), l=4, n=\frac{2^4.1}{2-1}=15$
-	\[
-	%momomonster matrix
+	\[H=
+	\begin{pmatrix}
+		1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 \\ 
+		0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 \\ 
+		0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 \\ 
+		0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 1
+	\end{pmatrix} 
 	\]
-	$\dim \Code =11,\quad [15,11]$-Code "uber $Z_2$, $\left| \Code \right| = 2^{11}=2048$\\
+	$dim (\Code) =11,\quad [15,11]$-Code "uber $Z_2$, $\left| \Code \right| = 2^{11}=2048$\\
 	Ang. $y=(110101110000110)$ empfangen.\\
 	Ist $y \in \Code$? 
 	\[
 		H \cdot y^t = 
 		\begin{pmatrix}
-			0 \\ 
-			1 \\ 
-			0 \\ 
-			0
-		\end{pmatrix} +
-		\begin{pmatrix}
-			0 \\ 
-			0 \\ 
-			0 \\ 
-			0
+			0 \\ 1 \\ 0 \\ 0
 		\end{pmatrix}
-		\Rightarrow y  not \in \Code
+		\neq
+		\begin{pmatrix}
+			0 \\ 0 \\ 0 \\ 0
+		\end{pmatrix}
+		\Rightarrow y  \notin \Code
 	\]
 	Decodierung : $y \rightarrow x \in \Code\quad (d(x,y)=1)$\\
-	$y$ unterscheidet sich von $x$ an genau einer Stelle $i$, statt $y_i$ steht in $x$ $y_i+1$.
-	\[
-		(0,1,0,0)^{trans}=H\cdot y^t=H\cdot (x^t + (0,\ldots,\underset{\uparrow}{i},0,\ldots,0)^t) = H \cdot x^t + H \cdot (0,\ldots,0,1,0,\ldots,0)^{trans} = (h_{1i},h_{2i},h_{3i},h_{4i})^{trans} \Rightarrow i=2
-	\]
-	$x=(100101110000110) \in \Code$
+	$y$ unterscheidet sich von $x$ an genau einer Stelle $i$, statt $y_i$ steht in $x:$ $y_i+1$.
+	\begin{align*}
+		\begin{pmatrix}
+			0 \\ 1 \\ 0 \\ 0
+		\end{pmatrix}
+		&=H\cdot y^t \\
+		&=H \cdot (x^t + (0,\ldots,\underset{\underset{i}{\uparrow}}{1},0,\ldots,0)^t) \\
+		&=
+		\underset{\vec{0}}{\underbrace{H \cdot x^t}} + H \cdot (0,\ldots,0,\underset{\underset{i}{\uparrow}}{1},0,\ldots,0)^{t} \\
+		&= 
+		\begin{pmatrix}
+			h_{1i} \\ h_{2i} \\ h_{3i} \\ h_{4i}
+		\end{pmatrix}\Rightarrow i=2\\
+		x&=(100101110000110) \in \Code
+	\end{align*}
+
 \end{enumerate}
 \subsection{Decodierung bin"arer Hamming-Codes}
 $y$ empfangen. Ist $H y^t=0$ so ist $y \in \Code$\\%$\checekd.\\
 Ist $Hy^t \neq 0$, so w"ahle in H diejenige Spalte, die mit $Hy^t$ "ubereinstimmt. Ist dies die $i-te$ Spalte von $H$, so wird $y$ an Stelle $i$ ge"andert $\curvearrowright x \in \Code$.
 \section{Reed-Solomon-Codes}
-$K$ K"orper, $\left| K \right|=q \quad 1 \leq k \leq n \leq q$\\
+$K$ K"orper, $\left| K \right|=q,\ 1 \leq k \leq n \leq q$\\
 $K[x]_{k-1}=\lbrace f \in K[x] : grad(f) \leq k-1 \rbrace$\\
 K-Vektorraum der Dimension $k$\\
-W"ahle $M= \lbrace a_1,\ldots,a_n \rbrace \subset K,\quad a_i \neq a_j, \text{f"ur } i \neq j,\quad (\text{geht, da } n \leq q)$\\
+W"ahle $M= \lbrace a_1,\ldots,a_n \rbrace \subseteq K,\quad a_i \neq a_j, \text{f"ur } i \neq j\text{ (geht, da } n \leq q)$\\
 $\Code = \Code_M = \lbrace (f(a_i),\ldots,f(a_n) : f \in K[x]_{k-1} \rbrace$
-\subsection{Reed-Solomon-Code} Auswertungscode \\
+\subsection{Reed-Solomon-Code (Auswertungscode)}
 (Besonderes wichtiger Fall: $n=q-1$ \\
 $a_i=a^i$, wobei $a$ ein Erzeuger von $K^{*}$, d.h. $K^*=<a>=\lbrace a^1,a^2,\ldots,a^{q-1} \rbrace$) % a^q-1 = 1
 \begin{enumerate}[(1)]
 	\item
-	$\dim \Code = k:$ \\
-	$\alpha \begin{cases} K[x]_{k-1} &\rightarrow \Code \\ f &\longmapsto (f(a_1),\ldots,f(a_n)) \end{cases}$
+	$dim (\Code) = k:$ \\
+	$\alpha \begin{cases} K[x]_{k-1} &\longrightarrow \Code \\ f &\longmapsto (f(a_1),\ldots,f(a_n)) \end{cases}$
 
 $\alpha$ ist $K$-lineare Abbildung, surjektiv.\\
-$f \in \ker \alpha$, d.h. $/f(a_1),\ldots,f(a_n))=(0,\ldots,0)$\\
+$f \in Kern(\alpha)$, d.h. $(f(a_1),\ldots,f(a_n))=(0,\ldots,0)$\\
 $f=0 \Leftarrow \begin{cases}
 f \text{ hat mind. $n$ Nullstellen} \\
 Grad(f)=k-1 < n
 \end{cases}$ \\
-$Ker \alpha=\lbrace \vec{0} \rbrace$, $\alpha$ bijektiv. $dim \Code = dim K[x]_{k-1}=k$
+$Kern(\alpha)=\lbrace \vec{0} \rbrace$, $\alpha$ bijektiv. $dim (\Code) = dim (K[x]_{k-1})=k$
 \item
-	$d(\Code)=n-k+1:$ Jedes $f\neq 0$ in $K[x]_{k-1}$ hat h"ochstens $k-1$ Nullstellen, d.h., mind. $n-(k-1)$ Eintr"age jedes Codeworts $\neq 0$ sind $\neq 0$, $d \Code = wt \Code \geq n-k+1$\\
-	$f \longmapsto c=(\underset{\leftarrow k-1 \rightarrow}{0,\ldots,0},\underset{\neq 0}{\underbrace{*,\ldots,*}})\quad wt c = n-k+1$\\
-	$d \Code = n-k+1$
+	$d(\Code)=n-k+1:$\\
+	Jedes $f\neq 0$ in $K[x]_{k-1}$ hat h"ochstens $k-1$ Nullstellen, d.h., mind. $n-(k-1)$ Eintr"age jedes Codeworts $\neq 0$ sind $\neq 0$, $d(\Code) = wt(\Code) \geq n-k+1$\\
+	$f \prod_{i=1}^{k-1}{x-a_i}	\in K[x]_{k-1},\ f(a_1)=\ldots=f(a_{k-1})=0$\\
+	$f \longmapsto c=(\underset{\leftarrow k-1 \rightarrow}{0,\ldots,0},\underset{\neq 0}{\underbrace{*,\ldots,*}})\quad wt(c) = n-k+1$\\
+	$d (\Code) = n-k+1$
 	\item
 	Reed-Solomon-Codes sind MDS-Codes (f"ur $q=2$ nur triviale Codes)
 	\item
@@ -993,44 +957,71 @@ $Ker \alpha=\lbrace \vec{0} \rbrace$, $\alpha$ bijektiv. $dim \Code = dim K[x]_{
 	\end{pmatrix} \text{ ist Erzeugermatrix von } \Code 
 	\]
 	$K[x]_{k-1} \tilde{=}\Code$\\
-	Basis: $1,x,x^2,\ldots,x^{k-1} \overrightarrow{\alpha} \underset{\text{Basis von } \Code}{(1,\ldots,1),(a_1,\ldots,a_n),\ldots,(a_1^{k-1},\ldots,a_n^{k-1})}$
+	Basis: $1,x,x^2,\ldots,x^{k-1} \underset{\alpha}{\longrightarrow} \underset{\text{Basis von } \Code}{\underbrace{(1,\ldots,1),(a_1,\ldots,a_n),\ldots,(a_1^{k-1},\ldots,a_n^{k-1})}}$
 \end{enumerate}
 \section{MDS-Codes}
 \begin{enumerate}[(1)]
 	\item
 	\[
-		\tilde{G}=%hier komisches matrix
+		\tilde{G}=
+		\begin{pmatrix}
+			1 & \ldots & 1 & 0\\ 
+			a_1 & \ldots & a_n & 0 \\ 
+			a_1^2 & \ldots & a_n^2 & 0\\ 
+			 & \vdots &  & \vdots\\ 
+			a_1^{k-1} & \ldots & a_n^{k-1} & 1
+		\end{pmatrix}
 	\]
-	$\left| K \right| = q\quad  \tilde{\Code}$ der Code mit Erzeugermatrix $\tilde{G}$. L"ange: $n+1$, Dim. $k$\\
+	$\left| K \right| = q$\\
+	$\tilde{\Code}$ der Code mit Erzeugermatrix $\tilde{G}$.\\ L"ange: $n+1$, Dim. $k$\\
 	$d(\tilde{G})=n-k+2$\\
 	$d(\tilde{G})\leq (n+1)-k+1 = n-k+2$\\ %simpleton underset bei leq
-	$0 \neq \tilde{x} \in \tilde{\Code}$ Falls $ \tilde{x}$ Linearkombination des ersten $k-1$ Zeilen von $ \tilde{G}$, so $ \tilde{x}=(x,0),\ x\in\Code$.\\
-	$x=(f(a_1),\ldots,f(a_n))$, wobei $f$ Polynom von Grad $\leq k-2$\\
-	$wt \tilde{x} = wt x \geq n-(k-2)=n-k+2$\\
-	Falls die letzte Zeile von $ \tilde{g}$ in der Linearkombination von $ \tilde{x}$ vorkommt, so $ \tilde{x}=(x,a),\ x\in K,\ a \neq 0,\ x \in \Code$\\
-	$wt \tilde{x} = wt (x) + 1 \geq n-k+1+1=n-k+2$\\
-	$d \tilde{\Code} = n-k+2 = (n+1)-k+1$ MDS-Code. \\
-	W"ahle $n=q$. $ \tilde{\Code}$ Mds-Code der L"ange $q \neq 1$
+	$0 \neq \tilde{x} \in \tilde{\Code}$\\
+	Falls $ \tilde{x}$ Linearkombination des ersten $k-1$ Zeilen von $ \tilde{G}$, so
+	\[
+		\tilde{x}=(x,0),\ x\in\Code
+	\]
+	$x=(f(a_1),\ldots,f(a_n))$, wobei $f$ Polynom von Grad $\leq k-2$
+	\[
+		wt (\tilde{x}) = wt (x) \geq n-(k-2)=n-k+2
+	\]
+	Falls die letzte Zeile von $ \tilde{G}$ in der Linearkombination von $ \tilde{x}$ vorkommt, so 
+	\begin{align*}
+		&\tilde{x}=(x,a),\ x\in K,\ a \neq 0,\ x \in \Code .\\
+		&wt (\tilde{x}) = wt (x) + 1 \geq n-k+1+1=n-k+2
+	\end{align*}
+	\[
+		d (\tilde{\Code}) = n-k+2 = (n+1)-k+1 \text{ MDS-Code.}
+	\]
+	W"ahle $n=q$. $\tilde{\Code}$ MDS-Code der L"ange $q + 1$
 	\item
-	$\overline{G} =
+	\[
+	\overline{G} =
 	\begin{pmatrix}
 		1 & \ldots & 1 & 0 & 0 \\ 
 		a_1 & \ldots & a_n & 1 & 0 \\ 
 		a_1^2 & \ldots & a_n^2 & 0 & 1
-	\end{pmatrix}$
+	\end{pmatrix}
+	\]
 	Code $ \overline{\Code}$ der L"ange $q+2$ Dimension 3.\\
-	$d(\overline{\Code})=q=(q+2)-3+q+1$ MDS-Code.\\
-	falls $q=2^l$
+	$d(\overline{\Code})=q=(q+2)-3+1$ MDS-Code,	falls $q=2^l$
 	\item
 	MDS-Vermutung\\
-	Falls $\Code$ $[n,k]$-Code "uber $K$, $\left| K \right| =q$, mit $d(\Code)=n-k+1$ (MDS-Code), so $n \leq q+2$ (und falls $q=2^l$ sogar $n\leq q+1$) 
+	Falls $\Code$ $[n,k]$-Code "uber $K$, $\left| K \right| =q$, mit $d(\Code)=n-k+1$ (MDS-Code), so
+	\[
+		n \leq q+2 \text{ (und falls } q=2^l \text{ sogar }n\leq q+1)
+	\] 
 	\item
-	Ist $\Code$ $[n,k]$-MDS-Code, $n \geq 2$, $d = d \Code = n-k+1$\\
-	$ \check{\Code}=\lbrace (c_1,\ldots,c_{n-1}: (c_1,\ldots,c_{n-1},0) \in \Code \rbrace$ (Verk"urzung von $\Code$) ist $[n-1,k-1,d]$-Code, $d=(n-1)-(k-1)+1$\\
-	$ \check{\Code}$ MDS-Code
+	Ist $\Code$ $[n,k]$-MDS-Code, $n \geq 2$, $d = d (\Code) = n-k+1$\\
+	$ \check{\Code}=\lbrace (C_1,\ldots,C_{n-1}: (C_1,\ldots,C_{n-1},0) \in \Code \rbrace$ (Verk"urzung von $\Code$)\\
+	ist $[n-1,k-1,d]$-Code
+	\[
+		d=(n-1)-(k-1)+1
+	\]
+	$ \check{\Code}$ MDS-Code.
 \end{enumerate}
 \section{Codierung von Audio-CDs}
-Ausl"oschung: Bit kann nicht mehr gelesen werden. (Man weiß wo der Fehler liegt)\\
+Ausl"oschung: Bit kann nicht mehr gelesen werden. (Man wei\ss\ wo der Fehler liegt)\\
 B"undelfehlern: %Bild 1
 \subsection{Lemma: $[n,k,d]$-Code}
 kann B"undelfehler bis zur L"ange $d-1$ korrigieren (pro Codewort). (Ebenso: $d-1$ Ausl"oschungen)\\
@@ -1057,7 +1048,7 @@ c_{11} & \ldots & c_{1s} \\
 \vdots &  & \vdots \\ 
 c_{n1} & \ldots & c_{ns}
 \end{pmatrix} 
-\] % hier BÜndelfehlermatrix
+\] % hier Bï¿½ndelfehlermatrix
 B"undelfehler der L"ange $b \leq (d-1) \cdot s$ bewirkt B"undelfehler der L"ange $\leq d-1$ zu jedem der urspr"unglichen Codew"orter aus $\Code$. Korrigierbar nach Lemma.
 \subsection{Cross-Interleaving}
 Def: $\Code_1, \Code_2$ $[n_i,k_i]$-Code $(i=1,2)$ "uber $K$, $\Code_1$ besitzt Erzeugermatrix in Standardform $(E_{k_1} | A)$. Das Cross-Interleaving des inneren Codes $\Code_1$ mit "au\ss ern Code $\Code_2$ ist ein Code $\Code \subseteq K^{n_1 n_2}$, der so entsteht:\\
